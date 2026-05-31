@@ -1,0 +1,13 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Dependencies (none required — this is a static site)
+node_modules/
+
+# Vercel
+.vercel
+
+# Claude Code
+.claude/

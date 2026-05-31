@@ -1,0 +1,181 @@
+/* ============================================================
+   Murray Home Improvement — Colors & Type
+   Source of truth for the design system.
+   Extracted from the live WordPress/Elementor site
+   (theme: "udyama"), custom theme color = #007bff.
+   Fonts: Roboto (UI/body) + Roboto Slab (serif accent),
+   both standard Google Fonts — loaded via CDN below.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Roboto+Slab:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---- BRAND COLOR ---- */
+  --mhi-blue:        #007bff;   /* primary — buttons, links, icons, accents */
+  --mhi-blue-hover:  #0056b3;   /* hover / active state for primary */
+  --mhi-blue-deep:   #004a99;   /* darkest link-active variant            */
+
+  /* ---- INK & NEUTRALS ---- */
+  --mhi-ink:         #292929;   /* headings + strong text                  */
+  --mhi-body:        #696969;   /* default body copy                       */
+  --mhi-muted:       #a1a1a1;   /* captions, meta, secondary text          */
+  --mhi-navy:        #00132d;   /* deep CTA overlay / footer ground        */
+  --mhi-overlay:     #323232;   /* neutral hero photo overlay              */
+
+  /* ---- SURFACES ---- */
+  --mhi-white:       #ffffff;   /* cards, header                           */
+  --mhi-paper:       #f9fbf9;   /* page ground / alt section / nav bar     */
+  --mhi-line:        #d6d6d6;   /* hairline borders, dropdowns             */
+  --mhi-line-soft:   #cccccc;   /* form-control borders                    */
+  --mhi-line-faint:  rgba(0,0,0,0.125); /* divider under nav               */
+
+  /* ---- FUNCTIONAL ---- */
+  --mhi-btn-grey:    #595959;   /* secondary header button / contact icon  */
+  --mhi-focus-ring:  rgba(0,123,255,0.25);
+
+  /* ============================================================
+     TYPE FAMILIES
+     ============================================================ */
+  --font-sans:  "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-slab:  "Roboto Slab", Georgia, "Times New Roman", serif;
+
+  /* weights actually used on the site */
+  --fw-regular:  400;   /* body                  */
+  --fw-medium:   500;   /* nav links, accents    */
+  --fw-semibold: 600;   /* headings, buttons     */
+  --fw-bold:     700;   /* hero display          */
+
+  /* ---- TYPE SCALE (rem, root 16px) ---- */
+  --fs-hero:   4rem;     /* 64px — hero H1 ("REMODELING EXPERTS")        */
+  --fs-h1:     2.5rem;   /* 40px — page titles                          */
+  --fs-h2:     2rem;     /* 32px — section heads                        */
+  --fs-h3:     1.6rem;   /* ~26px                                       */
+  --fs-h4:     1.3rem;   /* ~21px — sub-heads / "Why choose..."         */
+  --fs-h5:     1.15rem;  /* ~18px — card titles                         */
+  --fs-body:   1.1rem;   /* ~18px — default body                        */
+  --fs-small:  1rem;     /* 16px — nav, meta, widget text               */
+  --fs-caption:0.9rem;   /* ~14px — captions                            */
+
+  --lh-tight:  1.25;     /* headings           */
+  --lh-body:   1.618;    /* body copy (golden) */
+  --lh-snug:   1.4;      /* hero sub-head      */
+
+  /* ---- RADII ---- */
+  --radius-sm:  3px;     /* inputs, chips      */
+  --radius-md:  0.25rem; /* buttons (bootstrap)*/
+  --radius-pill: 9999px; /* WP block buttons   */
+
+  /* ---- SHADOWS ---- */
+  --shadow-page: 0 0 2px rgba(50,50,50,0.1);          /* page wrapper edge   */
+  --shadow-drop: 0 3px 3px rgba(0,0,0,0.2);            /* nav dropdown        */
+  --shadow-card: 0 2px 10px rgba(0,0,0,0.08);          /* lifted card (derived)*/
+  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.14);
+
+  /* ---- MOTION ---- */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur-fast: .3s;       /* elementor element transitions  */
+  --dur:      .4s;       /* links, buttons (all .4s ease)  */
+
+  /* ---- LAYOUT ---- */
+  --container: 1180px;   /* boxed container max-width      */
+  --section-pad: 60px;   /* vertical section rhythm        */
+}
+
+/* ============================================================
+   SEMANTIC BASE STYLES
+   ============================================================ */
+body {
+  background: var(--mhi-paper);
+  color: var(--mhi-body);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--mhi-ink);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  margin: 0 0 .5em;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+
+/* The hero display lockup — used on photo banners, always white & centered */
+.mhi-display {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--mhi-white);
+  text-align: center;
+}
+
+p { margin: 0 0 1.5rem; }
+
+a {
+  color: var(--mhi-blue);
+  text-decoration: none;
+  transition: color var(--dur) ease;
+}
+a:hover, a:focus, a:active { color: var(--mhi-blue-hover); }
+
+/* Eyebrow / kicker — small caps label used above headings */
+.mhi-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mhi-blue);
+}
+
+/* Serif accent — Roboto Slab, used sparingly for pull quotes / numerals */
+.mhi-slab { font-family: var(--font-slab); }
+
+/* ============================================================
+   PRIMARY BUTTON (Elementor / Bootstrap btn-primary parity)
+   ============================================================ */
+.mhi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+  line-height: 1;
+  padding: .8em 1.5em;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--dur) ease, color var(--dur) ease, border-color var(--dur) ease;
+}
+.mhi-btn--primary {
+  background: var(--mhi-blue);
+  border-color: var(--mhi-blue);
+  color: var(--mhi-white);
+}
+.mhi-btn--primary:hover {
+  background: var(--mhi-blue-hover);
+  border-color: var(--mhi-blue-hover);
+  color: var(--mhi-white);
+}
+.mhi-btn--outline {
+  background: transparent;
+  border-color: var(--mhi-blue);
+  color: var(--mhi-blue);
+}
+.mhi-btn--outline:hover {
+  background: var(--mhi-blue);
+  color: var(--mhi-white);
+}

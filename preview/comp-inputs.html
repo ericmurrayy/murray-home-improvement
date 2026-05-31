@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .field { margin-bottom:12px; }
+  .field:last-child { margin-bottom:0; }
+  label { display:block; font-size:12px; font-weight:600; color:var(--mhi-ink); margin-bottom:5px; }
+  input, textarea { width:100%; font-family:var(--font-sans); font-size:14px; color:#444; border:1px solid #ccc; border-radius:3px; padding:9px 11px; transition:border-color .4s ease, box-shadow .4s ease; }
+  input:focus, textarea:focus { outline:0; border-color:#007bff; box-shadow:0 0 0 3px rgba(0,123,255,.25); color:#111; }
+  .two { display:flex; gap:12px; }
+  .two .field { flex:1; }
+</style></head>
+<body>
+  <p class="lbl">Form inputs</p>
+  <div class="two">
+    <div class="field"><label>Name</label><input type="text" value="Eric Murray"></div>
+    <div class="field"><label>Phone</label><input type="tel" placeholder="(978) 479-9406"></div>
+  </div>
+  <div class="field"><label>Email (focus state)</label><input type="email" value="eric@murrayhomeimprovement.com" autofocus></div>
+  <div class="field"><label>Project details</label><textarea rows="2" placeholder="Tell us about your remodel…"></textarea></div>
+</body></html>

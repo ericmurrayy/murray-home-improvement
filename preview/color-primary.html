@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display:flex; gap:14px; }
+  .col { flex:1; }
+  .chip { height:64px; border-radius: var(--radius-sm); display:flex; align-items:flex-end; padding:8px 10px; color:#fff; font-size:12px; font-weight:600; }
+  .states { display:flex; gap:8px; margin-top:12px; }
+  .st { flex:1; height:38px; border-radius: var(--radius-sm); display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:600; }
+  .name { font-size:12px; font-weight:600; margin-top:6px; color:var(--mhi-ink); }
+  .hex { font-size:11px; color:var(--mhi-muted); font-family:var(--font-slab); }
+</style></head>
+<body>
+  <p class="lbl">Brand Color — one confident blue</p>
+  <div class="chip" style="background:#007bff; height:96px; font-size:14px;">Primary&nbsp;&nbsp;#007bff</div>
+  <div class="states">
+    <div class="st" style="background:#007bff;">Default</div>
+    <div class="st" style="background:#0056b3;">Hover #0056b3</div>
+    <div class="st" style="background:#004a99;">Active #004a99</div>
+  </div>
+  <p style="font-size:12px; color:var(--mhi-body); margin:12px 0 0; line-height:1.5;">Buttons · links · feature icons · accents. Hover &amp; active states deepen the blue — never lighten or dim.</p>
+</body></html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+  .grp:last-child { margin-bottom:0; }
+  .btn { display:inline-flex; align-items:center; gap:.5em; font-family:var(--font-sans); font-weight:600; font-size:15px; line-height:1; padding:.8em 1.5em; border:1px solid transparent; border-radius:.25rem; cursor:pointer; transition:all .4s ease; }
+  .primary { background:#007bff; border-color:#007bff; color:#fff; }
+  .primary:hover { background:#0056b3; border-color:#0056b3; }
+  .outline { background:transparent; border-color:#007bff; color:#007bff; }
+  .outline:hover { background:#007bff; color:#fff; }
+  .grey { background:#595959; border-color:#595959; color:#fff; }
+  .grey:hover { background:#444; }
+  .tag { font-size:11px; color:var(--mhi-muted); font-family:var(--font-slab); }
+</style></head>
+<body>
+  <p class="lbl">Buttons</p>
+  <div class="grp">
+    <button class="btn primary">Contact Us</button>
+    <button class="btn outline">Learn More</button>
+    <button class="btn grey">Get a Quote</button>
+  </div>
+  <div class="grp">
+    <button class="btn primary" style="font-size:13px; padding:.6em 1.1em;">Small</button>
+    <button class="btn primary">Medium</button>
+    <button class="btn primary" style="font-size:17px; padding:.95em 1.9em;">Large</button>
+    <span class="tag">600 weight · 0.25rem radius · all .4s ease hover deepens to #0056b3</span>
+  </div>
+</body></html>

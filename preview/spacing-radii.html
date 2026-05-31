@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display:flex; gap:18px; align-items:flex-end; }
+  .item { text-align:center; }
+  .box { width:84px; height:64px; background:var(--mhi-blue); }
+  .cap { font-size:12px; font-weight:600; color:var(--mhi-ink); margin-top:8px; }
+  .sub { font-size:11px; color:var(--mhi-muted); font-family:var(--font-slab); }
+</style></head>
+<body>
+  <p class="lbl">Corner radii — small &amp; restrained</p>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:0;"></div><div class="cap">Square</div><div class="sub">images, sections</div></div>
+    <div class="item"><div class="box" style="border-radius:3px;"></div><div class="cap">3px</div><div class="sub">inputs, chips</div></div>
+    <div class="item"><div class="box" style="border-radius:4px;"></div><div class="cap">0.25rem</div><div class="sub">buttons</div></div>
+    <div class="item"><div class="box" style="border-radius:9999px; width:120px;"></div><div class="cap">Pill</div><div class="sub">WP blocks only</div></div>
+  </div>
+</body></html>

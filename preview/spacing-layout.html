@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background:#f9fbf9; }
+  .stage { background:#fff; border:1px solid var(--mhi-line); border-radius:4px; padding:0; overflow:hidden; }
+  .sec { padding:18px 22px; }
+  .secA { background:#fff; }
+  .secB { background:#f9fbf9; }
+  .marker { font-size:11px; color:var(--mhi-muted); font-family:var(--font-slab); }
+  .bar { height:6px; background:var(--mhi-blue); width:40px; border-radius:2px; margin-bottom:8px; }
+  .ln { height:8px; background:#e7e9e7; border-radius:2px; margin:6px 0; }
+  .ln.s { width:55%; }
+</style></head>
+<body>
+  <p class="lbl">Layout rhythm — boxed, ~60px section pad, white ↔ paper</p>
+  <div class="stage">
+    <div class="sec secA"><div class="bar"></div><div class="ln"></div><div class="ln s"></div><div class="marker">Section · white · 60px vertical pad</div></div>
+    <div class="sec secB"><div class="bar"></div><div class="ln"></div><div class="ln s"></div><div class="marker">Alt section · #f9fbf9 · container max 1180px</div></div>
+  </div>
+</body></html>

@@ -1,0 +1,27 @@
+/* Shared framing for Design System specimen cards.
+   Cards are ~700px wide; the asset NAME is rendered by the host outside the card,
+   so these just present the specimen with minimal chrome. */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--mhi-white);
+  color: var(--mhi-ink);
+  padding: 22px 24px;
+  font-family: var(--font-sans);
+}
+.card-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: stretch; }
+.swatch {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--mhi-line);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 96px;
+}
+.swatch .chip { height: 56px; }
+.swatch .meta { padding: 7px 9px; background: var(--mhi-white); }
+.swatch .name { font-size: 12px; font-weight: 600; color: var(--mhi-ink); line-height: 1.3; }
+.swatch .hex  { font-size: 11px; color: var(--mhi-muted); font-family: var(--font-slab); letter-spacing: .02em; }
+.lbl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mhi-muted); font-weight: 600; margin: 0 0 10px; }

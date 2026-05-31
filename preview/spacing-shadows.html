@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { background:#f9fbf9; }
+  .row { display:flex; gap:22px; }
+  .item { text-align:center; }
+  .box { width:120px; height:70px; background:#fff; border-radius:4px; }
+  .cap { font-size:12px; font-weight:600; color:var(--mhi-ink); margin-top:14px; }
+  .sub { font-size:11px; color:var(--mhi-muted); font-family:var(--font-slab); }
+</style></head>
+<body>
+  <p class="lbl">Shadows — subtle, neutral, never colored</p>
+  <div class="row">
+    <div class="item"><div class="box" style="box-shadow:0 0 2px rgba(50,50,50,.1);"></div><div class="cap">Edge</div><div class="sub">page wrapper</div></div>
+    <div class="item"><div class="box" style="box-shadow:0 2px 10px rgba(0,0,0,.08);"></div><div class="cap">Card</div><div class="sub">lifted surface</div></div>
+    <div class="item"><div class="box" style="box-shadow:0 3px 3px rgba(0,0,0,.2);"></div><div class="cap">Dropdown</div><div class="sub">nav menus</div></div>
+    <div class="item"><div class="box" style="box-shadow:0 8px 24px rgba(0,0,0,.14);"></div><div class="cap">Card hover</div><div class="sub">on lift</div></div>
+  </div>
+</body></html>
