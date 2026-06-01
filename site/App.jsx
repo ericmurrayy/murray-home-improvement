@@ -51,6 +51,21 @@ function App() {
     return () => io.disconnect();
   }, []);
 
+  // Honor a #hash on load. The page is a client-side React app, so when a
+  // link like index.html#contact arrives, the target section doesn't exist
+  // yet and the browser's native jump is a no-op. After mount, scroll to it.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.replace('#', '')).trim();
+    if (!id) return;
+    let tries = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+      if (tries++ < 40) setTimeout(tryScroll, 100); // wait for sections to render
+    };
+    setTimeout(tryScroll, 60);
+  }, []);
+
   return (
     <React.Fragment>
       <Header scrolled={scrolled} />
@@ -60,6 +75,7 @@ function App() {
         </ErrorBoundary>
         <Strip />
         <Services />
+        <Contact />
         <Work />
         <section className="section transformation" id="transformation">
           <div className="wrap">
@@ -87,7 +103,6 @@ function App() {
         <WhyProcess />
         <ServiceAreas />
         <Testimonials />
-        <Contact />
       </main>
       <Footer />
 

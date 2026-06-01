@@ -18,7 +18,13 @@
    change FORM_ENDPOINT and the field handling below.
    ────────────────────────────────────────────────────────────────────────── */
 const NOTIFY_EMAIL = 'eric@murrayhomeimprovement.com';
-const NOTIFY_SMS_GATEWAY = ''; // e.g. '9784799406@vtext.com' — leave '' to disable SMS copy
+// To ALSO text every lead to Eric's phone, set this to the carrier email-to-text
+// address for (978) 479-9406 and redeploy. One line, no other changes needed:
+//   AT&T:     '9784799406@txt.att.net'
+//   T-Mobile: '9784799406@tmomail.net'
+// (Verizon retired email-to-text in 2025, so @vtext.com no longer delivers.)
+// Leave '' for email-only notifications.
+const NOTIFY_SMS_GATEWAY = '';
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
 
 function Contact() {
@@ -31,6 +37,9 @@ function Contact() {
     data.append('_subject', 'New free-quote request — murrayhomeimprovement.com');
     data.append('_template', 'table');
     data.append('_captcha', 'false');
+    // Replying to the notification email goes straight to the customer.
+    const customerEmail = data.get('Email');
+    if (customerEmail) data.append('_replyto', customerEmail);
     if (NOTIFY_SMS_GATEWAY) data.append('_cc', NOTIFY_SMS_GATEWAY);
     setStatus('sending');
     try {
@@ -67,8 +76,17 @@ function Contact() {
 
         <div className="contact-card reveal">
           <aside className="contact-aside">
-            <h3>Talk to the owner directly</h3>
-            <p>No call centers, no runaround — Eric handles every estimate personally.</p>
+            <h3>Call or text Eric directly</h3>
+            <p>Fastest way to get an answer — Eric handles every estimate personally. No call centers, no runaround.</p>
+            <div className="contact-actions">
+              <a className="btn btn-primary btn-lg" href="tel:19784799406">
+                <i className="fa fa-phone ico" aria-hidden="true"></i> Call (978)&nbsp;479-9406
+              </a>
+              <a className="btn btn-ghost btn-lg" href="sms:19784799406">
+                <i className="fa fa-comment ico" aria-hidden="true"></i> Text us
+              </a>
+            </div>
+            <p className="contact-or">or fill out the form &mdash; we reply within one business day</p>
             {details.map(d => {
               const inner = (
                 <React.Fragment>
