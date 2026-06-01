@@ -7,7 +7,7 @@ function About() {
       <div className="wrap">
         <div className="about-grid">
           <div className="about-media reveal">
-            <img src="assets/eric-daughter.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his daughter" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 30%', display: 'block' }} />
+            <img src="assets/eric-family.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his family" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '54% 50%', display: 'block' }} />
             <div className="about-badge">
               <b>30<span className="accent">+</span></b>
               <span>Years building<br />in the Valley</span>

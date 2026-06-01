@@ -33,10 +33,10 @@ function Services() {
   return (
     <section className="section" id="services">
       <div className="wrap">
-        <div className="section-head reveal">
+        <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
           <span className="eyebrow">What we do</span>
-          <h2 className="section-title">Everything<br />we build</h2>
-          <p className="section-lead">From a single room to a whole new level — our most-requested work, plus every
+          <h2 className="section-title">Everything we build</h2>
+          <p className="section-lead" style={{ textAlign: 'center', maxWidth: '60ch' }}>From a single room to a whole new level — our most-requested work, plus every
             other service we offer across the Merrimack Valley.</p>
         </div>
         <div className="services-grid">
