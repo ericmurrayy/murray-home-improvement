@@ -17,6 +17,11 @@
     if (!window.THREE) { console.warn('THREE not loaded'); return null; }
     const THREE = window.THREE;
 
+    // WebGL can be unavailable or blocked (old GPUs, headless, privacy
+    // settings, corporate policy). If anything in the GL setup throws, we
+    // return null and the hero falls back to its static background instead
+    // of taking the whole page down.
+    try {
     let accent = hexToInt(opts.accent || 0x007bff);
     let bg = hexToInt(opts.bg || 0x090b0e);
     const SPAN = 7;               // grid extends -SPAN..SPAN
@@ -125,5 +130,9 @@
       destroy() { cancelAnimationFrame(raf); ro.disconnect(); geo.dispose(); renderer.dispose(); },
     };
     return controller;
+    } catch (err) {
+      console.warn('initCubeField: WebGL unavailable, using static hero.', err);
+      return null;
+    }
   };
 })();

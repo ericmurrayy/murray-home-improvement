@@ -1,6 +1,15 @@
 /* App.jsx — composes the page and wires Tweaks → CSS variables */
 const { useState, useEffect } = React;
 
+/* Keeps a crash in one section (e.g. the WebGL hero on a browser with no
+   GL context) from unmounting the whole page. Renders `fallback` instead. */
+class ErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { failed: false }; }
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch(err) { console.warn('Section failed to render, showing fallback.', err); }
+  render() { return this.state.failed ? (this.props.fallback || null) : this.props.children; }
+}
+
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#007bff",
   "theme": "dark",
@@ -46,7 +55,9 @@ function App() {
     <React.Fragment>
       <Header scrolled={scrolled} />
       <main>
-        <Hero accent={t.accent} bg={BG_BY_THEME[t.theme] || BG_BY_THEME.dark} animate={t.animate} align={t.align} />
+        <ErrorBoundary fallback={<HeroStatic align={t.align} />}>
+          <Hero accent={t.accent} bg={BG_BY_THEME[t.theme] || BG_BY_THEME.dark} animate={t.animate} align={t.align} />
+        </ErrorBoundary>
         <Strip />
         <Services />
         <Work />
