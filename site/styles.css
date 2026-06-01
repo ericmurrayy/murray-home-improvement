@@ -409,6 +409,12 @@ a { color: inherit; text-decoration: none; }
 .step .n { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
 .step h4 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 4px; }
 .step p { color: var(--text-dim); font-size: 14px; line-height: 1.5; }
+/* The static service/town pages hard-code an inline 4-column grid on .process,
+   which overflows the screen on phones. Collapse it responsively — !important is
+   required to override the inline style. Targets only those pages ([style]); the
+   homepage .process is a flex column and is left untouched. */
+@media (max-width: 900px) { .process[style] { grid-template-columns: 1fr 1fr !important; } }
+@media (max-width: 560px) { .process[style] { grid-template-columns: 1fr !important; } }
 
 /* ---------- CONTACT ---------- */
 .contact { position: relative; }
