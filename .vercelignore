@@ -1,0 +1,9 @@
+# Dev artifacts — not part of the public site
+uploads/
+preview/
+*.md
+SKILL.md
+colors_and_type.css
+# JSX sources are compiled into site/app.js at build time (site/README-build.md)
+tweaks-panel.jsx
+site/*.jsx
