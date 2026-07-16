@@ -80,7 +80,7 @@
   <link rel="stylesheet" href="site/styles.css" />
   <link rel="stylesheet" href="site/pages.css" />
 </head>
-<body>
+<body class="has-cta-bar">
   <!-- Prerendered snapshot of the React app: real content for crawlers and
        instant first paint. React replaces it on load — regenerate after any
        component change (see site/README-build.md). -->
@@ -100,5 +100,6 @@
 
   <!-- App bundle — precompiled from tweaks-panel.jsx + site/*.jsx (see site/README-build.md) -->
   <script defer src="site/app.js?v=3"></script>
+<div class="cta-bar" role="navigation" aria-label="Quick contact"><a href="tel:19784799406"><i class="fa fa-phone" aria-hidden="true"></i> Call</a><a href="sms:19784799406"><i class="fa fa-comment" aria-hidden="true"></i> Text</a><a class="primary" href="#contact"><i class="fa fa-pencil" aria-hidden="true"></i> Free Quote</a></div>
 </body>
 </html>
