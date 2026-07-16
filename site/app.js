@@ -293,7 +293,7 @@ function TweaksPanel({
     "aria-label": "Close tweaks",
     onMouseDown: e => e.stopPropagation(),
     onClick: dismiss
-  }, "✕")), /*#__PURE__*/React.createElement("div", {
+  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
     className: "twk-body"
   }, children)));
 }
@@ -658,6 +658,7 @@ Object.assign(window, {
   TweakColor,
   TweakButton
 });
+
 /* Header.jsx — fixed top nav with logo + mobile menu */
 function Header({
   scrolled
@@ -743,6 +744,7 @@ function Header({
   }), " (978) 479-9406")));
 }
 window.Header = Header;
+
 /* Hero.jsx — full-screen cube-field hero */
 function Hero({
   accent,
@@ -805,11 +807,11 @@ function HeroContent({
     className: "hero-lead"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hero-eyebrow eyebrow"
-  }, "Chelmsford, MA · Licensed & Insured · Est. 1989"), /*#__PURE__*/React.createElement("h1", null, "Remodeling", /*#__PURE__*/React.createElement("br", null), "done ", /*#__PURE__*/React.createElement("span", {
+  }, "Chelmsford, MA \xB7 Licensed & Insured \xB7 Est. 1989"), /*#__PURE__*/React.createElement("h1", null, "Remodeling", /*#__PURE__*/React.createElement("br", null), "done ", /*#__PURE__*/React.createElement("span", {
     className: "accent"
   }, "right")), /*#__PURE__*/React.createElement("p", {
     className: "hero-sub"
-  }, "Murray Home Improvement is an owner-operated remodeling & building contractor serving the Merrimack Valley for over 30 years. Kitchens, baths, additions, and full custom work — one craftsman, start to finish. If you can think it, we’ll build it."), /*#__PURE__*/React.createElement("div", {
+  }, "Murray Home Improvement is an owner-operated remodeling & building contractor serving the Merrimack Valley for over 30 years. Kitchens, baths, additions, and full custom work \u2014 one craftsman, start to finish. If you can think it, we\u2019ll build it."), /*#__PURE__*/React.createElement("div", {
     className: "hero-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary btn-lg",
@@ -832,7 +834,7 @@ function HeroContent({
     className: "accent"
   }, "%")), /*#__PURE__*/React.createElement("span", null, "Owner-operated, on every job site")), /*#__PURE__*/React.createElement("div", {
     className: "stat"
-  }, /*#__PURE__*/React.createElement("b", null, "Free"), /*#__PURE__*/React.createElement("span", null, "Estimates, fully itemized — no surprises")))));
+  }, /*#__PURE__*/React.createElement("b", null, "Free"), /*#__PURE__*/React.createElement("span", null, "Estimates, fully itemized \u2014 no surprises")))));
 }
 
 /* Static hero — no canvas, no WebGL. Used as the ErrorBoundary fallback so a
@@ -857,7 +859,7 @@ function HeroTruck() {
   return /*#__PURE__*/React.createElement("img", {
     className: "hero-truck",
     src: "assets/murray-truck-hero.webp",
-    alt: "Murray Home Improvement box truck — your remodeling specialist, frame to finish carpentry",
+    alt: "Murray Home Improvement box truck \u2014 your remodeling specialist, frame to finish carpentry",
     width: "1672",
     height: "941",
     loading: "eager",
@@ -866,6 +868,7 @@ function HeroTruck() {
 }
 window.Hero = Hero;
 window.HeroStatic = HeroStatic;
+
 /* Sections.jsx — marquee strip, services, work gallery, why-choose, process */
 
 function Strip() {
@@ -957,7 +960,7 @@ function Services() {
       textAlign: 'center',
       maxWidth: '60ch'
     }
-  }, "From a single room to a whole new level — our most-requested work, plus every other service we offer across the Merrimack Valley.")), /*#__PURE__*/React.createElement("div", {
+  }, "From a single room to a whole new level \u2014 our most-requested work, plus every other service we offer across the Merrimack Valley.")), /*#__PURE__*/React.createElement("div", {
     className: "services-grid"
   }, svc.map(s => /*#__PURE__*/React.createElement("article", {
     className: "svc reveal",
@@ -1149,6 +1152,7 @@ Object.assign(window, {
   Work,
   WhyProcess
 });
+
 /* More.jsx — About (owner-operated story) + Testimonials (real FB recommendations) */
 
 function About() {
@@ -1183,7 +1187,7 @@ function About() {
     className: "eyebrow"
   }, "The owner"), /*#__PURE__*/React.createElement("h2", {
     className: "section-title"
-  }, "Three decades,", /*#__PURE__*/React.createElement("br", null), "one set of hands"), /*#__PURE__*/React.createElement("p", null, "Murray Home Improvement is owner-operated — when you hire us, you work directly with Eric Murray from the first estimate to the final walk-through. No call centers, no rotating crews, no guesswork. Just one experienced craftsman who answers the phone and stands behind every detail."), /*#__PURE__*/React.createElement("p", null, "We specialize in residential remodeling and additions — second levels, kitchens, bathrooms, basements, decks, exteriors, and fully custom builds. We’ll work closely with experienced kitchen and home designers to plan every detail, then build around you and your family’s needs. ", /*#__PURE__*/React.createElement("b", null, "If you’re looking for a professional you can trust and invite into your home, look no further.")), /*#__PURE__*/React.createElement("div", {
+  }, "Three decades,", /*#__PURE__*/React.createElement("br", null), "one set of hands"), /*#__PURE__*/React.createElement("p", null, "Murray Home Improvement is owner-operated \u2014 when you hire us, you work directly with Eric Murray from the first estimate to the final walk-through. No call centers, no rotating crews, no guesswork. Just one experienced craftsman who answers the phone and stands behind every detail."), /*#__PURE__*/React.createElement("p", null, "We specialize in residential remodeling and additions \u2014 second levels, kitchens, bathrooms, basements, decks, exteriors, and fully custom builds. We\u2019ll work closely with experienced kitchen and home designers to plan every detail, then build around you and your family\u2019s needs. ", /*#__PURE__*/React.createElement("b", null, "If you\u2019re looking for a professional you can trust and invite into your home, look no further.")), /*#__PURE__*/React.createElement("div", {
     className: "about-foot"
   }, /*#__PURE__*/React.createElement("div", {
     className: "signature"
@@ -1196,7 +1200,7 @@ function About() {
     key: c
   }, c))), /*#__PURE__*/React.createElement("p", {
     className: "reg-line"
-  }, "MA\xA0CSL\xA0#077319 · HIC\xA0#174394 · USDOT\xA02353155")))));
+  }, "MA\xA0CSL\xA0#077319 \xB7 HIC\xA0#174394 \xB7 USDOT\xA02353155")))));
 }
 function BrandBand() {
   const regs = ['USDOT 2353155', 'HIC #174394', 'MA CSL #077319'];
@@ -1217,7 +1221,7 @@ function BrandBand() {
     className: "eyebrow"
   }, "Your remodeling specialist"), /*#__PURE__*/React.createElement("h2", {
     className: "section-title"
-  }, "Frame to", /*#__PURE__*/React.createElement("br", null), "finish carpentry"), /*#__PURE__*/React.createElement("p", null, "Licensed, insured, and on the road across the Merrimack Valley — fully credentialed so you can hire with confidence."), /*#__PURE__*/React.createElement("div", {
+  }, "Frame to", /*#__PURE__*/React.createElement("br", null), "finish carpentry"), /*#__PURE__*/React.createElement("p", null, "Licensed, insured, and on the road across the Merrimack Valley \u2014 fully credentialed so you can hire with confidence."), /*#__PURE__*/React.createElement("div", {
     className: "reg-chips"
   }, regs.map(r => /*#__PURE__*/React.createElement("span", {
     key: r
@@ -1258,7 +1262,7 @@ function Testimonials() {
       textAlign: 'center',
       maxWidth: '46ch'
     }
-  }, "Word of mouth is how most of our projects start. Here’s what neighbors say."), /*#__PURE__*/React.createElement("a", {
+  }, "Word of mouth is how most of our projects start. Here\u2019s what neighbors say."), /*#__PURE__*/React.createElement("a", {
     className: "g-rating",
     href: "https://share.google/wlvLzfmJFUliE3SHb",
     target: "_blank",
@@ -1276,7 +1280,7 @@ function Testimonials() {
     className: "fa fa-star"
   }), /*#__PURE__*/React.createElement("i", {
     className: "fa fa-star-o"
-  })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, "4.0"), " on Google · 4 reviews"))), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, "4.0"), " on Google \xB7 4 reviews"))), /*#__PURE__*/React.createElement("div", {
     className: "reviews-grid reveal"
   }, reviews.map(r => /*#__PURE__*/React.createElement("figure", {
     className: "review",
@@ -1290,7 +1294,7 @@ function Testimonials() {
     className: "review-avatar"
   }, initials(r.name)), /*#__PURE__*/React.createElement("span", {
     className: "review-meta"
-  }, /*#__PURE__*/React.createElement("b", null, r.name), /*#__PURE__*/React.createElement("span", null, r.date, " · ", /*#__PURE__*/React.createElement("i", {
+  }, /*#__PURE__*/React.createElement("b", null, r.name), /*#__PURE__*/React.createElement("span", null, r.date, " \xB7 ", /*#__PURE__*/React.createElement("i", {
     className: "fa fa-facebook-official",
     "aria-hidden": "true"
   }), " Facebook"))))))));
@@ -1324,7 +1328,7 @@ function ServiceAreas() {
       textAlign: 'center',
       maxWidth: '50ch'
     }
-  }, "Based in Chelmsford, MA — proudly remodeling homes across these towns and the communities around them.")), /*#__PURE__*/React.createElement("div", {
+  }, "Based in Chelmsford, MA \u2014 proudly remodeling homes across these towns and the communities around them.")), /*#__PURE__*/React.createElement("div", {
     className: "map-wrap reveal"
   }, /*#__PURE__*/React.createElement("div", {
     id: "service-map",
@@ -1369,7 +1373,8 @@ Object.assign(window, {
   Testimonials,
   BrandBand,
   ServiceAreas
-}); /* Contact.jsx — free quote form, wired to real email/SMS notifications */
+});
+/* Contact.jsx — free quote form, wired to real email/SMS notifications */
 
 /* ──────────────────────────────────────────────────────────────────────────
    NOTIFICATION WIRING
@@ -1461,17 +1466,17 @@ function Contact() {
     }
   }, "Free estimates"), /*#__PURE__*/React.createElement("h2", {
     className: "section-title"
-  }, "Let’s build something"), /*#__PURE__*/React.createElement("p", {
+  }, "Let\u2019s build something"), /*#__PURE__*/React.createElement("p", {
     className: "section-lead",
     style: {
       textAlign: 'center',
       maxWidth: '52ch'
     }
-  }, "Tell us about your project and we’ll get back to you with a no-obligation estimate. Start the new year in a better quality home.")), /*#__PURE__*/React.createElement("div", {
+  }, "Tell us about your project and we\u2019ll get back to you with a no-obligation estimate. Start the new year in a better quality home.")), /*#__PURE__*/React.createElement("div", {
     className: "contact-card reveal"
   }, /*#__PURE__*/React.createElement("aside", {
     className: "contact-aside"
-  }, /*#__PURE__*/React.createElement("h3", null, "Call or text Eric directly"), /*#__PURE__*/React.createElement("p", null, "Fastest way to get an answer — Eric handles every estimate personally. No call centers, no runaround."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h3", null, "Call or text Eric directly"), /*#__PURE__*/React.createElement("p", null, "Fastest way to get an answer \u2014 Eric handles every estimate personally. No call centers, no runaround."), /*#__PURE__*/React.createElement("div", {
     className: "contact-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary btn-lg",
@@ -1487,7 +1492,7 @@ function Contact() {
     "aria-hidden": "true"
   }), " Text us")), /*#__PURE__*/React.createElement("p", {
     className: "contact-or"
-  }, "or fill out the form — we reply within one business day"), details.map(d => {
+  }, "or fill out the form \u2014 we reply within one business day"), details.map(d => {
     const inner = /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
       className: "ico"
     }, /*#__PURE__*/React.createElement("i", {
@@ -1509,7 +1514,7 @@ function Contact() {
   }, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-check",
     "aria-hidden": "true"
-  })), /*#__PURE__*/React.createElement("h3", null, "Thank you!"), /*#__PURE__*/React.createElement("p", null, "Your request is on its way to Eric. We’ll be in touch shortly — usually within one business day. Need us sooner? Call ", /*#__PURE__*/React.createElement("a", {
+  })), /*#__PURE__*/React.createElement("h3", null, "Thank you!"), /*#__PURE__*/React.createElement("p", null, "Your request is on its way to Eric. We\u2019ll be in touch shortly \u2014 usually within one business day. Need us sooner? Call ", /*#__PURE__*/React.createElement("a", {
     href: "tel:19784799406"
   }, "(978)\xA0479-9406"), ".")) : /*#__PURE__*/React.createElement("form", {
     className: "contact-form",
@@ -1564,7 +1569,7 @@ function Contact() {
   }, /*#__PURE__*/React.createElement("option", {
     value: "",
     disabled: true
-  }, "Select a project…"), /*#__PURE__*/React.createElement("option", null, "Kitchen remodel"), /*#__PURE__*/React.createElement("option", null, "Bathroom remodel"), /*#__PURE__*/React.createElement("option", null, "Addition / second level"), /*#__PURE__*/React.createElement("option", null, "Basement or deck"), /*#__PURE__*/React.createElement("option", null, "Whole-home / custom"), /*#__PURE__*/React.createElement("option", null, "Something else"))), /*#__PURE__*/React.createElement("div", {
+  }, "Select a project\u2026"), /*#__PURE__*/React.createElement("option", null, "Kitchen remodel"), /*#__PURE__*/React.createElement("option", null, "Bathroom remodel"), /*#__PURE__*/React.createElement("option", null, "Addition / second level"), /*#__PURE__*/React.createElement("option", null, "Basement or deck"), /*#__PURE__*/React.createElement("option", null, "Whole-home / custom"), /*#__PURE__*/React.createElement("option", null, "Something else"))), /*#__PURE__*/React.createElement("div", {
     className: "field"
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: "cf-msg"
@@ -1572,7 +1577,7 @@ function Contact() {
     id: "cf-msg",
     name: "Project details",
     rows: "3",
-    placeholder: "Tell us what you have in mind…"
+    placeholder: "Tell us what you have in mind\u2026"
   })), /*#__PURE__*/React.createElement("div", {
     className: "form-foot"
   }, /*#__PURE__*/React.createElement("span", {
@@ -1584,7 +1589,7 @@ function Contact() {
   }, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-exclamation-circle ico",
     "aria-hidden": "true"
-  }), " Couldn’t send — email ", /*#__PURE__*/React.createElement("a", {
+  }), " Couldn\u2019t send \u2014 email ", /*#__PURE__*/React.createElement("a", {
     href: "mailto:eric@murrayhomeimprovement.com",
     style: {
       color: 'var(--accent)',
@@ -1593,19 +1598,20 @@ function Contact() {
   }, "Eric"), " or call (978) 479-9406.") : /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-lock ico",
     "aria-hidden": "true"
-  }), " We’ll never share your info.")), /*#__PURE__*/React.createElement("button", {
+  }), " We\u2019ll never share your info.")), /*#__PURE__*/React.createElement("button", {
     className: "btn btn-primary btn-lg",
     type: "submit",
     disabled: status === 'sending'
   }, status === 'sending' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("i", {
     className: "fa fa-circle-o-notch fa-spin",
     "aria-hidden": "true"
-  }), " Sending…") : /*#__PURE__*/React.createElement(React.Fragment, null, "Request my free quote ", /*#__PURE__*/React.createElement("i", {
+  }), " Sending\u2026") : /*#__PURE__*/React.createElement(React.Fragment, null, "Request my free quote ", /*#__PURE__*/React.createElement("i", {
     className: "fa fa-arrow-right ico",
     "aria-hidden": "true"
   }))))))));
 }
 window.Contact = Contact;
+
 /* Footer.jsx */
 function Footer() {
   return /*#__PURE__*/React.createElement("footer", {
@@ -1624,7 +1630,7 @@ function Footer() {
     className: "footer-logo-badge",
     src: "assets/logo-dark.png",
     alt: "Murray Home Improvement"
-  })), /*#__PURE__*/React.createElement("p", null, "Licensed, insured, owner-operated residential remodeling & building. Your remodeling specialist — frame to finish carpentry, across the Merrimack Valley for 30+ years.")), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("p", null, "Licensed, insured, owner-operated residential remodeling & building. Your remodeling specialist \u2014 frame to finish carpentry, across the Merrimack Valley for 30+ years.")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Services"), /*#__PURE__*/React.createElement("a", {
     href: "services/kitchen-remodeling.html"
@@ -1646,7 +1652,7 @@ function Footer() {
     href: "towns/westford.html"
   }, "Westford"), /*#__PURE__*/React.createElement("a", {
     href: "areas.html"
-  }, "All areas →")), /*#__PURE__*/React.createElement("div", {
+  }, "All areas \u2192")), /*#__PURE__*/React.createElement("div", {
     className: "foot-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Company"), /*#__PURE__*/React.createElement("a", {
     href: "about.html"
@@ -1668,7 +1674,7 @@ function Footer() {
     href: "gallery.html"
   }, "Project gallery"), /*#__PURE__*/React.createElement("p", null, "Old Middlesex Tpke,", /*#__PURE__*/React.createElement("br", null), "Chelmsford, MA 01824"))), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
-  }, /*#__PURE__*/React.createElement("small", null, "© ", new Date().getFullYear(), " Murray Home Improvement · MA CSL #077319 · HIC #174394 · USDOT 2353155"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("small", null, "\xA9 ", new Date().getFullYear(), " Murray Home Improvement \xB7 MA CSL #077319 \xB7 HIC #174394 \xB7 USDOT 2353155"), /*#__PURE__*/React.createElement("div", {
     className: "socials"
   }, /*#__PURE__*/React.createElement("a", {
     href: "https://www.facebook.com/MurrayHomeImprovement",
@@ -1684,6 +1690,7 @@ function Footer() {
   }, "Privacy Policy")))));
 }
 window.Footer = Footer;
+
 /* App.jsx — composes the page and wires Tweaks → CSS variables */
 const {
   useState,
@@ -1818,19 +1825,19 @@ function App() {
       textAlign: 'center',
       maxWidth: '48ch'
     }
-  }, "Drag the slider to reveal the difference. Same homes — reborn with new siding, windows, and trim.")), /*#__PURE__*/React.createElement("div", {
+  }, "Drag the slider to reveal the difference. Same homes \u2014 reborn with new siding, windows, and trim.")), /*#__PURE__*/React.createElement("div", {
     className: "ba-grid reveal"
   }, /*#__PURE__*/React.createElement("figure", null, /*#__PURE__*/React.createElement("before-after", {
     before: "assets/ba-front-before.jpg",
     after: "assets/ba-front-after.jpg",
     "before-label": "Before",
     "after-label": "After"
-  }), /*#__PURE__*/React.createElement("figcaption", null, "Full exterior remodel — front elevation")), /*#__PURE__*/React.createElement("figure", null, /*#__PURE__*/React.createElement("before-after", {
+  }), /*#__PURE__*/React.createElement("figcaption", null, "Full exterior remodel \u2014 front elevation")), /*#__PURE__*/React.createElement("figure", null, /*#__PURE__*/React.createElement("before-after", {
     before: "assets/ba-back-before.jpg",
     after: "assets/ba-back-after.jpg",
     "before-label": "Before",
     "after-label": "After"
-  }), /*#__PURE__*/React.createElement("figcaption", null, "Siding, deck & trim — rear elevation"))))), /*#__PURE__*/React.createElement(BrandBand, null), /*#__PURE__*/React.createElement(About, null), /*#__PURE__*/React.createElement(WhyProcess, null), /*#__PURE__*/React.createElement(ServiceAreas, null), /*#__PURE__*/React.createElement(Testimonials, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(TweaksPanel, null, /*#__PURE__*/React.createElement(TweakSection, {
+  }), /*#__PURE__*/React.createElement("figcaption", null, "Siding, deck & trim \u2014 rear elevation"))))), /*#__PURE__*/React.createElement(BrandBand, null), /*#__PURE__*/React.createElement(About, null), /*#__PURE__*/React.createElement(WhyProcess, null), /*#__PURE__*/React.createElement(ServiceAreas, null), /*#__PURE__*/React.createElement(Testimonials, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(TweaksPanel, null, /*#__PURE__*/React.createElement(TweakSection, {
     label: "Brand"
   }), /*#__PURE__*/React.createElement(TweakColor, {
     label: "Accent",

@@ -21,26 +21,39 @@ site/App.jsx      (must be last — it calls ReactDOM.createRoot)
 ## Rebuild after editing any JSX file
 
 ```bash
-npx --package @babel/core --package @babel/cli --package @babel/preset-react -- \
-  sh -c 'cat tweaks-panel.jsx site/Header.jsx site/Hero.jsx site/Sections.jsx \
-           site/More.jsx site/Contact.jsx site/Footer.jsx site/App.jsx > /tmp/bundle.jsx && \
-         babel --presets @babel/preset-react --compact false /tmp/bundle.jsx -o site/app.js'
+npm install        # once — installs Babel + playwright-core (dev only)
+npm run build      # scripts/build-app.mjs → site/app.js
+npm run prerender  # scripts/prerender.mjs → refreshes the #root snapshot in index.html
 ```
 
-Then bump the cache-buster in `index.html` (`site/app.js?v=N`) and re-generate
-the prerendered `#root` content (see "Prerender" below) so the static HTML
-matches the app.
+or `npm run site` to do both. Then bump the cache-buster in `index.html`
+(`site/app.js?v=N`).
 
-## Prerender
+## About the prerendered snapshot
 
 `index.html` ships a static snapshot of the rendered page inside
-`<div id="root">` so crawlers and first paint get real content; React replaces
-it on load. After changing any component, re-snapshot:
+`<div id="root">` so crawlers, social bots, and no-JS visitors get real
+content and first paint is instant. The homepage mounts with
+`ReactDOM.createRoot(...).render(...)` — **not** `hydrateRoot` — so React
+simply replaces the snapshot on load; a stale snapshot can never cause a
+hydration mismatch, it just shows slightly outdated content for the moment
+before the app mounts. Still, keep it fresh: re-run `npm run prerender`
+after any component change (the script sanitizes the DOM — removes the
+tweaks panel, empties the Leaflet container, pre-applies reveal animations).
 
-1. `python3 -m http.server 8080` in the repo root
-2. Open `http://localhost:8080/` in a browser, wait for render
-3. Copy `document.getElementById('root').innerHTML` (with the tweaks panel and
-   `<canvas>` contents removed) back into `index.html`'s `#root` div
+`npm run prerender` needs a Chromium binary; it autodetects common paths and
+honors `CHROMIUM_PATH=/path/to/chrome`.
 
-(Any headless browser works — the repo's CI-less workflow just needs the
-snapshot to stay in sync with the components.)
+## Fonts
+
+Fonts are self-hosted: `site/fonts.css` + `assets/fonts/*.woff2`
+(latin/latin-ext subsets of Space Grotesk, Archivo, Hanken Grotesk, Roboto,
+Roboto Slab, generated from the Google Fonts css2 API). Every page links
+`site/fonts.css` before `site/styles.css`. No page should reference
+fonts.googleapis.com.
+
+## Deployment note
+
+`package.json` and `scripts/` are development-only and are excluded from the
+Vercel deployment via `.vercelignore` so the static deploy never runs a
+build step.

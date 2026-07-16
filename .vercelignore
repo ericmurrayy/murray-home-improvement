@@ -7,3 +7,8 @@ colors_and_type.css
 # JSX sources are compiled into site/app.js at build time (site/README-build.md)
 tweaks-panel.jsx
 site/*.jsx
+# Build tooling — static deploy must not trigger a Vercel build step
+package.json
+package-lock.json
+node_modules/
+scripts/
