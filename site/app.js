@@ -856,7 +856,7 @@ function HeroStatic({
 function HeroTruck() {
   return /*#__PURE__*/React.createElement("img", {
     className: "hero-truck",
-    src: "assets/murray-truck-hero.png",
+    src: "assets/murray-truck-hero.webp",
     alt: "Murray Home Improvement box truck — your remodeling specialist, frame to finish carpentry",
     width: "1672",
     height: "941",
