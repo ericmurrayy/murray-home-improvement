@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+# Publishes the static site to the gh-pages branch, which GitHub Pages serves
+# at https://ericmurrayy.github.io/murray-home-improvement/
+# (The actions/deploy-pages flow is not used: creating a Pages site that way
+# needs repo-admin rights the workflow token doesn't have. The Pages site was
+# bootstrapped by pushing the gh-pages branch, and this keeps it fresh.)
+
+on:
+  push:
+    branches:
+      - main
+      - claude/contractor-website-optimization-mcgwxz
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Same exclusions as .vercelignore — dev artifacts stay out of the deploy
+      - name: Assemble static site
+        run: |
+          mkdir _site
+          rsync -a \
+            --exclude _site --exclude .git --exclude .github \
+            --exclude uploads --exclude preview --exclude node_modules \
+            --exclude scripts --exclude package.json --exclude package-lock.json \
+            --exclude '*.md' --exclude 'site/*.jsx' --exclude tweaks-panel.jsx \
+            --exclude SKILL.md --exclude colors_and_type.css \
+            --exclude .vercelignore --exclude .gitignore \
+            ./ _site/
+          touch _site/.nojekyll
+
+      - name: Push to gh-pages
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" gh-pages

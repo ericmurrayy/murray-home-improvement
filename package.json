@@ -1,0 +1,16 @@
+{
+  "name": "murray-home-improvement",
+  "private": true,
+  "description": "Static marketing site for Murray Home Improvement. `npm run build` recompiles the homepage app bundle; `npm run prerender` refreshes the static snapshot in index.html.",
+  "scripts": {
+    "build": "node scripts/build-app.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "site": "npm run build && npm run prerender"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.0",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-react": "^7.27.0",
+    "playwright-core": "^1.54.0"
+  }
+}
