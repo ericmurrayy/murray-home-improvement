@@ -1,6 +1,24 @@
+# Search engines and AI assistants are welcome to read this site.
 User-agent: *
 Allow: /
 Disallow: /uploads/
 Disallow: /preview/
+
+# Named explicitly so the site stays open to AI answer engines even if a
+# default policy changes: OpenAI, Anthropic, Perplexity, Google, Microsoft, Apple.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
 
 Sitemap: https://www.murrayhomeimprovement.com/sitemap.xml

@@ -1,0 +1,27 @@
+name: IndexNow
+# After a push to main, Sevalla redeploys the site (~1–2 minutes). Once it answers on the
+# real domain, this tells IndexNow (Bing and others — Bing's index feeds ChatGPT search and
+# Copilot) which URLs to recrawl. Until the DNS switch the key file isn't on the real
+# domain, so the job skips quietly.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', '**/*.md']
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          KEY=23332e55c9eb27ae1f8019ca6f70b621
+          HOST=www.murrayhomeimprovement.com
+          sleep 150
+          if [ "$(curl -fsS https://$HOST/$KEY.txt 2>/dev/null)" != "$KEY" ]; then
+            echo "Key file not live on $HOST yet (DNS not switched?) — skipping."; exit 0
+          fi
+          URLS=$(curl -fsS https://$HOST/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' | jq -R . | jq -sc .)
+          curl -fsS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":$URLS}" \
+            -w '\nIndexNow HTTP %{http_code}\n'

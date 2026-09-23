@@ -76,6 +76,23 @@ for (const p of ['/index.html', '/free-estimate.html']) {
   check(html[p].includes('name="_next" value="https://www.murrayhomeimprovement.com/thank-you.html"'), `${p}: quote form must land on thank-you.html`);
 }
 
+// AI discovery: llms.txt, named AI crawlers in robots.txt, one IndexNow key file.
+const llmsFile = path.join(DIST, 'llms.txt');
+const llms = fs.existsSync(llmsFile) ? read(llmsFile) : '';
+check(llms.startsWith('# Murray Home Improvement'), 'llms.txt missing or not in llms.txt format');
+for (const t of ['(978) 479-9406', 'Chelmsford', 'Lowell', 'Westford', 'Tyngsborough', 'Billerica', 'Carlisle', 'CSL #077319'])
+  check(llms.includes(t), `llms.txt should mention ${t}`);
+for (const m of llms.matchAll(/\]\((https:\/\/www\.murrayhomeimprovement\.com[^)]*)\)/g)) {
+  const t = target('/llms.txt', m[1]);
+  check(t && fs.existsSync(t.file), `llms.txt links to a missing page: ${m[1]}`);
+}
+const robots = read(path.join(DIST, 'robots.txt'));
+for (const bot of ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot-Extended'])
+  check(new RegExp(`^User-agent: ${bot}$`, 'm').test(robots), `robots.txt should name ${bot}`);
+check(/^Sitemap: https:\/\/www\.murrayhomeimprovement\.com\/sitemap\.xml$/m.test(robots), 'robots.txt must point at the sitemap');
+const keyFiles = fs.readdirSync(DIST).filter(f => /^[0-9a-f]{32}\.txt$/.test(f));
+check(keyFiles.length === 1 && read(path.join(DIST, keyFiles[0])).trim() === (keyFiles[0] || '').slice(0, 32), 'exactly one IndexNow key file whose body is its key');
+
 if (problems.length) {
   console.error(`\nSITE CHECK FAILED (${problems.length}):\n  ` + problems.slice(0, 60).join('\n  ') + '\n');
   process.exit(1);
