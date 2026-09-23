@@ -1,0 +1,816 @@
+{
+  "_about": "Source of truth for the project pages. scripts/project-photos.mjs turns each photo's original (from the owner's archive, PHOTO_ARCHIVE, default ~/Pictures/murray-old-website-photos) into metadata-free web copies under assets/projects/<slug>/ and records their sizes here (w, h, file); scripts/gen-projects.mjs builds projects/*.html and the project blocks in gallery.html, the service pages, sitemap.xml and llms.txt from this file. Facts only: titles, summaries and captions come from the old portfolio pages and what the photos show. town/year stay null until the owner supplies them. blur = [x, y, w, h] boxes and crop = [left, top, right, bottom] margins, all as fractions of the upright photo, hide house numbers, plates and addresses. legacy = the old WordPress attachment page for that photo (redirects to this project).",
+  "projects": [
+    {
+      "slug": "kitchen-remodel-before-and-after",
+      "title": "Kitchen remodel, before and after",
+      "service": "kitchen-remodeling",
+      "alsoServices": [
+        "windows-doors"
+      ],
+      "town": null,
+      "year": null,
+      "summary": "A full kitchen remodel photographed start to finish: the old eat-in kitchen opened up around a big island, with a new bay window, wood-look tile floors, new cabinets and appliances, and a reworked laundry and half bath.",
+      "highlights": [
+        "Large island with seating",
+        "New bay window",
+        "Wood-look tile floors",
+        "Stainless refrigerator and double wall oven",
+        "Gas cooktop under a chimney hood",
+        "Laundry and half bath redone"
+      ],
+      "cover": 17,
+      "photos": [
+        {
+          "src": "2019/03/IMG-4979.jpg",
+          "stage": "before",
+          "caption": "The dining area, with oak trim and a tile floor",
+          "legacy": "/img-4979"
+        },
+        {
+          "src": "2019/03/IMG-4980-e1553546894256.jpg",
+          "stage": "before",
+          "caption": "The laundry and half bath",
+          "legacy": "/img-4980"
+        },
+        {
+          "src": "2019/03/IMG-5374-e1553546878468.jpg",
+          "stage": "progress",
+          "caption": "Demolition: the old tile floor comes up",
+          "legacy": "/img-5374"
+        },
+        {
+          "src": "2019/03/IMG-5473-1.jpg",
+          "stage": "progress",
+          "caption": "Outside: a new bay window going in",
+          "legacy": "/img-5473-2"
+        },
+        {
+          "src": "2019/03/IMG-5474.jpg",
+          "stage": "progress",
+          "caption": "The bay window in and the wall wrapped, ready for siding",
+          "legacy": "/img-5474"
+        },
+        {
+          "src": "2019/03/IMG-5491.jpg",
+          "stage": "progress",
+          "caption": "Inside: new windows in and the island base set",
+          "legacy": "/img-5491"
+        },
+        {
+          "src": "2019/03/IMG-5555.jpg",
+          "stage": "progress",
+          "caption": "Building the island",
+          "legacy": "/img-5555"
+        },
+        {
+          "src": "2019/03/IMG-5556-e1553547988143.jpg",
+          "stage": "progress",
+          "caption": "Wood-look tile floor down, cabinets going in",
+          "legacy": "/img-5556"
+        },
+        {
+          "src": "2019/03/IMG-5574.jpg",
+          "stage": "progress",
+          "caption": "Cabinets in, countertop templates on",
+          "legacy": "/img-5574"
+        },
+        {
+          "src": "2019/03/IMG-5585.jpg",
+          "stage": "after",
+          "caption": "The island, with seating on the dining side",
+          "legacy": "/img-5585"
+        },
+        {
+          "src": "2019/03/IMG-5586.jpg",
+          "stage": "after",
+          "caption": "Stainless refrigerator and double wall oven",
+          "legacy": "/img-5586"
+        },
+        {
+          "src": "2019/03/IMG-5587-e1553547972490.jpg",
+          "stage": "after",
+          "caption": "The laundry and half bath, redone",
+          "legacy": "/img-5587"
+        },
+        {
+          "src": "2019/03/IMG-5588-e1553547959264.jpg",
+          "stage": "after",
+          "caption": "The half bath, with new closet doors",
+          "legacy": "/img-5588"
+        },
+        {
+          "src": "2019/03/IMG-5589.jpg",
+          "stage": "after",
+          "caption": "Wood-look tile flooring",
+          "legacy": "/img-5589"
+        },
+        {
+          "src": "2019/03/IMG-55951.jpg",
+          "stage": "after",
+          "caption": "Gas cooktop, chimney hood and textured tile backsplash",
+          "legacy": "/img-55951"
+        },
+        {
+          "src": "2019/03/IMG-55961.jpg",
+          "stage": "after",
+          "caption": "Outside: the finished bay window",
+          "legacy": "/img-55961"
+        },
+        {
+          "src": "2019/03/IMG-6127.jpg",
+          "stage": "after",
+          "caption": "The eat-in kitchen, finished",
+          "legacy": "/img-6127"
+        },
+        {
+          "src": "2019/03/IMG-62261.jpg",
+          "stage": "after",
+          "caption": "The kitchen and dining area",
+          "legacy": "/img-62261"
+        }
+      ]
+    },
+    {
+      "slug": "custom-kitchen-remodel",
+      "title": "Custom kitchen with a big island",
+      "service": "kitchen-remodeling",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "White shaker cabinets, a large island with a built-in microwave drawer, a green subway-tile backsplash, a gas range under a chimney hood and a full wall of pantry cabinets.",
+      "highlights": [
+        "White shaker cabinets",
+        "Island with a microwave drawer",
+        "Gas range under a chimney hood",
+        "Coffee station with glass-front uppers",
+        "Wall of pantry cabinets"
+      ],
+      "cover": 1,
+      "photos": [
+        {
+          "src": "2019/03/IMG-2624-e1553543767781.jpg",
+          "stage": "after",
+          "caption": "White shaker cabinets, the island and pendant lights",
+          "legacy": "/img-2624"
+        },
+        {
+          "src": "2019/03/IMG-2626-e1553543754397.jpg",
+          "stage": "after",
+          "caption": "Sink under the window, with a green subway-tile backsplash",
+          "legacy": "/img-2626"
+        },
+        {
+          "src": "2019/03/IMG-26271-e1553543737983.jpg",
+          "stage": "after",
+          "caption": "Gas range under a stainless chimney hood",
+          "legacy": "/img-26271"
+        },
+        {
+          "src": "2019/03/IMG-2628.jpg",
+          "stage": "after",
+          "caption": "The island, with drawers on the working side",
+          "legacy": "/img-2628"
+        },
+        {
+          "src": "2019/03/IMG-26901-e1553543702321.jpg",
+          "stage": "after",
+          "caption": "A microwave drawer built into the island",
+          "legacy": "/img-26901"
+        },
+        {
+          "src": "2019/03/IMG-26911.jpg",
+          "stage": "after",
+          "caption": "Coffee station with glass-front upper cabinets",
+          "legacy": "/img-26911"
+        },
+        {
+          "src": "2019/03/IMG-2692.jpg",
+          "stage": "after",
+          "caption": "A full wall of pantry cabinets",
+          "legacy": "/img-2692"
+        }
+      ]
+    },
+    {
+      "slug": "dark-cabinet-granite-countertop-kitchen-remodel",
+      "title": "Dark-cabinet kitchen with granite countertops",
+      "service": "kitchen-remodeling",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "Dark cabinetry, granite countertops, a large island and a GE Profile stainless gas range, opening onto the dining area.",
+      "highlights": [
+        "Dark cabinetry",
+        "Granite countertops",
+        "Large island",
+        "GE Profile stainless gas range"
+      ],
+      "cover": 1,
+      "photos": [
+        {
+          "src": "2019/03/IMG-4351.jpg",
+          "stage": "after",
+          "caption": "Dark cabinets, granite counters and a large island",
+          "legacy": "/img-4351"
+        },
+        {
+          "src": "2019/03/IMG-4352-e1553547084343.jpg",
+          "stage": "after",
+          "caption": "A single-bowl sink set in the granite, under the window",
+          "legacy": "/img-4352"
+        },
+        {
+          "src": "2019/03/IMG-4355-e1553547064360.jpg",
+          "stage": "after",
+          "caption": "Granite countertop detail",
+          "legacy": "/img-4355"
+        },
+        {
+          "src": "2019/03/IMG-4376-e1553547050790.jpg",
+          "stage": "after",
+          "caption": "GE Profile stainless gas range",
+          "legacy": "/img-4376"
+        },
+        {
+          "src": "2019/03/IMG-4379.jpg",
+          "stage": "after",
+          "caption": "The range and granite, up close",
+          "legacy": "/img-4379"
+        },
+        {
+          "src": "2019/03/IMG-4896-e1553546908399.jpg",
+          "stage": "after",
+          "caption": "The dining area off the new kitchen",
+          "legacy": "/img-4896"
+        }
+      ]
+    },
+    {
+      "slug": "bath-remodel-with-heated-floor",
+      "title": "Bathroom remodel with a heated tile floor",
+      "service": "bathroom-remodeling",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "A full bathroom remodel with electric radiant heat under the tile floor, a tiled tub surround with a niche, a grab bar and tile wainscoting.",
+      "highlights": [
+        "Electric radiant floor heat",
+        "Tiled tub surround with a niche",
+        "Grab bar at the tub",
+        "Tile wainscoting",
+        "Pedestal sink"
+      ],
+      "cover": 3,
+      "photos": [
+        {
+          "src": "2019/04/IMG-4906-e1554491398556.jpg",
+          "stage": "progress",
+          "caption": "Radiant floor-heating mat laid out before the tile",
+          "legacy": "/img-4906"
+        },
+        {
+          "src": "2019/04/IMG-4907-e1554491361455.jpg",
+          "stage": "progress",
+          "caption": "Self-leveling underlayment poured over the heating mat",
+          "legacy": "/img-4907"
+        },
+        {
+          "src": "2019/04/IMG-5001-e1554491342506.jpg",
+          "stage": "after",
+          "caption": "Tiled tub surround with a recessed niche and corner shelves",
+          "legacy": "/img-5001"
+        },
+        {
+          "src": "2019/04/IMG-5003-e1554491318321.jpg",
+          "stage": "after",
+          "caption": "Grab bar and niche at the tub",
+          "legacy": "/img-5003"
+        },
+        {
+          "src": "2019/04/IMG-5006-e1554491300934.jpg",
+          "stage": "after",
+          "caption": "Pedestal sink, toilet and tile wainscot",
+          "legacy": "/img-5006"
+        },
+        {
+          "src": "2019/04/IMG-5008.jpg",
+          "stage": "after",
+          "caption": "Tile wainscot, window and linen closet",
+          "legacy": "/img-5008"
+        }
+      ]
+    },
+    {
+      "slug": "double-bath-remodel",
+      "title": "Double-vanity bathroom remodel",
+      "service": "bathroom-remodeling",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "A bathroom remodel with a double vanity, marble-look tile, a tub and shower with a rain head and a hexagon-tile niche, and wood-look tile floors.",
+      "highlights": [
+        "Double vanity",
+        "Marble-look tile",
+        "Rain head and hand shower",
+        "Hexagon mosaic niche",
+        "Wood-look tile floor"
+      ],
+      "cover": 1,
+      "photos": [
+        {
+          "src": "2019/04/IMG-4003-e1554492287333.jpg",
+          "stage": "after",
+          "caption": "Double vanity with two mirrors and light bars",
+          "legacy": "/portfolio/double-bath-remodel/img-4003"
+        },
+        {
+          "src": "2019/04/IMG-40091.jpg",
+          "stage": "after",
+          "caption": "Recessed niche in hexagon mosaic tile",
+          "legacy": "/portfolio/double-bath-remodel/img-40091"
+        },
+        {
+          "src": "2019/04/IMG-4015-e1554492330822.jpg",
+          "stage": "after",
+          "caption": "Shower with a rain head and hand shower",
+          "legacy": "/portfolio/double-bath-remodel/img-4015"
+        },
+        {
+          "src": "2019/04/IMG-4020-e1554492347344.jpg",
+          "stage": "after",
+          "caption": "Tub with a tiled surround and niche",
+          "legacy": "/portfolio/double-bath-remodel/img-4020"
+        },
+        {
+          "src": "2019/04/IMG-4022-e1554492372269.jpg",
+          "stage": "after",
+          "caption": "Wood-look tile floor, seen from the doorway",
+          "legacy": "/portfolio/double-bath-remodel/img-4022"
+        },
+        {
+          "src": "2019/04/IMG-4023.jpg",
+          "stage": "after",
+          "caption": "Two undermount sinks in the new vanity top",
+          "legacy": "/portfolio/double-bath-remodel/img-4023"
+        }
+      ]
+    },
+    {
+      "slug": "second-floor-addition",
+      "title": "Second-story addition on a ranch",
+      "service": "second-story-additions",
+      "alsoServices": [
+        "home-additions"
+      ],
+      "town": null,
+      "year": null,
+      "summary": "A single-story ranch getting a full second story, photographed before, through the tear-off and framing, to the new second floor sheathed in ZIP System panels.",
+      "highlights": [
+        "Single-story ranch to two stories",
+        "Old roof torn off",
+        "New second-floor framing",
+        "ZIP System sheathing"
+      ],
+      "cover": 9,
+      "photos": [
+        {
+          "src": "2019/03/IMG-6365.jpg",
+          "stage": "before",
+          "caption": "A single-story ranch",
+          "legacy": "/img-6365",
+          "blur": [
+            [
+              0.482,
+              0.53,
+              0.02,
+              0.05
+            ],
+            [
+              0.925,
+              0.562,
+              0.03,
+              0.03
+            ]
+          ],
+          "file": "01-a-single-story-ranch",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6367.jpg",
+          "stage": "before",
+          "caption": "The ranch and its attached garage",
+          "legacy": "/img-6367",
+          "blur": [
+            [
+              0.688,
+              0.548,
+              0.04,
+              0.04
+            ],
+            [
+              0.29,
+              0.662,
+              0.034,
+              0.034
+            ]
+          ],
+          "file": "02-the-ranch-and-its-attached-garage",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6369.jpg",
+          "stage": "before",
+          "caption": "The back of the house",
+          "legacy": "/img-6369",
+          "file": "03-the-back-of-the-house",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6434.jpg",
+          "stage": "progress",
+          "caption": "A telehandler arrives to lift materials",
+          "legacy": "/img-6434",
+          "file": "04-a-telehandler-arrives-to-lift-materials",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6441.jpg",
+          "stage": "progress",
+          "caption": "Tear-off under way, telehandler and dumpster staged",
+          "legacy": "/img-6441",
+          "blur": [
+            [
+              0.722,
+              0.44,
+              0.03,
+              0.035
+            ],
+            [
+              0.598,
+              0.522,
+              0.028,
+              0.03
+            ]
+          ],
+          "file": "05-tear-off-under-way-telehandler-and-dumpster",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6446.jpg",
+          "stage": "progress",
+          "caption": "New floor framing under weather tarps",
+          "legacy": "/img-6446",
+          "file": "06-new-floor-framing-under-weather-tarps",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6447.jpg",
+          "stage": "progress",
+          "caption": "Framing the new second floor",
+          "legacy": "/img-6447",
+          "file": "07-framing-the-new-second-floor",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6452.jpg",
+          "stage": "progress",
+          "caption": "Framing on top of the existing house",
+          "legacy": "/img-6452",
+          "file": "08-framing-on-top-of-the-existing-house",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-6709.jpg",
+          "stage": "progress",
+          "caption": "The new second story, sheathed in ZIP System panels",
+          "legacy": "/img-6709",
+          "file": "09-the-new-second-story-sheathed-in-zip",
+          "w": 1600,
+          "h": 1200
+        }
+      ]
+    },
+    {
+      "slug": "addition-with-excavation-and-foundation",
+      "title": "Home addition, built from the ground up",
+      "service": "home-additions",
+      "alsoServices": [
+        "siding-exterior-remodeling"
+      ],
+      "town": null,
+      "year": null,
+      "summary": "An addition built from the first dig: excavation, a poured concrete foundation, new siding, a covered side entry and a front portico.",
+      "highlights": [
+        "Excavation",
+        "Poured concrete foundation",
+        "New siding",
+        "Covered side entry",
+        "Front portico"
+      ],
+      "cover": 9,
+      "photos": [
+        {
+          "src": "2019/03/IMG-7246.jpg",
+          "stage": "progress",
+          "caption": "New siding going on over the house wrap",
+          "legacy": "/img-7246"
+        },
+        {
+          "src": "2019/03/IMG-7248.jpg",
+          "stage": "progress",
+          "caption": "Excavation: the mini excavator and the Murray truck on site",
+          "legacy": "/img-7248"
+        },
+        {
+          "src": "2019/03/IMG-7282.jpg",
+          "stage": "progress",
+          "caption": "Foundation pour: concrete truck and pump at the curb",
+          "legacy": "/img-7282"
+        },
+        {
+          "src": "2019/03/IMG-7283.jpg",
+          "stage": "progress",
+          "caption": "More concrete work while the siding goes on",
+          "legacy": "/img-7283"
+        },
+        {
+          "src": "2019/03/IMG-7290.jpg",
+          "stage": "progress",
+          "caption": "The new foundation walls, damp-proofed",
+          "legacy": "/img-7290"
+        },
+        {
+          "src": "2019/03/IMG-7298.jpg",
+          "stage": "progress",
+          "caption": "Foundation walls poured along the house",
+          "legacy": "/img-7298"
+        },
+        {
+          "src": "2019/03/IMG_7318.jpg",
+          "stage": "after",
+          "caption": "The finished exterior",
+          "legacy": "/img_7318"
+        },
+        {
+          "src": "2019/03/IMG_7319-e1553540837517.jpg",
+          "stage": "after",
+          "caption": "The new front portico and entry",
+          "legacy": "/img_7319"
+        },
+        {
+          "src": "2019/03/IMG-7320-e1553547891455.jpg",
+          "stage": "after",
+          "caption": "Covered side entry with a Therma-Tru door",
+          "legacy": "/img-7320"
+        }
+      ]
+    },
+    {
+      "slug": "finished-basement",
+      "title": "Finished basement living space",
+      "service": "basement-finishing",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "A basement finished into real living space: a family room, a staircase with built-in shelving and a TV wall, and a bedroom/office.",
+      "highlights": [
+        "Family room",
+        "Built-in shelving and TV wall",
+        "Bedroom/office"
+      ],
+      "cover": 1,
+      "photos": [
+        {
+          "src": "2019/03/IMG-3489.jpg",
+          "stage": "after",
+          "caption": "The basement family room",
+          "legacy": "/img-3489"
+        },
+        {
+          "src": "2019/03/IMG-3490.jpg",
+          "stage": "after",
+          "caption": "New stair, built-in shelves and TV wall",
+          "legacy": "/img-3490"
+        },
+        {
+          "src": "2019/03/IMG-3592.jpg",
+          "stage": "after",
+          "caption": "A bedroom and office space",
+          "legacy": "/img-3592"
+        }
+      ]
+    },
+    {
+      "slug": "budget-pressure-treated-deck",
+      "title": "Pressure-treated deck on a budget",
+      "service": "decks-porches",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "A budget-friendly pressure-treated deck: rotted framing behind the old deck was repaired first, then a new deck with stairs, railings and braced posts went on.",
+      "highlights": [
+        "Rotted framing repaired first",
+        "Pressure-treated lumber",
+        "Stairs and railings",
+        "Braced posts"
+      ],
+      "cover": 3,
+      "photos": [
+        {
+          "src": "2019/03/IMG_4691.jpg",
+          "stage": "before",
+          "caption": "Rotted rim and sill framing, exposed under the slider",
+          "legacy": "/img_4691"
+        },
+        {
+          "src": "2019/03/IMG_4692.jpg",
+          "stage": "progress",
+          "caption": "The rot repaired with new framing",
+          "legacy": "/img_4692"
+        },
+        {
+          "src": "2019/03/IMG_4719.jpg",
+          "stage": "after",
+          "caption": "New pressure-treated deck and stairs",
+          "legacy": "/img_4719"
+        },
+        {
+          "src": "2019/03/IMG_4720.jpg",
+          "stage": "after",
+          "caption": "The deck on braced posts",
+          "legacy": "/img_4720"
+        },
+        {
+          "src": "2019/03/IMG_4721.jpg",
+          "stage": "after",
+          "caption": "Side view of the new deck",
+          "legacy": "/img_4721"
+        }
+      ]
+    },
+    {
+      "slug": "therma-tru-entrance-doors",
+      "title": "Therma-Tru entry doors",
+      "service": "windows-doors",
+      "alsoServices": [],
+      "town": null,
+      "year": null,
+      "summary": "Therma-Tru entry doors on several homes: stained and painted finishes, decorative glass, sidelights and a covered side entry.",
+      "highlights": [
+        "Therma-Tru doors",
+        "Stained and painted finishes",
+        "Sidelights",
+        "Decorative glass"
+      ],
+      "cover": 7,
+      "photos": [
+        {
+          "src": "2019/03/IMG-2216-e1554491741723.jpg",
+          "stage": "after",
+          "caption": "Black six-panel door with a sidelight",
+          "legacy": "/img-2216",
+          "file": "01-black-six-panel-door-with-a-sidelight",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "src": "2019/03/IMG-2219-e1553542778898.jpg",
+          "stage": "after",
+          "caption": "Stained door with a divided-light top and sidelight",
+          "legacy": "/img-2219",
+          "file": "02-stained-door-with-a-divided-light-top",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "src": "2019/03/IMG-2980.jpg",
+          "stage": "after",
+          "caption": "A new entry door on a Cape-style home",
+          "legacy": "/img-2980",
+          "file": "03-a-new-entry-door-on-a-cape",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-2981.jpg",
+          "stage": "after",
+          "caption": "The Cape's new door, up close",
+          "legacy": "/img-2981",
+          "file": "04-the-cape-s-new-door-up-close",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "src": "2019/03/IMG-3075-e1553544850141.jpg",
+          "stage": "after",
+          "caption": "Decorative-glass door with twin sidelights",
+          "legacy": "/img-3075",
+          "file": "05-decorative-glass-door-with-twin-sidelights",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "src": "2019/03/IMG-4348-e1553546159593.jpg",
+          "stage": "after",
+          "caption": "Red door with sidelights",
+          "legacy": "/img-4348-2",
+          "file": "06-red-door-with-sidelights",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "src": "2019/04/IMG-6288-e1554491969223.jpg",
+          "stage": "after",
+          "caption": "Craftsman-style stained door with sidelights",
+          "legacy": "/portfolio/therma-tru-entrance-doors/img-6288",
+          "crop": [
+            0,
+            0.08,
+            0,
+            0
+          ],
+          "file": "07-craftsman-style-stained-door-with-sidelights",
+          "w": 1305,
+          "h": 1600
+        },
+        {
+          "src": "2019/03/IMG-7320-e1553547891455.jpg",
+          "stage": "after",
+          "caption": "Therma-Tru door at a covered side entry",
+          "file": "08-therma-tru-door-at-a-covered-side",
+          "w": 1200,
+          "h": 1600
+        }
+      ]
+    },
+    {
+      "slug": "bridge-build-town-of-chelmsford",
+      "title": "Footbridge built for the Town of Chelmsford",
+      "service": "custom-carpentry",
+      "alsoServices": [],
+      "town": "Chelmsford",
+      "year": null,
+      "summary": "An arched wooden footbridge with railings, built for the Town of Chelmsford and set across a brook on a wooded trail.",
+      "highlights": [
+        "Built for the Town of Chelmsford",
+        "Arched wooden footbridge",
+        "Railings on both sides",
+        "Set across a brook"
+      ],
+      "cover": 6,
+      "photos": [
+        {
+          "src": "2019/03/IMG-3630.jpg",
+          "stage": "progress",
+          "caption": "Building the arched bridge, with the Murray truck on site",
+          "legacy": "/img-3630"
+        },
+        {
+          "src": "2019/03/IMG-4040.jpg",
+          "stage": "progress",
+          "caption": "The arched bridge set over the brook",
+          "legacy": "/img-4040"
+        },
+        {
+          "src": "2019/03/IMG-4041.jpg",
+          "stage": "progress",
+          "caption": "Setting the bridge deck on the trail",
+          "legacy": "/img-4041"
+        },
+        {
+          "src": "2019/03/IMG-4202-e1553546227260.jpg",
+          "stage": "after",
+          "caption": "Looking down the trail across the bridge",
+          "legacy": "/img-4202"
+        },
+        {
+          "src": "2019/03/IMG-4203.jpg",
+          "stage": "after",
+          "caption": "The arched bridge, with stone at the banks",
+          "legacy": "/img-4203"
+        },
+        {
+          "src": "2019/03/IMG-4204.jpg",
+          "stage": "after",
+          "caption": "The footbridge over the brook",
+          "legacy": "/img-4204"
+        },
+        {
+          "src": "2019/03/IMG-4331.jpg",
+          "stage": "after",
+          "caption": "The bridge in place on the trail",
+          "legacy": "/img-4331"
+        }
+      ]
+    }
+  ]
+}
