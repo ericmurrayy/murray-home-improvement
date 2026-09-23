@@ -93,6 +93,25 @@ check(/^Sitemap: https:\/\/www\.murrayhomeimprovement\.com\/sitemap\.xml$/m.test
 const keyFiles = fs.readdirSync(DIST).filter(f => /^[0-9a-f]{32}\.txt$/.test(f));
 check(keyFiles.length === 1 && read(path.join(DIST, keyFiles[0])).trim() === (keyFiles[0] || '').slice(0, 32), 'exactly one IndexNow key file whose body is its key');
 
+// One business entity and one owner across the whole site, linked by @id, so search
+// engines and AI assistants see one credentialed business rather than look-alikes.
+const BIZ = SITE + '/#business', ERIC = SITE + '/#eric-murray';
+for (const [p, n] of allNodes) {
+  if (['GeneralContractor', 'LocalBusiness', 'HomeAndConstructionBusiness'].includes(n['@type'])) {
+    check(n['@id'] === BIZ, `${p}: business node without @id ${BIZ}`);
+    check(!n.url || n.url === SITE + '/', `${p}: business node url must be the home page, not ${n.url}`);
+  }
+  if (n['@type'] === 'Service') check(n.provider && n.provider['@id'] === BIZ, `${p}: Service.provider must reference ${BIZ}`);
+  if (n['@type'] === 'Article') {
+    check(n.author && n.author['@id'] === ERIC, `${p}: Article.author must be Eric Murray (${ERIC})`);
+    check(n.publisher && n.publisher['@id'] === BIZ, `${p}: Article.publisher must reference ${BIZ}`);
+  }
+}
+const eric = allNodes.find(([, n]) => n['@id'] === ERIC && n['@type'] === 'Person' && n.hasCredential);
+check(eric && eric[1].hasCredential.length >= 2, 'a Person node for Eric Murray with both licenses (hasCredential) must exist');
+check(allNodes.some(([p, n]) => p === '/index.html' && n['@id'] === BIZ && n.founder && n.founder['@id'] === ERIC), 'home business node must name Eric as founder');
+check(nodes['/gallery.html'].some(n => n['@type'] === 'BreadcrumbList'), '/gallery.html needs a BreadcrumbList');
+
 if (problems.length) {
   console.error(`\nSITE CHECK FAILED (${problems.length}):\n  ` + problems.slice(0, 60).join('\n  ') + '\n');
   process.exit(1);
