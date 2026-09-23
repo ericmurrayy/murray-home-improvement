@@ -82,7 +82,7 @@ function HeroStatic({ align }) {
    Shared by Hero and HeroStatic. */
 function HeroTruck() {
   return (
-    <img className="hero-truck" src="assets/murray-truck-hero.png"
+    <img className="hero-truck" src="assets/murray-truck-hero.webp"
       alt="Murray Home Improvement box truck — your remodeling specialist, frame to finish carpentry"
       width="1672" height="941" loading="eager" decoding="async" />
   );

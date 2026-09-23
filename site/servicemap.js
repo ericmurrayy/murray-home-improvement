@@ -88,8 +88,16 @@
     });
   }
 
-  if (document.readyState !== 'loading') init();
-  else document.addEventListener('DOMContentLoaded', init);
+  // The homepage map lives inside the React app (#root), whose ServiceAreas effect calls
+  // initServiceMap once React has attached. Building it here first would change the
+  // pre-rendered markup under React, which then throws the page away and re-renders it.
+  function autoInit() {
+    var el = document.getElementById('service-map');
+    if (el && el.closest('#root')) return;
+    init();
+  }
+  if (document.readyState !== 'loading') autoInit();
+  else document.addEventListener('DOMContentLoaded', autoInit);
 
   // expose for React/dynamic mounts (homepage renders after DOMContentLoaded)
   window.initServiceMap = init;

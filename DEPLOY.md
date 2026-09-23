@@ -1,15 +1,15 @@
 # Murray Home Improvement — Website Deployment & Handoff
 
 A static marketing site with a small build step. `npm run build` writes the deployable site to
-`dist/`; Vercel runs it on every push (settings live in `vercel.json`), so there is nothing to
-build by hand.
+`dist/`. It is hosted on **Sevalla static site hosting** (free tier: 100 GB bandwidth and 600 build
+minutes a month), which runs the build on every push to `main`, so there is nothing to build by hand.
 
 ## What's in the site
 
 ```
 index.html                     ← Home page (React; pre-rendered to static HTML at build time)
 gallery.html, about.html, areas.html, reviews.html, financing.html,
-free-estimate.html, warranty.html, privacy.html, 404.html
+free-estimate.html (quote form), thank-you.html, warranty.html, privacy.html, 404.html
 services/   (10 pages)         ← Kitchen, Bath, Additions, Second-Story, Basement,
                                  Decks, Siding, Roofing, Windows & Doors, Custom Carpentry
 towns/      (12 pages)         ← Lowell, Billerica, Westford, Tewksbury, Dracut,
@@ -17,9 +17,10 @@ towns/      (12 pages)         ← Lowell, Billerica, Westford, Tewksbury, Dracu
                                  Concord, Bedford
 guides/     (10 pages)         ← Remodeling cost / planning / permit guides
 site/       ← styles.css, pages.css, JS (cube hero, before/after slider, map, menu) + React JSX
-assets/     ← logos, optimized project photos, Font Awesome
+assets/     ← logos, optimized photos, Font Awesome, self-hosted fonts (fonts/) and
+              React / three.js / Leaflet production builds (vendor/)
 sitemap.xml, robots.txt        ← SEO
-vercel.json                    ← build settings, 301 redirects from the old site, headers
+_redirects                     ← 301 redirects from the old site (Sevalla/Netlify format)
 scripts/build.mjs              ← builds dist/ (see below)
 scripts/check-routes.mjs       ← fails the build if an old-site URL or a sitemap URL would break
 scripts/legacy-urls.txt        ← every URL the old site served (the redirect safety net)
@@ -33,29 +34,38 @@ Not deployed (repo-only reference material): `preview/`, `uploads/`, `colors_and
   writes it into `index.html`, so search engines (and anyone without JavaScript) get the full page;
   the browser then attaches React to that markup. Before this, the home page's HTML was an empty
   `<div id="root">`.
-- **Compiles the JSX once** (`site/*.jsx`, `tweaks-panel.jsx` → `site/home.js`) and serves
-  React's production build locally, so visitors no longer download and run Babel in the browser.
-- **Checks routing** (`scripts/check-routes.mjs`). If an edit to `vercel.json` or a renamed page
+- **Compiles the JSX once** (`site/*.jsx`, `tweaks-panel.jsx` → `site/home.js`), so visitors
+  never download or run Babel. The page loads React from `assets/vendor/`; the build fails if that
+  version ever differs from the one it renders with (`package.json`), since hydration needs both
+  to match.
+- **Checks routing** (`scripts/check-routes.mjs`). If an edit to `_redirects` or a renamed page
   would break an old URL, send an old URL through a redirect chain, or redirect a sitemap URL,
-  the build fails and Vercel keeps the previous version live.
+  the build fails and the host keeps the previous version live.
 
 Edit the JSX sources, never `dist/`. Opening the source `index.html` directly still works
 (in-browser Babel), for design/edit sessions. To build locally: `npm install && npm run build`.
 
 ## How deploys work
-Pushing to `main` on GitHub auto-deploys to Vercel production. Preview (`*.vercel.app`) URLs are
-sent `X-Robots-Tag: noindex` so they never compete with the real domain in Google.
+Pushing to `main` on GitHub auto-deploys on Sevalla (site settings: install `npm ci`, build
+`npm run build`, publish `dist`, error page `404.html`, pretty URLs **off** — turning them on would
+redirect every `.html` URL). Sevalla also serves each site on a `*.kinsta.page` address; switch that
+off once the real domain is live so Google never sees a second copy.
+
+History: the site was first set up on Vercel, but that account is blocked (a lapsed Pro trial;
+Vercel's free plan doesn't allow business sites). A July 2026 copy is also on GitHub Pages at
+`ericmurrayy.github.io/murray-home-improvement` — unpublish it (repo Settings → Pages) once the
+real domain is live.
 
 ---
 
-## Launch checklist: moving www.murrayhomeimprovement.com from WordPress (DreamHost) to Vercel
+## Launch checklist: moving www.murrayhomeimprovement.com from WordPress (DreamHost) to Sevalla
 
 **Where things are today (checked 2026-09-22):** the domain is registered at AIT until 2031, its
 DNS is hosted at DreamHost (ns1–3.dreamhost.com), and **email for @murrayhomeimprovement.com also
 runs through DreamHost** (MX → mx1/mx2.mailchannels.net, plus SPF and DKIM TXT records). The old
 WordPress site is served over plain `http://www.` — its `https://` is broken (self-signed
 certificate), which currently breaks about 160 of the site's ~200 known backlinks (they point at
-`https://`). Moving to Vercel fixes that.
+`https://`). Moving to Sevalla fixes that.
 
 ### Before the switch
 1. **Back up the WordPress site** (DreamHost panel → backups, or download the files + database).
@@ -71,18 +81,21 @@ certificate), which currently breaks about 160 of the site's ~200 known backlink
    address (service-area business).
 
 ### The switch
-1. **Vercel → project → Settings → Domains:** add `www.murrayhomeimprovement.com` (primary) and
-   `murrayhomeimprovement.com`, set to redirect to `www` (choose a permanent 301/308).
+1. **Sevalla → static site → Domains:** `www.murrayhomeimprovement.com` and
+   `murrayhomeimprovement.com` (the bare domain is redirected to `www` by the first rule in
+   `_redirects`). Sevalla lists the DNS records each one needs.
 2. **DreamHost DNS** — keep the nameservers and email exactly as they are:
    - If the domain is "Fully Hosted", switch it to **DNS only** first (DreamHost won't let you
      edit `@`/`www` records while it hosts the site). This does not affect email.
-   - `www` → **CNAME** to the value Vercel shows (e.g. `cname.vercel-dns.com`).
-   - `@` (apex) → **A** record to the IP Vercel shows (e.g. `76.76.21.21`).
+   - Add the two **TXT** records per domain that Sevalla shows (`_cf-custom-hostname…` for
+     verification, `_acme-challenge…` for the certificate). These can go in days ahead — they
+     don't touch the live site — so HTTPS is ready the moment traffic moves.
+   - Then point `www` and `@` at the **A** record values Sevalla shows (remove any old A/CNAME
+     records for those two names first).
    - **Do not touch** the MX, SPF (`v=spf1 …`) and DKIM (`dreamhost._domainkey`) TXT records, or
-     `mail` / `webmail`.
-   - Do **not** move the nameservers to Vercel unless every email record is recreated there first.
-3. Wait until Vercel shows both domains as valid and has issued certificates (usually minutes;
-   DreamHost TTLs can make it take a few hours).
+     `mail` / `webmail`. Do **not** move the nameservers.
+3. Wait until both domains show **Active** in Sevalla (usually minutes; DreamHost TTLs can make it
+   take a few hours).
 
 ### Verify (from any terminal)
 ```
@@ -101,8 +114,10 @@ Then send a test email to eric@murrayhomeimprovement.com and submit the quote fo
    links are better).
 3. **Watch Search Console → Pages** weekly for 4–8 weeks. Old URLs showing as "Page with redirect"
    is expected and good. Anything showing "Not found (404)" that had value → add a redirect in
-   `vercel.json` and a line in `scripts/legacy-urls.txt`.
-4. **Keep the redirects permanently.** Don't cancel the DreamHost account — it still hosts DNS and
+   `_redirects` and a line in `scripts/legacy-urls.txt`.
+4. **Switch off the `*.kinsta.page` address** in Sevalla (Domains → system domain → disable) and
+   unpublish the old GitHub Pages copy, so no second copy of the site stays public.
+5. **Keep the redirects permanently.** Don't cancel the DreamHost account — it still hosts DNS and
    email; only the WordPress web hosting goes away.
 
 **Rollback:** point `www` and `@` back to DreamHost (re-enable hosting for the domain) — the
@@ -139,12 +154,17 @@ Best: "murray renovations" #18, "bathroom remodeling murray" #18 (`/project-type
 
 ## Contact form — email & text notifications
 
-Config is at the top of `site/Contact.jsx`. **Current status: not delivering.** The form posts to
-FormSubmit, whose AJAX endpoint is now behind a Cloudflare challenge that blocks it, so visitors
-see the "couldn't send — email Eric or call (978) 479-9406" fallback. Recommended fix:
-**Web3Forms** (free) — get an access key by entering eric@murrayhomeimprovement.com at
-web3forms.com, then swap `FORM_ENDPOINT` to `https://api.web3forms.com/submit` and add the
-`access_key` field.
+There are two quote forms, both sending to FormSubmit (eric@murrayhomeimprovement.com):
+
+- **`free-estimate.html`** — where every "Get a free quote" button on the inner pages leads. It is a
+  plain HTML form (native POST, no JavaScript) that lands on `thank-you.html`. FormSubmit only
+  starts delivering after a one-time activation: the first real submission emails a confirmation
+  link to eric@ — click it once. Submit a test right after launch to trigger that email.
+- **Home page form** (`site/Contact.jsx`) — posts in the background (AJAX). FormSubmit's AJAX
+  endpoint sits behind a Cloudflare challenge that blocks it, so this form shows the
+  "couldn't send — email Eric or call (978) 479-9406" fallback. Fix: **Web3Forms** (free) — get
+  an access key by entering eric@murrayhomeimprovement.com at web3forms.com, then swap
+  `FORM_ENDPOINT` to `https://api.web3forms.com/submit` and add the `access_key` field.
 
 - **Text messages (optional):** set `NOTIFY_SMS_GATEWAY` to Eric's carrier email-to-text address
   (AT&T `9784799406@txt.att.net`, T-Mobile `9784799406@tmomail.net`; Verizon retired `@vtext.com`
@@ -166,7 +186,7 @@ web3forms.com, then swap `FORM_ENDPOINT` to `https://api.web3forms.com/submit` a
   (≤1600px, JPEG q≈82); the current set was compressed from ~20 MB down to ~3 MB total.
 - **Services / towns:** each is a self-contained HTML file — copy one as a template for new ones,
   then add it to `sitemap.xml` and the relevant footer/nav lists.
-- **Renaming or removing a page:** add a 301 in `vercel.json` from the old path to the closest
+- **Renaming or removing a page:** add a 301 in `_redirects` from the old path to the closest
   page; the build's route check will tell you if you missed one.
 - **Owner photo / gallery:** the About photo and any `image-slot` placeholders accept a drag-and-
   dropped image in the editor; for the live site, just replace the referenced file in `assets/`.

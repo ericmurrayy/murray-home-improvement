@@ -15,6 +15,11 @@
   <link rel="icon" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/logo-dark.png" />
 
+  <!-- LCP resources: hero truck image + the two fonts used above the fold -->
+  <link rel="preload" as="image" href="assets/murray-truck-hero.webp" fetchpriority="high" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/space-grotesk-700-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-400-latin.woff2" crossorigin />
+
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Murray Home Improvement" />
@@ -75,29 +80,30 @@
   </script>
 
   <link rel="stylesheet" href="assets/fontawesome/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="assets/vendor/leaflet-1.9.4.css" />
+  <link rel="stylesheet" href="site/fonts.css" />
   <link rel="stylesheet" href="site/styles.css" />
   <link rel="stylesheet" href="site/pages.css" />
 </head>
-<body>
+<body class="has-cta-bar">
   <div id="root"></div>
 
-  <!-- Three.js (global THREE) -->
-  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <!-- Vendor libraries — self-hosted production builds (deferred, execute in order) -->
+  <script defer src="assets/vendor/three-0.128.0.min.js"></script>
+  <script defer src="assets/vendor/react-18.3.1.production.min.js"></script>
+  <script defer src="assets/vendor/react-dom-18.3.1.production.min.js"></script>
+  <script defer src="assets/vendor/leaflet-1.9.4.js"></script>
 
-  <!-- React + Babel (pinned) -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <!-- Site engines (plain JS) -->
+  <script defer src="site/cubefield.js"></script>
+  <script defer src="site/image-slot.js"></script>
+  <script defer src="site/beforeafter.js"></script>
+  <script defer src="site/servicemap.js"></script>
 
-  <!-- cube-field engine (plain JS) -->
-  <script src="site/cubefield.js"></script>
-  <script src="site/image-slot.js"></script>
-  <script src="site/beforeafter.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="site/servicemap.js"></script>
-
-  <!-- Tweaks shell + components (Babel) -->
+  <!-- Page components. Opened directly, this page compiles the JSX in the browser
+       (Babel) for design/edit sessions. The deployed page is built by
+       scripts/build.mjs: JSX precompiled into site/home.js, #root pre-rendered. -->
+  <script defer src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script type="text/babel" src="tweaks-panel.jsx"></script>
   <script type="text/babel" src="site/Header.jsx"></script>
   <script type="text/babel" src="site/Hero.jsx"></script>
@@ -106,5 +112,7 @@
   <script type="text/babel" src="site/Contact.jsx"></script>
   <script type="text/babel" src="site/Footer.jsx"></script>
   <script type="text/babel" src="site/App.jsx"></script>
+
+  <div class="cta-bar" role="navigation" aria-label="Quick contact"><a href="tel:19784799406"><i class="fa fa-phone" aria-hidden="true"></i> Call</a><a href="sms:19784799406"><i class="fa fa-comment" aria-hidden="true"></i> Text</a><a class="primary" href="#contact"><i class="fa fa-pencil" aria-hidden="true"></i> Free Quote</a></div>
 </body>
 </html>

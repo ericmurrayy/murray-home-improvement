@@ -28,7 +28,6 @@
 /favicon/
 /feed/
 /finished-basement-2/
-/g2_view=core.DownloadItem&g2_itemId=60&g2_serialNumber=2
 /home-office-569153_1280/
 /homepage/
 /kearney-kitchen/
