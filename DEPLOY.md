@@ -66,9 +66,9 @@ sees a second copy. Sevalla's firewall answers any `.php` path with 403, so the 
 URLs `/gallery/main.php` and `/gallery/index.php` can't redirect (they have no known backlinks).
 
 History: the site was first set up on Vercel, but that account is blocked (a lapsed Pro trial;
-Vercel's free plan doesn't allow business sites). A July 2026 copy is also on GitHub Pages at
-`ericmurrayy.github.io/murray-home-improvement` — unpublish it (repo Settings → Pages) once the
-real domain is live.
+Vercel's free plan doesn't allow business sites), so the Vercel project was disconnected from this
+repo on 2026-09-23. A July 2026 copy that GitHub Pages served from a `gh-pages` branch was taken
+down the same day (branch deleted — GitHub doesn't allow unpublishing a `gh-pages` site otherwise).
 
 ---
 
@@ -141,8 +141,8 @@ Then send a test email to eric@murrayhomeimprovement.com and submit the quote fo
 3. **Watch Search Console → Pages** weekly for 4–8 weeks. Old URLs showing as "Page with redirect"
    is expected and good. Anything showing "Not found (404)" that had value → add a redirect in
    `_redirects` and a line in `scripts/legacy-urls.txt`.
-4. **Switch off the `*.kinsta.page` address** in Sevalla (Domains → system domain → disable) and
-   unpublish the old GitHub Pages copy, so no second copy of the site stays public.
+4. **Switch off the `*.kinsta.page` address** in Sevalla (Domains → system domain → disable), so
+   no second copy of the site stays public.
 5. **Keep the redirects permanently.** Don't cancel the DreamHost account — it still hosts DNS and
    email; only the WordPress web hosting goes away.
 
