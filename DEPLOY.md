@@ -12,9 +12,7 @@ gallery.html, about.html, areas.html, reviews.html, financing.html,
 free-estimate.html (quote form), thank-you.html, warranty.html, privacy.html, 404.html
 services/   (10 pages)         ← Kitchen, Bath, Additions, Second-Story, Basement,
                                  Decks, Siding, Roofing, Windows & Doors, Custom Carpentry
-towns/      (12 pages)         ← Lowell, Billerica, Westford, Tewksbury, Dracut,
-                                 Tyngsborough, Carlisle, Andover, North Andover, Acton,
-                                 Concord, Bedford
+towns/      (5 pages)          ← Lowell, Westford, Tyngsborough, Billerica, Carlisle
 guides/     (10 pages)         ← Remodeling cost / planning / permit guides
 site/       ← styles.css, pages.css, JS (cube hero, before/after slider, map, menu) + React JSX
 assets/     ← logos, optimized photos, Font Awesome, self-hosted fonts (fonts/) and
@@ -28,6 +26,19 @@ scripts/legacy-urls.txt        ← every URL the old site served (the redirect s
 
 Not deployed (repo-only reference material): `preview/`, `uploads/`, `colors_and_type.css`,
 `README.md`, `SKILL.md`, this file.
+
+### Service area (deliberately small)
+The site targets **Chelmsford** (including North, South, East and West Chelmsford and the Center)
+and **the five towns that border it**: Lowell, Westford, Tyngsborough, Billerica and Carlisle. The
+home page is the Chelmsford page (its headline reads "Chelmsford remodeling, done right"). Town
+pages for Dracut, Tewksbury, Andover, North Andover, Acton, Concord and Bedford were removed in
+September 2026 and 301 to `areas.html`. The town list lives in several places — keep them in step
+when adding or dropping a town: the `towns/` page, `areas.html` (cards + ItemList schema), the
+footers, the "near you" chips on service pages, `areaServed` in the home and service-page schema,
+`site/More.jsx` (`towns`), `site/servicemap.js` (pins + boundary), and `sitemap.xml`.
+
+The maps use OpenStreetMap's standard tiles (free, attribution required), greyed out by
+`#service-map .mhi-tiles` in `site/pages.css`. CARTO's basemaps, used before, now require an API key.
 
 ### What the build does
 - **Pre-renders the home page.** The home page is a React app. The build renders it to HTML and

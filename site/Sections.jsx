@@ -37,7 +37,7 @@ function Services() {
           <span className="eyebrow">What we do</span>
           <h2 className="section-title">Everything we build</h2>
           <p className="section-lead" style={{ textAlign: 'center', maxWidth: '60ch' }}>From a single room to a whole new level — our most-requested work, plus every
-            other service we offer across the Merrimack Valley.</p>
+            other service we offer in Chelmsford and the towns next door.</p>
         </div>
         <div className="services-grid">
           {svc.map(s => (
@@ -83,7 +83,7 @@ function Work() {
         <div className="section-head reveal" style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
             <span className="eyebrow">Our work</span>
-            <h2 className="section-title">Built in<br />the Merrimack Valley</h2>
+            <h2 className="section-title">Built in and<br />around Chelmsford</h2>
           </div>
           <a className="btn btn-ghost" href="gallery.html">View full gallery <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
         </div>

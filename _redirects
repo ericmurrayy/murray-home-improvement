@@ -577,5 +577,14 @@ https://murrayhomeimprovement.com/*  https://www.murrayhomeimprovement.com/:spla
 /img-7320  /gallery.html  301
 /img-7320/  /gallery.html  301
 
+# --- Town pages dropped when the site narrowed to Chelmsford + its bordering towns (2026-09) ---
+/towns/dracut.html  /areas.html  301
+/towns/tewksbury.html  /areas.html  301
+/towns/andover.html  /areas.html  301
+/towns/north-andover.html  /areas.html  301
+/towns/acton.html  /areas.html  301
+/towns/concord.html  /areas.html  301
+/towns/bedford.html  /areas.html  301
+
 # --- Anything else: the custom not-found page, with a real 404 status (must stay last) ---
 /*  /404.html  404

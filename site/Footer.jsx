@@ -9,8 +9,8 @@ function Footer() {
               <img className="footer-logo-badge" src="assets/logo-dark.png" alt="Murray Home Improvement" />
             </a>
             <p>Licensed, insured, owner-operated residential remodeling &amp; building.
-              Your remodeling specialist &mdash; frame to finish carpentry, across the
-              Merrimack Valley for 30+ years.</p>
+              Your remodeling specialist &mdash; frame to finish carpentry, in Chelmsford
+              and the towns around it for 30+ years.</p>
           </div>
           <div className="foot-col">
             <h5>Services</h5>
@@ -25,6 +25,8 @@ function Footer() {
             <a href="towns/lowell.html">Lowell</a>
             <a href="towns/billerica.html">Billerica</a>
             <a href="towns/westford.html">Westford</a>
+            <a href="towns/tyngsborough.html">Tyngsborough</a>
+            <a href="towns/carlisle.html">Carlisle</a>
             <a href="areas.html">All areas &rarr;</a>
           </div>
           <div className="foot-col">

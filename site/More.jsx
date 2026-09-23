@@ -10,7 +10,7 @@ function About() {
             <img src="assets/eric-family.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his family" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '54% 50%', display: 'block' }} />
             <div className="about-badge">
               <b>30<span className="accent">+</span></b>
-              <span>Years building<br />in the Valley</span>
+              <span>Years building<br />in Chelmsford</span>
             </div>
           </div>
           <div className="about-body reveal">
@@ -50,7 +50,7 @@ function BrandBand() {
         <div className="brandband-inner reveal">
           <span className="eyebrow">Your remodeling specialist</span>
           <h2 className="section-title">Frame to<br />finish carpentry</h2>
-          <p>Licensed, insured, and on the road across the Merrimack Valley — fully credentialed
+          <p>Licensed, insured, and on the road every day in Chelmsford and the towns next door — fully credentialed
             so you can hire with confidence.</p>
           <div className="reg-chips">
             {regs.map(r => <span key={r}>{r}</span>)}
@@ -104,11 +104,10 @@ function Testimonials() {
 }
 
 function ServiceAreas() {
+  // Chelmsford's five bordering towns — the site deliberately stays within this radius.
   const towns = [
-    ['Lowell', 'towns/lowell.html'], ['Billerica', 'towns/billerica.html'], ['Westford', 'towns/westford.html'],
-    ['Tewksbury', 'towns/tewksbury.html'], ['Dracut', 'towns/dracut.html'], ['Tyngsborough', 'towns/tyngsborough.html'],
-    ['Carlisle', 'towns/carlisle.html'], ['Andover', 'towns/andover.html'], ['North Andover', 'towns/north-andover.html'],
-    ['Acton', 'towns/acton.html'], ['Concord', 'towns/concord.html'], ['Bedford', 'towns/bedford.html'],
+    ['Lowell', 'towns/lowell.html'], ['Westford', 'towns/westford.html'], ['Tyngsborough', 'towns/tyngsborough.html'],
+    ['Billerica', 'towns/billerica.html'], ['Carlisle', 'towns/carlisle.html'],
   ];
   React.useEffect(() => {
     if (window.initServiceMap) window.initServiceMap();
@@ -118,9 +117,9 @@ function ServiceAreas() {
       <div className="wrap">
         <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
           <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Service Areas</span>
-          <h2 className="section-title">Serving the<br />Merrimack Valley</h2>
+          <h2 className="section-title">Chelmsford &amp;<br />the towns next door</h2>
           <p className="section-lead" style={{ textAlign: 'center', maxWidth: '50ch' }}>
-            Based in Chelmsford, MA — proudly remodeling homes across these towns and the communities around them.
+            Based in Chelmsford, MA — we keep our work close to home: Chelmsford and the five towns that border it.
           </p>
         </div>
         <div className="map-wrap reveal">
@@ -130,7 +129,7 @@ function ServiceAreas() {
             <span className="map-badge-txt"><b>Service Area</b><span>Chelmsford, MA</span></span>
           </div>
         </div>
-        <p className="map-note"><i className="fa fa-info-circle ico" aria-hidden="true"></i> Roughly a 15-minute drive from Chelmsford. Tap any pin to explore that town.</p>
+        <p className="map-note"><i className="fa fa-info-circle ico" aria-hidden="true"></i> Chelmsford and its five neighboring towns, minutes from our home base. Tap any pin to explore that town.</p>
         <div className="chip-links reveal" style={{ justifyContent: 'center', marginTop: '28px' }}>
           {towns.map(t => <a key={t[1]} href={t[1]}>{t[0]}</a>)}
         </div>

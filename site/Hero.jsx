@@ -40,12 +40,13 @@ function HeroContent({ align }) {
         <div className="hero-lead">
           <div className="hero-eyebrow eyebrow">Chelmsford, MA · Licensed &amp; Insured · Est. 1989</div>
           <h1>
-            Remodeling<br />
+            Chelmsford<br />
+            remodeling,<br />
             done <span className="accent">right</span>
           </h1>
           <p className="hero-sub">
             Murray Home Improvement is an owner-operated remodeling &amp; building contractor
-            serving the Merrimack Valley for over 30 years. Kitchens, baths, additions, and
+            serving Chelmsford and its neighboring towns for over 30 years. Kitchens, baths, additions, and
             full custom work &mdash; one craftsman, start to finish. If you can think it, we&rsquo;ll build it.
           </p>
           <div className="hero-actions">
@@ -57,7 +58,7 @@ function HeroContent({ align }) {
           <HeroTruck />
         </div>
         <div className="hero-stats">
-          <div className="stat"><b>30<span className="accent">+</span></b><span>Years remodeling the Merrimack Valley</span></div>
+          <div className="stat"><b>30<span className="accent">+</span></b><span>Years remodeling in Chelmsford</span></div>
           <div className="stat"><b>100<span className="accent">%</span></b><span>Owner-operated, on every job site</span></div>
           <div className="stat"><b>Free</b><span>Estimates, fully itemized &mdash; no surprises</span></div>
         </div>

@@ -59,7 +59,7 @@ function Contact() {
   const details = [
     { ico: 'fa-phone', lab: 'Call or text', val: '(978) 479-9406', href: 'tel:19784799406' },
     { ico: 'fa-envelope', lab: 'Email', val: 'eric@murrayhomeimprovement.com', href: 'mailto:eric@murrayhomeimprovement.com' },
-    { ico: 'fa-map-marker', lab: 'Service area', val: 'Chelmsford, MA & Merrimack Valley', href: null },
+    { ico: 'fa-map-marker', lab: 'Service area', val: 'Chelmsford, MA & neighboring towns', href: null },
   ];
 
   return (
