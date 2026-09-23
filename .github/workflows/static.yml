@@ -1,4 +1,8 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Publishes a preview copy of the site to GitHub Pages
+# (https://ericmurrayy.github.io/murray-home-improvement/). The real site is
+# www.murrayhomeimprovement.com, deployed by Sevalla from the same pushes (see DEPLOY.md).
+# The copy is the built site with every page marked noindex (SITE_NOINDEX), so search
+# engines never weigh it against the real domain.
 name: Deploy static content to Pages
 
 on:
@@ -31,13 +35,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Build the noindexed preview copy
+        run: npm ci && node scripts/build.mjs
+        env:
+          SITE_NOINDEX: "1"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

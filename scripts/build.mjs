@@ -134,6 +134,25 @@ copyTree(ROOT, OUT, new Set(['index.html', ...jsxFiles]));
 fs.writeFileSync(path.join(OUT, 'index.html'), index);
 fs.writeFileSync(path.join(OUT, 'site', 'home.js'), homeJs);
 
+// SITE_NOINDEX builds the preview copy on GitHub Pages (.github/workflows/static.yml): every
+// page is marked noindex and loses its canonical tag, so search engines drop the copy instead
+// of weighing it against the real domain. Never set it for the Sevalla build — check-site.mjs
+// would fail it anyway (every page noindex yet listed in sitemap.xml).
+let noindexed = 0;
+if (process.env.SITE_NOINDEX) {
+  const walk = d => fs.readdirSync(d, { withFileTypes: true })
+    .flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
+  for (const f of walk(OUT).filter(f => f.endsWith('.html'))) {
+    const s = fs.readFileSync(f, 'utf8')
+      .replace(/\s*<link rel="canonical"[^>]*>/g, '')
+      .replace(/\s*<meta name="robots"[^>]*>/g, '');
+    if (!s.includes('</head>')) fail(`${path.relative(OUT, f)} has no </head> to put the noindex tag in`);
+    fs.writeFileSync(f, s.replace('</head>', '  <meta name="robots" content="noindex, nofollow" />\n</head>'));
+    noindexed++;
+  }
+}
+
 const kb = (n) => (n / 1024).toFixed(0) + ' KB';
 console.log(`Built dist/ — home page pre-rendered (${kb(appHtml.length)} of HTML from ${jsxFiles.length} JSX files), `
-  + `site/home.js ${kb(homeJs.length)}, React ${React.version}.`);
+  + `site/home.js ${kb(homeJs.length)}, React ${React.version}.`
+  + (noindexed ? ` Preview copy: ${noindexed} pages marked noindex.` : ''));

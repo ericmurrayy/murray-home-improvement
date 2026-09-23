@@ -70,6 +70,12 @@ Vercel's free plan doesn't allow business sites), so the Vercel project was disc
 repo on 2026-09-23. A July 2026 copy that GitHub Pages served from a `gh-pages` branch was taken
 down the same day (branch deleted — GitHub doesn't allow unpublishing a `gh-pages` site otherwise).
 
+GitHub Pages also serves a **preview copy** at https://ericmurrayy.github.io/murray-home-improvement/,
+rebuilt on every push by `.github/workflows/static.yml`. It's the built site with every page marked
+`noindex` and its canonical tag removed (`SITE_NOINDEX=1`), so search engines drop it instead of
+weighing it against the real domain. To retire it: Settings → Pages → unpublish, then delete the
+workflow file.
+
 ---
 
 ## Launch checklist: moving www.murrayhomeimprovement.com from WordPress (DreamHost) to Sevalla
