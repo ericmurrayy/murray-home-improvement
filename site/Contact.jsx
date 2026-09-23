@@ -19,7 +19,11 @@
    "Continue" validates that step's fields before moving on; without JavaScript every step
    is visible and the form submits exactly the same way. The server-rendered HTML is the
    no-JavaScript version; the page switches to steps after it hydrates. */
-const NOTIFY_EMAIL = 'eric@murrayhomeimprovement.com';
+// Leads go to the Gmail inbox Eric reads every day (the domain mailbox on DreamHost does not
+// forward there), with a copy to the business address. FormSubmit activation was done for the
+// Gmail address on 2026-09-23; changing NOTIFY_EMAIL means a new one-time activation click.
+const NOTIFY_EMAIL = 'ericmurrayy@gmail.com';
+const NOTIFY_CC = 'eric@murrayhomeimprovement.com';
 const NOTIFY_SMS_GATEWAY = '';
 const FORM_ENDPOINT = 'https://formsubmit.co/' + NOTIFY_EMAIL;
 const THANK_YOU_URL = 'https://www.murrayhomeimprovement.com/thank-you.html';
@@ -144,7 +148,7 @@ function Contact() {
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value={THANK_YOU_URL} />
-            {NOTIFY_SMS_GATEWAY && <input type="hidden" name="_cc" value={NOTIFY_SMS_GATEWAY} />}
+            <input type="hidden" name="_cc" value={[NOTIFY_CC, NOTIFY_SMS_GATEWAY].filter(Boolean).join(',')} />
 
             {js && (
               <div className="qprogress" aria-hidden="true">

@@ -70,10 +70,12 @@ check(!/Merrimack Valley/.test(text), 'copy regression: "Merrimack Valley" is ba
 check(!/\b(Dracut|Tewksbury|Andover|Acton|Concord|Bedford)\b/.test(text), 'copy regression: a town outside the service area is back');
 
 // Quote forms post natively (FormSubmit's AJAX endpoint sits behind a bot challenge) and land on thank-you.html.
-const FORM_ACTION = 'action="https://formsubmit.co/eric@murrayhomeimprovement.com" method="POST"';
+// Leads go to the Gmail inbox Eric reads (activated with FormSubmit 2026-09-23), copied to the business address.
+const FORM_ACTION = 'action="https://formsubmit.co/ericmurrayy@gmail.com" method="POST"';
 for (const p of ['/index.html', '/free-estimate.html']) {
   check(html[p].includes(FORM_ACTION), `${p}: quote form must POST natively to FormSubmit`);
   check(html[p].includes('name="_next" value="https://www.murrayhomeimprovement.com/thank-you.html"'), `${p}: quote form must land on thank-you.html`);
+  check(/name="_cc" value="eric@murrayhomeimprovement\.com[^"]*"/.test(html[p]), `${p}: quote form must copy eric@murrayhomeimprovement.com`);
 }
 
 // AI discovery: llms.txt, named AI crawlers in robots.txt, one IndexNow key file.

@@ -1,5 +1,6 @@
 /* Header.jsx — fixed top nav with logo, Google rating chip, phone and mobile sheet menu */
-window.GOOGLE_REVIEWS_URL = 'https://share.google/wlvLzfmJFUliE3SHb';
+window.GOOGLE_REVIEWS_URL = 'https://share.google/wlvLzfmJFUliE3SHb';               // the listing (read reviews)
+window.GOOGLE_WRITE_REVIEW_URL = 'https://www.google.com/search?q=Murray+Home+Improvement+Inc.+Chelmsford&ludocid=681285635950262469#lrd=0x89e3a36a04388c99:0x97469ad216438c5,3'; // opens "write a review"
 
 function Header({ scrolled }) {
   const [open, setOpen] = React.useState(false);

@@ -7,7 +7,10 @@ function About() {
       <div className="wrap">
         <div className="about-grid">
           <div className="about-media reveal">
-            <img src="assets/eric-family.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his family" loading="lazy" decoding="async" width="960" height="640" style={{ objectPosition: '54% 40%' }} />
+            <picture>
+              <source type="image/avif" srcSet="assets/eric-on-site-800.avif 800w, assets/eric-on-site.avif 1200w" sizes="(max-width: 900px) 100vw, 46vw" />
+              <img src="assets/eric-on-site.jpg" alt="Eric Murray, owner of Murray Home Improvement, on site in the middle of a kitchen remodel" loading="lazy" decoding="async" width="1200" height="1500" />
+            </picture>
             <div className="about-badge">
               <b>30<span className="accent">+</span></b>
               <span>years building<br />in Chelmsford</span>
@@ -62,13 +65,17 @@ function BrandBand() {
 }
 
 function Testimonials() {
+  // Real, attributed reviews only: the Google review (5 stars) and the two Facebook recommendations.
   const reviews = [
-    { name: 'Larissa LaFauci Weeks', date: 'April 8, 2019',
+    { name: 'David Goodall', source: 'google', stars: 5,
+      quote: 'Eric Murray did an amazing job on our home and roof repair after we sustained substantial damage from a tree falling on our home. Highly recommend Murray construction. A+ service' },
+    { name: 'Larissa LaFauci Weeks', source: 'facebook', date: 'April 8, 2019',
       quote: 'Several people referred me to Murray Home Improvement and I couldn’t be more satisfied! It was a great experience and I would hire them for any home improvement needs! I really appreciate word of mouth recommendations and want others to know how great this company is!' },
-    { name: 'Bryan Boyle', date: 'February 26, 2019',
+    { name: 'Bryan Boyle', source: 'facebook', date: 'February 26, 2019',
       quote: 'Great customer service, quality work.' },
   ];
   const initials = (n) => n.split(' ').slice(0, 2).map(w => w[0]).join('');
+  const Stars = ({ n }) => <span className="stars" aria-label={n + ' out of 5 stars'}>{[1, 2, 3, 4, 5].map(i => <i key={i} className={'fa ' + (i <= n ? 'fa-star' : 'fa-star-o')} aria-hidden="true"></i>)}</span>;
   return (
     <section className="section testimonials" id="reviews">
       <div className="wrap">
@@ -85,21 +92,25 @@ function Testimonials() {
         </div>
         <div className="reviews-grid reveal">
           {reviews.map(r => (
-            <figure className="review" key={r.name}>
-              <div className="review-badge"><i className="fa fa-thumbs-up" aria-hidden="true"></i> Recommends</div>
+            <figure className={'review' + (r.source === 'google' ? ' review-featured' : '')} key={r.name}>
+              {r.source === 'google'
+                ? <div className="review-badge review-badge-stars"><Stars n={r.stars} /> 5.0</div>
+                : <div className="review-badge"><i className="fa fa-thumbs-up" aria-hidden="true"></i> Recommends</div>}
               <blockquote>{r.quote}</blockquote>
               <figcaption>
                 <span className="review-avatar">{initials(r.name)}</span>
                 <span className="review-meta">
                   <b>{r.name}</b>
-                  <span>{r.date} · <i className="fa fa-facebook-official" aria-hidden="true"></i> Facebook</span>
+                  {r.source === 'google'
+                    ? <span><i className="fa fa-google" aria-hidden="true"></i> Google review</span>
+                    : <span>{r.date} · <i className="fa fa-facebook-official" aria-hidden="true"></i> Facebook</span>}
                 </span>
               </figcaption>
             </figure>
           ))}
         </div>
         <div className="reveal" style={{ textAlign: 'center', marginTop: '32px' }}>
-          <a className="btn btn-ghost" href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
+          <a className="btn btn-ghost" href={window.GOOGLE_WRITE_REVIEW_URL} target="_blank" rel="noopener">
             <i className="fa fa-google ico" aria-hidden="true"></i> Worked with us? Leave a Google review
           </a>
         </div>

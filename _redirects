@@ -34,8 +34,8 @@ https://murrayhomeimprovement.com/*  https://www.murrayhomeimprovement.com/:spla
 # --- Old sections: the page itself, anything below it (posts, photos, feeds, page/2) ---
 # Review engine: text or print murrayhomeimprovement.com/review; hands off to Google's review form (302,
 # temporary on purpose). Change the destination here if Google's link ever changes.
-/review  https://share.google/wlvLzfmJFUliE3SHb  302
-/review/  https://share.google/wlvLzfmJFUliE3SHb  302
+/review  https://www.google.com/search?q=Murray+Home+Improvement+Inc.+Chelmsford&ludocid=681285635950262469#lrd=0x89e3a36a04388c99:0x97469ad216438c5,3  302
+/review/  https://www.google.com/search?q=Murray+Home+Improvement+Inc.+Chelmsford&ludocid=681285635950262469#lrd=0x89e3a36a04388c99:0x97469ad216438c5,3  302
 
 /portfolio/bath-remodel-with-heated-floor  /projects/bath-remodel-with-heated-floor.html  301
 /portfolio/bath-remodel-with-heated-floor/*  /projects/bath-remodel-with-heated-floor.html  301

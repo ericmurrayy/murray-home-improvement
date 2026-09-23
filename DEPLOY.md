@@ -187,6 +187,9 @@ Best: "murray renovations" #18, "bathroom remodeling murray" #18 (`/project-type
 
 ## Contact form — email & text notifications
 
+Since 2026-09-23 both quote forms post to FormSubmit for **ericmurrayy@gmail.com** (the inbox Eric reads; the DreamHost mailbox does not forward there) with `_cc` eric@murrayhomeimprovement.com. The Gmail address was activated with FormSubmit that day. Changing the address means a new one-time activation email.
+
+
 There are two quote forms, both sending to FormSubmit (eric@murrayhomeimprovement.com):
 
 - **`free-estimate.html`** — where every "Get a free quote" button on the inner pages leads. It is a
@@ -214,7 +217,7 @@ There are two quote forms, both sending to FormSubmit (eric@murrayhomeimprovemen
 
 ## Review engine
 
-- **`murrayhomeimprovement.com/review`** hands off (302, in `_redirects`) to Google's "write a review" form for the business listing. If Google ever changes the link, edit the two `/review` lines in `_redirects`.
+- **`murrayhomeimprovement.com/review`** hands off (302, in `_redirects`) to Google's "write a review" screen for the listing (the `ludocid`/`lrd=…,3` search URL built from the listing's Google ID 681285635950262469; verified 2026-09-23 to open the review box). If Google ever changes how that works, edit the two `/review` lines in `_redirects` and the `GOOGLE_WRITE_REVIEW_URL` constant in `site/Header.jsx`.
 - **`review-card.html`** (noindex) is a printable card with a QR code (`assets/review-qr.svg`, encodes `https://www.murrayhomeimprovement.com/review`). Open it, press Print, leave a card with the homeowner at the final walk-through.
 - Only ask people who are happy with the work, and never offer anything in return (Google removes incentivized reviews).
 
