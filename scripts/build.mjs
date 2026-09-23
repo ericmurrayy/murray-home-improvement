@@ -134,6 +134,34 @@ copyTree(ROOT, OUT, new Set(['index.html', ...jsxFiles]));
 fs.writeFileSync(path.join(OUT, 'index.html'), index);
 fs.writeFileSync(path.join(OUT, 'site', 'home.js'), homeJs);
 
+// Cache-busting. The host serves site/*.css and site/*.js with a 30-day browser cache and no
+// way to change it, so after a deploy returning visitors would get new HTML with the OLD
+// script and stylesheets (React then fails to hydrate and the page keeps the old look).
+// Every page's reference to a site/ asset gets ?v=<content hash>, so a changed file is a new
+// URL and an unchanged one stays cached.
+{
+  const crypto = await import('node:crypto');
+  const walk = d => fs.readdirSync(d, { withFileTypes: true })
+    .flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
+  const hashes = new Map();
+  for (const f of walk(path.join(OUT, 'site')).filter(f => /\.(css|js)$/.test(f))) {
+    hashes.set(path.relative(OUT, f).split(path.sep).join('/'), crypto.createHash('md5').update(fs.readFileSync(f)).digest('hex').slice(0, 8));
+  }
+  let rewritten = 0;
+  for (const f of walk(OUT).filter(f => f.endsWith('.html'))) {
+    const before = fs.readFileSync(f, 'utf8');
+    const after = before.replace(/((?:href|src)=")((?:\.\.\/)*)(site\/[^"?#]+\.(?:css|js))(")/g, (m, pre, up, rel, post) => {
+      const h = hashes.get(rel);
+      if (!h) fail(`${path.relative(OUT, f)} references ${rel}, which isn't in the build`);
+      rewritten++;
+      return `${pre}${up}${rel}?v=${h}${post}`;
+    });
+    if (after !== before) fs.writeFileSync(f, after);
+  }
+  if (!rewritten) fail('cache-busting rewrote nothing — the site/ asset references have changed shape');
+  console.log(`Cache-busted ${rewritten} site/ asset references across the built pages.`);
+}
+
 // SITE_NOINDEX builds the preview copy on GitHub Pages (.github/workflows/static.yml): every
 // page is marked noindex and loses its canonical tag, so search engines drop the copy instead
 // of weighing it against the real domain. Never set it for the Sevalla build — check-site.mjs
