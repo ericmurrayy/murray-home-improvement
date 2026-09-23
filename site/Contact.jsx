@@ -3,9 +3,13 @@
 /* ──────────────────────────────────────────────────────────────────────────
    NOTIFICATION WIRING
    The form POSTs to FormSubmit (https://formsubmit.co) — a free, no-backend,
-   no-signup relay. The FIRST real submission triggers a one-time confirmation
-   email to NOTIFY_EMAIL; click the link in it once to activate. After that,
-   every submission is emailed to Eric.
+   no-signup relay — as a plain HTML form submission. (FormSubmit's AJAX endpoint
+   sits behind a bot challenge that blocks background requests, so the page
+   navigates instead and FormSubmit sends the visitor on to thank-you.html.)
+   The FIRST real submission triggers a one-time confirmation email to
+   NOTIFY_EMAIL; click the link in it once to activate. After that, every
+   submission is emailed to Eric, with Reply-To set to the customer's address
+   (the input named "email").
 
    • EMAIL:  arrives at NOTIFY_EMAIL.
    • TEXT (SMS): set NOTIFY_SMS_GATEWAY to a carrier email-to-text address so
@@ -25,36 +29,17 @@ const NOTIFY_EMAIL = 'eric@murrayhomeimprovement.com';
 // (Verizon retired email-to-text in 2025, so @vtext.com no longer delivers.)
 // Leave '' for email-only notifications.
 const NOTIFY_SMS_GATEWAY = '';
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
+const FORM_ENDPOINT = 'https://formsubmit.co/' + NOTIFY_EMAIL;
+const THANK_YOU_URL = 'https://www.murrayhomeimprovement.com/thank-you.html';
 
 function Contact() {
-  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
-
-  const submit = async (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    data.append('_subject', 'New free-quote request — murrayhomeimprovement.com');
-    data.append('_template', 'table');
-    data.append('_captcha', 'false');
-    // Replying to the notification email goes straight to the customer.
-    const customerEmail = data.get('Email');
-    if (customerEmail) data.append('_replyto', customerEmail);
-    if (NOTIFY_SMS_GATEWAY) data.append('_cc', NOTIFY_SMS_GATEWAY);
-    setStatus('sending');
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data,
-      });
-      if (!res.ok) throw new Error('Request failed');
-      setStatus('sent');
-      form.reset();
-    } catch (err) {
-      setStatus('error');
-    }
-  };
+  // The browser does the submitting; this only flips the button to "Sending…".
+  const [sending, setSending] = React.useState(false);
+  React.useEffect(() => {
+    const reset = () => setSending(false);
+    window.addEventListener('pageshow', reset);
+    return () => window.removeEventListener('pageshow', reset);
+  }, []);
 
   const details = [
     { ico: 'fa-phone', lab: 'Call or text', val: '(978) 479-9406', href: 'tel:19784799406' },
@@ -103,59 +88,56 @@ function Contact() {
             })}
           </aside>
 
-          {status === 'sent' ? (
-            <div className="contact-form form-success">
-              <div className="success-mark"><i className="fa fa-check" aria-hidden="true"></i></div>
-              <h3>Thank you!</h3>
-              <p>Your request is on its way to Eric. We&rsquo;ll be in touch shortly — usually within one business day. Need us sooner? Call <a href="tel:19784799406">(978)&nbsp;479-9406</a>.</p>
+          <form className="contact-form" action={FORM_ENDPOINT} method="POST" onSubmit={() => setSending(true)}>
+            <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+            <input type="hidden" name="_subject" value="New free-quote request — murrayhomeimprovement.com" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value={THANK_YOU_URL} />
+            {NOTIFY_SMS_GATEWAY && <input type="hidden" name="_cc" value={NOTIFY_SMS_GATEWAY} />}
+            <div className="field-row">
+              <div className="field">
+                <label htmlFor="cf-name">Name</label>
+                <input id="cf-name" name="Name" type="text" placeholder="Jane Homeowner" required />
+              </div>
+              <div className="field">
+                <label htmlFor="cf-phone">Phone</label>
+                <input id="cf-phone" name="Phone" type="tel" placeholder="(978) 000-0000" />
+              </div>
             </div>
-          ) : (
-            <form className="contact-form" onSubmit={submit}>
-              <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
-              <div className="field-row">
-                <div className="field">
-                  <label htmlFor="cf-name">Name</label>
-                  <input id="cf-name" name="Name" type="text" placeholder="Jane Homeowner" required />
-                </div>
-                <div className="field">
-                  <label htmlFor="cf-phone">Phone</label>
-                  <input id="cf-phone" name="Phone" type="tel" placeholder="(978) 000-0000" />
-                </div>
-              </div>
-              <div className="field">
-                <label htmlFor="cf-email">Email</label>
-                <input id="cf-email" name="Email" type="email" placeholder="you@email.com" required />
-              </div>
-              <div className="field">
-                <label htmlFor="cf-type">Project type</label>
-                <select id="cf-type" name="Project type" defaultValue="">
-                  <option value="" disabled>Select a project…</option>
-                  <option>Kitchen remodel</option>
-                  <option>Bathroom remodel</option>
-                  <option>Addition / second level</option>
-                  <option>Basement or deck</option>
-                  <option>Whole-home / custom</option>
-                  <option>Something else</option>
-                </select>
-              </div>
-              <div className="field">
-                <label htmlFor="cf-msg">Project details</label>
-                <textarea id="cf-msg" name="Project details" rows="3" placeholder="Tell us what you have in mind…"></textarea>
-              </div>
-              <div className="form-foot">
-                <span className="form-note">
-                  {status === 'error'
-                    ? <span style={{ color: 'var(--accent)' }}><i className="fa fa-exclamation-circle ico" aria-hidden="true"></i> Couldn&rsquo;t send — email <a href="mailto:eric@murrayhomeimprovement.com" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Eric</a> or call (978) 479-9406.</span>
-                    : <span><i className="fa fa-lock ico" aria-hidden="true"></i> We&rsquo;ll never share your info.</span>}
-                </span>
-                <button className="btn btn-primary btn-lg" type="submit" disabled={status === 'sending'}>
-                  {status === 'sending'
-                    ? <React.Fragment><i className="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i> Sending…</React.Fragment>
-                    : <React.Fragment>Request my free quote <i className="fa fa-arrow-right ico" aria-hidden="true"></i></React.Fragment>}
-                </button>
-              </div>
-            </form>
-          )}
+            <div className="field">
+              <label htmlFor="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" placeholder="you@email.com" required />
+            </div>
+            <div className="field">
+              <label htmlFor="cf-town">Town</label>
+              <input id="cf-town" name="Town" type="text" placeholder="Chelmsford, Westford, Lowell…" />
+            </div>
+            <div className="field">
+              <label htmlFor="cf-type">Project type</label>
+              <select id="cf-type" name="Project type" defaultValue="">
+                <option value="" disabled>Select a project…</option>
+                <option>Kitchen remodel</option>
+                <option>Bathroom remodel</option>
+                <option>Addition / second level</option>
+                <option>Basement or deck</option>
+                <option>Whole-home / custom</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="cf-msg">Project details</label>
+              <textarea id="cf-msg" name="Project details" rows="3" placeholder="Tell us what you have in mind…"></textarea>
+            </div>
+            <div className="form-foot">
+              <span className="form-note"><span><i className="fa fa-lock ico" aria-hidden="true"></i> We&rsquo;ll never share your info.</span></span>
+              <button className="btn btn-primary btn-lg" type="submit" disabled={sending}>
+                {sending
+                  ? <React.Fragment><i className="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i> Sending…</React.Fragment>
+                  : <React.Fragment>Request my free quote <i className="fa fa-arrow-right ico" aria-hidden="true"></i></React.Fragment>}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

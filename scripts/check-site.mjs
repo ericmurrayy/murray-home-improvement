@@ -69,6 +69,13 @@ const text = Object.values(html).join('\n');
 check(!/Merrimack Valley/.test(text), 'copy regression: "Merrimack Valley" is back');
 check(!/\b(Dracut|Tewksbury|Andover|Acton|Concord|Bedford)\b/.test(text), 'copy regression: a town outside the service area is back');
 
+// Quote forms post natively (FormSubmit's AJAX endpoint sits behind a bot challenge) and land on thank-you.html.
+const FORM_ACTION = 'action="https://formsubmit.co/eric@murrayhomeimprovement.com" method="POST"';
+for (const p of ['/index.html', '/free-estimate.html']) {
+  check(html[p].includes(FORM_ACTION), `${p}: quote form must POST natively to FormSubmit`);
+  check(html[p].includes('name="_next" value="https://www.murrayhomeimprovement.com/thank-you.html"'), `${p}: quote form must land on thank-you.html`);
+}
+
 if (problems.length) {
   console.error(`\nSITE CHECK FAILED (${problems.length}):\n  ` + problems.slice(0, 60).join('\n  ') + '\n');
   process.exit(1);
