@@ -112,6 +112,12 @@ check(eric && eric[1].hasCredential.length >= 2, 'a Person node for Eric Murray 
 check(allNodes.some(([p, n]) => p === '/index.html' && n['@id'] === BIZ && n.founder && n.founder['@id'] === ERIC), 'home business node must name Eric as founder');
 check(nodes['/gallery.html'].some(n => n['@type'] === 'BreadcrumbList'), '/gallery.html needs a BreadcrumbList');
 
+// Service-area business: the Google Business Profile hides the street address, so the
+// site must not publish one (owner, 2026-09-23) — only Chelmsford, MA 01824.
+check(!/Middlesex T(pke|urnpike)|Pleasant St/.test(text), 'a street address is published; the business is a service-area business (Chelmsford, MA 01824 only)');
+const walkNodes = (n, fn) => { if (n && typeof n === 'object') { fn(n); Object.values(n).forEach(v => walkNodes(v, fn)); } };
+for (const [p, n] of allNodes) walkNodes(n, x => { if (x['@type'] === 'PostalAddress') check(!x.streetAddress, `${p}: PostalAddress must not include streetAddress`); });
+
 if (problems.length) {
   console.error(`\nSITE CHECK FAILED (${problems.length}):\n  ` + problems.slice(0, 60).join('\n  ') + '\n');
   process.exit(1);

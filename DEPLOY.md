@@ -87,12 +87,14 @@ certificate), which currently breaks about 160 of the site's ~200 known backlink
 2. **Set up Google Search Console** as a *Domain* property (verification is a DNS TXT record added
    at DreamHost). Note the current Performance and Pages numbers as a baseline. Optionally import
    the property into Bing Webmaster Tools.
-3. **Fix the quote form** — see "Contact form" below. The old WordPress form works; the new one
-   currently does not deliver, so switching without fixing it would silently drop web leads.
-4. **Confirm the business address.** The site's footer and structured data say "Old Middlesex
-   Turnpike, Chelmsford, MA 01824" (no street number); BBB lists 24 Pleasant St. Make the site
-   match the Google Business Profile exactly — or drop the street line if the profile hides the
-   address (service-area business).
+3. **Activate the quote forms** — see "Contact form" below. FormSubmit delivers nothing until
+   eric@ clicks its one-time activation email, so switching without that would silently drop
+   web leads.
+4. **Address: service-area business (settled 2026-09-23).** The Google Business Profile hides
+   the street address, so the site publishes only "Chelmsford, MA 01824" — footer and structured
+   data alike (`scripts/check-site.mjs` fails the build if a street address comes back). BBB still
+   lists 24 Pleasant St; that's fine for a service-area business, but if the profile ever shows an
+   address, publish exactly that one everywhere.
 
 ### The switch
 Both domains are already added to the Sevalla site (`murray-home-improvement`, served at
@@ -186,11 +188,10 @@ There are two quote forms, both sending to FormSubmit (eric@murrayhomeimprovemen
   plain HTML form (native POST, no JavaScript) that lands on `thank-you.html`. FormSubmit only
   starts delivering after a one-time activation: the first real submission emails a confirmation
   link to eric@ — click it once. Submit a test right after launch to trigger that email.
-- **Home page form** (`site/Contact.jsx`) — posts in the background (AJAX). FormSubmit's AJAX
-  endpoint sits behind a Cloudflare challenge that blocks it, so this form shows the
-  "couldn't send — email Eric or call (978) 479-9406" fallback. Fix: **Web3Forms** (free) — get
-  an access key by entering eric@murrayhomeimprovement.com at web3forms.com, then swap
-  `FORM_ENDPOINT` to `https://api.web3forms.com/submit` and add the `access_key` field.
+- **Home page form** (`site/Contact.jsx`) — the same native POST to FormSubmit, landing on
+  `thank-you.html`. (FormSubmit's AJAX endpoint sits behind a Cloudflare challenge, so neither
+  form posts in the background.) The build fails if either form stops posting to eric@ or stops
+  landing on `thank-you.html`.
 
 - **Text messages (optional):** set `NOTIFY_SMS_GATEWAY` to Eric's carrier email-to-text address
   (AT&T `9784799406@txt.att.net`, T-Mobile `9784799406@tmomail.net`; Verizon retired `@vtext.com`

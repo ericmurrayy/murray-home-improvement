@@ -42,7 +42,7 @@ function Footer() {
             <a href="tel:19784799406">(978) 479-9406</a>
             <a href="mailto:eric@murrayhomeimprovement.com">eric@murrayhomeimprovement.com</a>
             <a href="gallery.html">Project gallery</a>
-            <p>Old Middlesex Tpke,<br />Chelmsford, MA 01824</p>
+            <p>Chelmsford, MA 01824</p>
           </div>
         </div>
         <div className="footer-bottom">
