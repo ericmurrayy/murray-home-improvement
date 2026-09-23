@@ -95,21 +95,33 @@ certificate), which currently breaks about 160 of the site's ~200 known backlink
    address (service-area business).
 
 ### The switch
-1. **Sevalla → static site → Domains:** `www.murrayhomeimprovement.com` and
-   `murrayhomeimprovement.com` (the bare domain is redirected to `www` by the first rule in
-   `_redirects`). Sevalla lists the DNS records each one needs.
-2. **DreamHost DNS** — keep the nameservers and email exactly as they are:
-   - If the domain is "Fully Hosted", switch it to **DNS only** first (DreamHost won't let you
-     edit `@`/`www` records while it hosts the site). This does not affect email.
-   - Add the two **TXT** records per domain that Sevalla shows (`_cf-custom-hostname…` for
-     verification, `_acme-challenge…` for the certificate). These can go in days ahead — they
-     don't touch the live site — so HTTPS is ready the moment traffic moves.
-   - Then point `www` and `@` at the **A** record values Sevalla shows (remove any old A/CNAME
-     records for those two names first).
-   - **Do not touch** the MX, SPF (`v=spf1 …`) and DKIM (`dreamhost._domainkey`) TXT records, or
-     `mail` / `webmail`. Do **not** move the nameservers.
-3. Wait until both domains show **Active** in Sevalla (usually minutes; DreamHost TTLs can make it
-   take a few hours).
+Both domains are already added to the Sevalla site (`murray-home-improvement`, served at
+`murray-home-improvement-wsifp.kinsta.page`); the bare domain is redirected to `www` by the first
+rule in `_redirects`. At **DreamHost → DNS** for murrayhomeimprovement.com:
+
+1. **Now (safe any time — the live site is unaffected):** add the two ownership TXT records:
+
+   | Type | Name | Value |
+   |---|---|---|
+   | TXT | `_cf-custom-hostname.www` | `7446d0a9-cf1c-4f64-9e63-21336ac1bb18` |
+   | TXT | `_cf-custom-hostname` | `6b0d78e7-e715-4e2b-a49e-612855d1aeca` |
+
+   If Sevalla (static site → Domains) later lists `_acme-challenge` TXT records for certificates,
+   add those too, so HTTPS is ready before traffic moves.
+2. **On switch day:** if the domain is "Fully Hosted" at DreamHost, change it to **DNS only** first
+   (DreamHost won't let you edit `@`/`www` while it hosts the site; email is unaffected). Remove the
+   old A/CNAME records for `www` and `@`, then add:
+
+   | Type | Name | Value |
+   |---|---|---|
+   | A | `www` | `162.159.152.19` |
+   | A | `@` (bare domain) | `162.159.153.245` |
+
+   **Do not touch** the MX, SPF (`v=spf1 …`) and DKIM (`dreamhost._domainkey`) TXT records, or
+   `mail` / `webmail`. Do **not** move the nameservers.
+3. Wait until both domains show **Active** in Sevalla (minutes to a few hours with DreamHost's
+   TTLs). If a domain shows "timed out", use *Refresh status* there once the records are in.
+   Always confirm the values in Sevalla's Domains screen before editing DNS, in case they change.
 
 ### Verify (from any terminal)
 ```
