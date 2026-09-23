@@ -91,13 +91,13 @@ function Services() {
 
 function Work() {
   const tiles = [
-    { c: 'w-a', pic: PROJ + 'dark-cabinet-granite-countertop-kitchen-remodel/01-dark-cabinets-granite-counters-and-a-large', w: 1600, h: 1200, cap: 'Kitchen remodel', ico: 'fa-cutlery' },
-    { c: 'w-b', img: 'assets/ba-front-after.jpg', w: 1079, h: 900, cap: 'Full exterior remodel', ico: 'fa-home' },
-    { c: 'w-e', pic: PROJ + 'custom-kitchen-remodel/01-white-shaker-cabinets-the-island-and-pendant', w: 1200, h: 1600, cap: 'White shaker kitchen', ico: 'fa-cutlery' },
-    { c: 'w-f', pic: PROJ + 'double-bath-remodel/01-double-vanity-with-two-mirrors-and-light', w: 1200, h: 1600, cap: 'Double-vanity bath', ico: 'fa-bath' },
-    { c: 'w-g', pic: PROJ + 'therma-tru-entrance-doors/07-craftsman-style-stained-door-with-sidelights', w: 1305, h: 1600, cap: 'Craftsman entry door', ico: 'fa-columns' },
-    { c: 'w-c', pic: PROJ + 'finished-basement/01-the-basement-family-room', w: 1600, h: 1200, cap: 'Finished basement', ico: 'fa-th-large' },
-    { c: 'w-d', pic: PROJ + 'bridge-build-town-of-chelmsford/06-the-footbridge-over-the-brook', w: 1600, h: 1200, cap: 'Footbridge for the Town of Chelmsford', ico: 'fa-wrench' },
+    { c: 'w-a', pic: PROJ + 'dark-cabinet-granite-countertop-kitchen-remodel/01-dark-cabinets-granite-counters-and-a-large', w: 1600, h: 1200, cap: 'Dark-cabinet kitchen remodel', ico: 'fa-cutlery', href: 'projects/dark-cabinet-granite-countertop-kitchen-remodel.html' },
+    { c: 'w-b', img: 'assets/ba-front-after.jpg', w: 1079, h: 900, cap: 'Full exterior remodel', ico: 'fa-home', href: 'gallery.html#transformation' },
+    { c: 'w-e', pic: PROJ + 'custom-kitchen-remodel/01-white-shaker-cabinets-the-island-and-pendant', w: 1200, h: 1600, cap: 'White shaker kitchen', ico: 'fa-cutlery', href: 'projects/custom-kitchen-remodel.html' },
+    { c: 'w-f', pic: PROJ + 'double-bath-remodel/01-double-vanity-with-two-mirrors-and-light', w: 1200, h: 1600, cap: 'Double-vanity bath', ico: 'fa-bath', href: 'projects/double-bath-remodel.html' },
+    { c: 'w-g', pic: PROJ + 'therma-tru-entrance-doors/07-craftsman-style-stained-door-with-sidelights', w: 1305, h: 1600, cap: 'Craftsman entry door', ico: 'fa-columns', href: 'projects/therma-tru-entrance-doors.html' },
+    { c: 'w-c', pic: PROJ + 'finished-basement/01-the-basement-family-room', w: 1600, h: 1200, cap: 'Finished basement', ico: 'fa-th-large', href: 'projects/finished-basement.html' },
+    { c: 'w-d', pic: PROJ + 'bridge-build-town-of-chelmsford/06-the-footbridge-over-the-brook', w: 1600, h: 1200, cap: 'Footbridge for the Town of Chelmsford', ico: 'fa-wrench', href: 'projects/bridge-build-town-of-chelmsford.html' },
   ];
   const sizesFor = c => (c === 'w-a' || c === 'w-d') ? '(max-width: 760px) 100vw, 58vw' : '(max-width: 760px) 50vw, 40vw';
   return (
@@ -108,12 +108,12 @@ function Work() {
             <span className="eyebrow">Our work</span>
             <h2 className="section-title">Real projects, real homes,<br />in and around Chelmsford</h2>
           </div>
-          <a className="btn btn-ghost" href="gallery.html">View the full gallery <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
+          <a className="btn btn-ghost" href="projects/index.html">All 11 projects <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
         </div>
         <div className="work-grid reveal">
           {tiles.map((t, i) => (
             <figure className={t.c} key={i}>
-              <a href="gallery.html" aria-label={t.cap + ' — view in the gallery'}>
+              <a href={t.href} aria-label={t.cap + ' — see the project'}>
                 {t.pic
                   ? <Pic p={t.pic} w={t.w} h={t.h} alt={t.cap} sizes={sizesFor(t.c)} />
                   : <img src={t.img} width={t.w} height={t.h} alt={t.cap} loading="lazy" decoding="async" />}

@@ -63,7 +63,7 @@ function Hero() {
               <img src="assets/eric-avatar.jpg" alt="" width="200" height="200" decoding="async" />
               <div><b>Eric Murray, owner</b><span>Answers the phone himself</span></div>
             </div>
-            <a className="hero-card" href="gallery.html">
+            <a className="hero-card" href="projects/kitchen-remodel-before-and-after.html">
               <span className="hc-ico"><i className="fa fa-cutlery" aria-hidden="true"></i></span>
               <div>
                 <b>Kitchen remodel, start to finish</b>

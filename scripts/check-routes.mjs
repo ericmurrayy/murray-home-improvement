@@ -46,6 +46,13 @@ fs.readFileSync(path.join(DIST, '_redirects'), 'utf8').split('\n').forEach((raw,
     return;
   }
   if (rules.some(r => r.notFound)) problems.push(`${where}: rules after the "/*  /404.html  404" catch-all never run`);
+  // Off-site 302s are allowed only for explicit hand-offs (e.g. /review → Google's review form):
+  // temporary, so nothing on the site is treated as moved, and never a wildcard.
+  if (status === '302' && /^https:\/\//.test(destination)) {
+    if (source.includes('*')) problems.push(`${where}: an off-site 302 must be a single exact path (${source})`);
+    rules.push({ source, destination, where, offsite: true });
+    return;
+  }
   if (status !== '301') problems.push(`${where}: use 301 (permanent), got ${status || 'none'}`);
   if (!source.startsWith('/') || /[*]./.test(source) || (source.includes('*') && !source.endsWith('/*')))
     problems.push(`${where}: source must be a path, with * only as a trailing /* (${source})`);
@@ -76,6 +83,7 @@ function resolve(pathname) {
 if (!rules.some(r => r.notFound)) problems.push('_redirects needs a last rule "/*  /404.html  404" so unknown URLs return a real 404');
 for (const r of rules) {
   if (!r.source.endsWith('/*') && served(r.source)) problems.push(`${r.where}: ${r.source} is an existing page, so this rule never runs`);
+  if (r.offsite) continue; // an explicit hand-off to another site; nothing on the site to check
   const dest = new URL(r.destination, SITE);
   if (dest.origin !== SITE) problems.push(`${r.where}: redirects off-site (${r.destination})`);
   else if (!served(dest.pathname)) problems.push(`${r.where}: destination ${r.destination} isn't a page on the site`);
