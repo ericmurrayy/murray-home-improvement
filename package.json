@@ -3,7 +3,7 @@
   "private": true,
   "description": "Static marketing site for Murray Home Improvement. `npm run build` writes the deployable site to dist/.",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/check-routes.mjs"
+    "build": "node scripts/build.mjs && node scripts/check-routes.mjs && node scripts/check-site.mjs"
   },
   "dependencies": {
     "@babel/standalone": "7.29.0",

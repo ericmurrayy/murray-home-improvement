@@ -22,7 +22,9 @@ import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(ROOT, 'dist');
+// SITE_OUT lets local runs build outside the iCloud-synced repo folder (syncing a freshly
+// rebuilt dist/ can stall the build); the host uses the default dist/.
+const OUT = process.env.SITE_OUT ? path.resolve(process.env.SITE_OUT) : path.join(ROOT, 'dist');
 
 // Repo-only files: tooling, docs, and design-system reference material that isn't
 // part of the public site (none of it is linked from a page).
