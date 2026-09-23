@@ -38,6 +38,14 @@ fs.readFileSync(path.join(DIST, '_redirects'), 'utf8').split('\n').forEach((raw,
       problems.push(`${where}: host redirects must read "https://<host>/*  ${SITE}/:splat  301!"`);
     return;
   }
+  // Catch-all not-found rule: serves 404.html with a real 404 status (without it the host
+  // answers unknown URLs with the not-found page and a 200, which Google treats as a soft 404).
+  if (source === '/*' && status === '404') {
+    if (destination !== '/404.html') problems.push(`${where}: the catch-all must serve /404.html`);
+    rules.push({ source, destination, where, notFound: true });
+    return;
+  }
+  if (rules.some(r => r.notFound)) problems.push(`${where}: rules after the "/*  /404.html  404" catch-all never run`);
   if (status !== '301') problems.push(`${where}: use 301 (permanent), got ${status || 'none'}`);
   if (!source.startsWith('/') || /[*]./.test(source) || (source.includes('*') && !source.endsWith('/*')))
     problems.push(`${where}: source must be a path, with * only as a trailing /* (${source})`);
@@ -61,10 +69,11 @@ function matches(rule, pathname) {
 function resolve(pathname) {
   if (served(pathname)) return { status: 200 };
   const rule = rules.find(r => matches(r, pathname));
-  return rule ? { status: 301, location: rule.destination, rule } : { status: 404 };
+  return rule && !rule.notFound ? { status: 301, location: rule.destination, rule } : { status: 404 };
 }
 
 // 1. Every rule: reachable, and lands on a live page.
+if (!rules.some(r => r.notFound)) problems.push('_redirects needs a last rule "/*  /404.html  404" so unknown URLs return a real 404');
 for (const r of rules) {
   if (!r.source.endsWith('/*') && served(r.source)) problems.push(`${r.where}: ${r.source} is an existing page, so this rule never runs`);
   const dest = new URL(r.destination, SITE);

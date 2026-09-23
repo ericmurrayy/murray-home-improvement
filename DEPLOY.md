@@ -46,10 +46,13 @@ Edit the JSX sources, never `dist/`. Opening the source `index.html` directly st
 (in-browser Babel), for design/edit sessions. To build locally: `npm install && npm run build`.
 
 ## How deploys work
-Pushing to `main` on GitHub auto-deploys on Sevalla (site settings: install `npm ci`, build
-`npm run build`, publish `dist`, error page `404.html`, pretty URLs **off** — turning them on would
-redirect every `.html` URL). Sevalla also serves each site on a `*.kinsta.page` address; switch that
-off once the real domain is live so Google never sees a second copy.
+Pushing to `main` on GitHub auto-deploys on Sevalla. Site settings: install `npm ci`, build
+`npm run build`, publish `dist`, **no** error-file setting (the last rule in `_redirects` serves
+`404.html` with a real 404 status — the error-file setting would answer unknown URLs with a 200),
+and pretty URLs **off** (turning them on would redirect every `.html` URL). Sevalla also serves each
+site on a `*.kinsta.page` address; switch that off once the real domain is live so Google never
+sees a second copy. Sevalla's firewall answers any `.php` path with 403, so the two 2009 gallery
+URLs `/gallery/main.php` and `/gallery/index.php` can't redirect (they have no known backlinks).
 
 History: the site was first set up on Vercel, but that account is blocked (a lapsed Pro trial;
 Vercel's free plan doesn't allow business sites). A July 2026 copy is also on GitHub Pages at

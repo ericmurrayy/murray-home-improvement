@@ -576,3 +576,6 @@ https://murrayhomeimprovement.com/*  https://www.murrayhomeimprovement.com/:spla
 /img-7298/  /gallery.html  301
 /img-7320  /gallery.html  301
 /img-7320/  /gallery.html  301
+
+# --- Anything else: the custom not-found page, with a real 404 status (must stay last) ---
+/*  /404.html  404
