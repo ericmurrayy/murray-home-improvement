@@ -29,7 +29,7 @@ const OUT = path.join(ROOT, 'dist');
 const EXCLUDE = new Set([
   '.git', '.github', '.vercel', '.claude', 'node_modules', 'dist', 'scripts',
   'preview', 'uploads', 'package.json', 'package-lock.json', '.gitignore',
-  'README.md', 'SKILL.md', 'DEPLOY.md', 'colors_and_type.css', '.DS_Store',
+  'README.md', 'SKILL.md', 'DEPLOY.md', 'docs', 'colors_and_type.css', '.DS_Store',
 ]);
 
 function fail(msg) {
