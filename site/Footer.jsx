@@ -44,7 +44,8 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <small>© {new Date().getFullYear()} Murray Home Improvement &middot; MA CSL #077319 &middot; HIC #174394 &middot; USDOT 2353155</small>
+          {/* suppressHydrationWarning: the pre-rendered year is the build year */}
+          <small suppressHydrationWarning>© {new Date().getFullYear()} Murray Home Improvement &middot; MA CSL #077319 &middot; HIC #174394 &middot; USDOT 2353155</small>
           <div className="socials">
             <a href="https://www.facebook.com/MurrayHomeImprovement" target="_blank" rel="noopener" aria-label="Facebook"><i className="fa fa-facebook" aria-hidden="true"></i></a>
             <a href="privacy.html" className="foot-legal">Privacy Policy</a>

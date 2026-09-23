@@ -1,85 +1,177 @@
 # Murray Home Improvement — Website Deployment & Handoff
 
-A complete, static marketing site. No server or build step required — it's plain HTML, CSS,
-and JS, so it runs on any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3,
-or traditional shared hosting).
+A static marketing site with a small build step. `npm run build` writes the deployable site to
+`dist/`; Vercel runs it on every push (settings live in `vercel.json`), so there is nothing to
+build by hand.
 
 ## What's in the site
 
 ```
-Murray Home Improvement.html   ← Home page (rename to index.html on deploy — see below)
-gallery.html                   ← Project gallery (sliders, build progression, grid)
-privacy.html                   ← Privacy policy
-sitemap.xml, robots.txt        ← SEO
+index.html                     ← Home page (React; pre-rendered to static HTML at build time)
+gallery.html, about.html, areas.html, reviews.html, financing.html,
+free-estimate.html, warranty.html, privacy.html, 404.html
 services/   (10 pages)         ← Kitchen, Bath, Additions, Second-Story, Basement,
                                  Decks, Siding, Roofing, Windows & Doors, Custom Carpentry
 towns/      (12 pages)         ← Lowell, Billerica, Westford, Tewksbury, Dracut,
                                  Tyngsborough, Carlisle, Andover, North Andover, Acton,
                                  Concord, Bedford
-site/       ← styles.css, pages.css, JS (cube hero, before/after slider, menu) + React JSX
+guides/     (10 pages)         ← Remodeling cost / planning / permit guides
+site/       ← styles.css, pages.css, JS (cube hero, before/after slider, map, menu) + React JSX
 assets/     ← logos, optimized project photos, Font Awesome
+sitemap.xml, robots.txt        ← SEO
+vercel.json                    ← build settings, 301 redirects from the old site, headers
+scripts/build.mjs              ← builds dist/ (see below)
+scripts/check-routes.mjs       ← fails the build if an old-site URL or a sitemap URL would break
+scripts/legacy-urls.txt        ← every URL the old site served (the redirect safety net)
 ```
 
-## Going live (GitHub → Vercel)
+Not deployed (repo-only reference material): `preview/`, `uploads/`, `colors_and_type.css`,
+`README.md`, `SKILL.md`, this file.
 
-The site is already structured for a zero-config Vercel deploy — `index.html` is the home page,
-links and canonical URLs use real `.html` paths, and `vercel.json` adds caching + security headers.
+### What the build does
+- **Pre-renders the home page.** The home page is a React app. The build renders it to HTML and
+  writes it into `index.html`, so search engines (and anyone without JavaScript) get the full page;
+  the browser then attaches React to that markup. Before this, the home page's HTML was an empty
+  `<div id="root">`.
+- **Compiles the JSX once** (`site/*.jsx`, `tweaks-panel.jsx` → `site/home.js`) and serves
+  React's production build locally, so visitors no longer download and run Babel in the browser.
+- **Checks routing** (`scripts/check-routes.mjs`). If an edit to `vercel.json` or a renamed page
+  would break an old URL, send an old URL through a redirect chain, or redirect a sitemap URL,
+  the build fails and Vercel keeps the previous version live.
 
-1. **Push to GitHub** — commit the whole project to a repo (`.gitignore` is included).
-2. **Import to Vercel** — New Project → import the repo. Framework Preset: **Other** (it's static —
-   no build command, output directory = root). Deploy.
-3. **Add the domain** in Vercel → Settings → Domains: `www.murrayhomeimprovement.com` (and
-   `murrayhomeimprovement.com` → redirect to www). Canonicals, sitemap, and structured data all
-   already use `https://www.murrayhomeimprovement.com`.
-4. **Activate the contact form** (see below).
-5. **Submit the sitemap** in Google Search Console: `https://www.murrayhomeimprovement.com/sitemap.xml`.
+Edit the JSX sources, never `dist/`. Opening the source `index.html` directly still works
+(in-browser Babel), for design/edit sessions. To build locally: `npm install && npm run build`.
 
-### What's deployed vs. reference
-Everything serves fine as-is. These files are **design-system reference only** and can be left in
-the repo or deleted — they aren't part of the live site: `README.md`, `colors_and_type.css`,
-`SKILL.md`, `preview/`. (Keep `index.html`, `gallery.html`, `privacy.html`, `services/`, `towns/`,
-`site/`, `assets/`, `sitemap.xml`, `robots.txt`, `vercel.json`.)
+## How deploys work
+Pushing to `main` on GitHub auto-deploys to Vercel production. Preview (`*.vercel.app`) URLs are
+sent `X-Robots-Tag: noindex` so they never compete with the real domain in Google.
+
+---
+
+## Launch checklist: moving www.murrayhomeimprovement.com from WordPress (DreamHost) to Vercel
+
+**Where things are today (checked 2026-09-22):** the domain is registered at AIT until 2031, its
+DNS is hosted at DreamHost (ns1–3.dreamhost.com), and **email for @murrayhomeimprovement.com also
+runs through DreamHost** (MX → mx1/mx2.mailchannels.net, plus SPF and DKIM TXT records). The old
+WordPress site is served over plain `http://www.` — its `https://` is broken (self-signed
+certificate), which currently breaks about 160 of the site's ~200 known backlinks (they point at
+`https://`). Moving to Vercel fixes that.
+
+### Before the switch
+1. **Back up the WordPress site** (DreamHost panel → backups, or download the files + database).
+   Keep it for at least 6 months as a rollback path.
+2. **Set up Google Search Console** as a *Domain* property (verification is a DNS TXT record added
+   at DreamHost). Note the current Performance and Pages numbers as a baseline. Optionally import
+   the property into Bing Webmaster Tools.
+3. **Fix the quote form** — see "Contact form" below. The old WordPress form works; the new one
+   currently does not deliver, so switching without fixing it would silently drop web leads.
+4. **Confirm the business address.** The site's footer and structured data say "Old Middlesex
+   Turnpike, Chelmsford, MA 01824" (no street number); BBB lists 24 Pleasant St. Make the site
+   match the Google Business Profile exactly — or drop the street line if the profile hides the
+   address (service-area business).
+
+### The switch
+1. **Vercel → project → Settings → Domains:** add `www.murrayhomeimprovement.com` (primary) and
+   `murrayhomeimprovement.com`, set to redirect to `www` (choose a permanent 301/308).
+2. **DreamHost DNS** — keep the nameservers and email exactly as they are:
+   - If the domain is "Fully Hosted", switch it to **DNS only** first (DreamHost won't let you
+     edit `@`/`www` records while it hosts the site). This does not affect email.
+   - `www` → **CNAME** to the value Vercel shows (e.g. `cname.vercel-dns.com`).
+   - `@` (apex) → **A** record to the IP Vercel shows (e.g. `76.76.21.21`).
+   - **Do not touch** the MX, SPF (`v=spf1 …`) and DKIM (`dreamhost._domainkey`) TXT records, or
+     `mail` / `webmail`.
+   - Do **not** move the nameservers to Vercel unless every email record is recreated there first.
+3. Wait until Vercel shows both domains as valid and has issued certificates (usually minutes;
+   DreamHost TTLs can make it take a few hours).
+
+### Verify (from any terminal)
+```
+curl -sI http://www.murrayhomeimprovement.com/about-us/        # → https, then 301 to /about.html
+curl -sI https://murrayhomeimprovement.com/                     # → https://www.murrayhomeimprovement.com/
+curl -sI https://www.murrayhomeimprovement.com/portfolio/finished-basement/   # → 301 /services/basement-finishing.html
+curl -s  https://www.murrayhomeimprovement.com/ | grep -c "Remodeling"        # > 0: home page HTML has content
+```
+Then send a test email to eric@murrayhomeimprovement.com and submit the quote form once.
+
+### After the switch
+1. **Search Console:** submit `https://www.murrayhomeimprovement.com/sitemap.xml`, then use URL
+   Inspection → *Request indexing* on the home page and the main service pages.
+2. **Update the website link** to `https://www.murrayhomeimprovement.com/` in the Google Business
+   Profile, Facebook, Houzz, BBB, and Angi (old links keep working through redirects, but direct
+   links are better).
+3. **Watch Search Console → Pages** weekly for 4–8 weeks. Old URLs showing as "Page with redirect"
+   is expected and good. Anything showing "Not found (404)" that had value → add a redirect in
+   `vercel.json` and a line in `scripts/legacy-urls.txt`.
+4. **Keep the redirects permanently.** Don't cancel the DreamHost account — it still hosts DNS and
+   email; only the WordPress web hosting goes away.
+
+**Rollback:** point `www` and `@` back to DreamHost (re-enable hosting for the domain) — the
+WordPress site is untouched until you delete it.
+
+### Where the old URLs go (all 301, one hop)
+| Old URL | New page |
+|---|---|
+| `/about-us/`, `/author/…` | `/about.html` |
+| `/contact/`, `/contact.html` | `/free-estimate.html` |
+| `/services/`, `/homepage/`, `/sample-page/`, `/page/N/`, feeds, logo attachment pages | `/` |
+| `/our-work/`, `/portfolio/`, `/project-type/remodeling/`, `/project-type/general-contracting/` | `/gallery.html` |
+| `/portfolio/…bath…`, `/project-type/bath/` | `/services/bathroom-remodeling.html` |
+| `/portfolio/…kitchen…`, `/project-type/kitchen/` | `/services/kitchen-remodeling.html` |
+| `/portfolio/second-floor-addition/` | `/services/second-story-additions.html` |
+| `/portfolio/addition-with-excavation-and-foundation/`, `/project-type/additions/` | `/services/home-additions.html` |
+| `/portfolio/budget-pressure-treated-deck/`, `/project-type/decks/` | `/services/decks-porches.html` |
+| `/portfolio/finished-basement/`, `/project-type/basement/` | `/services/basement-finishing.html` |
+| `/portfolio/therma-tru-entrance-doors/` | `/services/windows-doors.html` |
+| `/news/`, `/blog/`, `/category/…`, `/2019/…` archives | `/guides/index.html` |
+| ~800 photo attachment pages (`/img-1234/`), `/wp-content/uploads/…`, 2009 `/gallery/…` | `/gallery.html` |
+| 2009 site: `/testimonials.html`, `/references.html` | `/reviews.html` |
+| `/sitemap-1.xml`, `/image-sitemap-1.xml` | `/sitemap.xml` |
+
+WordPress internals (`/wp-admin/`, `/wp-includes/`, `/wp-json/`, `/xmlrpc.php`, `/wp-login.php`)
+intentionally return 404.
+
+**SEO baseline at migration (Semrush, US, 2026-09-22):** 28 ranking keywords, ~0 estimated traffic.
+Best: "murray renovations" #18, "bathroom remodeling murray" #18 (`/project-type/bath/`),
+"murray renovation" #24, "bathroom remodeling chelmsford ma" #28, "contractors chelmsford ma" #36,
+"general contractor chelmsford ma" #45. Compare against these after the move.
+
+---
 
 ## Contact form — email & text notifications
 
-The quote form posts to **FormSubmit** (free, no backend). Config is at the top of
-`site/Contact.jsx`:
+Config is at the top of `site/Contact.jsx`. **Current status: not delivering.** The form posts to
+FormSubmit, whose AJAX endpoint is now behind a Cloudflare challenge that blocks it, so visitors
+see the "couldn't send — email Eric or call (978) 479-9406" fallback. Recommended fix:
+**Web3Forms** (free) — get an access key by entering eric@murrayhomeimprovement.com at
+web3forms.com, then swap `FORM_ENDPOINT` to `https://api.web3forms.com/submit` and add the
+`access_key` field.
 
-- **Activate email (required, one time):** the first real submission triggers a confirmation
-  email from FormSubmit to `eric@murrayhomeimprovement.com`. Click the link in it once — after
-  that every lead is emailed automatically.
-- **Enable text messages (optional):** set `NOTIFY_SMS_GATEWAY` to Eric's carrier email‑to‑text
-  address so each lead is also texted:
-  - Verizon → `9784799406@vtext.com`
-  - AT&T → `9784799406@txt.att.net`
-  - T‑Mobile → `9784799406@tmomail.net`
-- **Want a CRM / richer SMS?** Point the form at a Zapier/Make inbox, or swap `FORM_ENDPOINT`
-  for Web3Forms / Formspree / your own endpoint.
+- **Text messages (optional):** set `NOTIFY_SMS_GATEWAY` to Eric's carrier email-to-text address
+  (AT&T `9784799406@txt.att.net`, T-Mobile `9784799406@tmomail.net`; Verizon retired `@vtext.com`
+  in 2025).
 
-> The form works on the live domain. (In the in‑app preview the cross‑origin POST is blocked, so
-> it shows the graceful "couldn't send — call or email us" fallback — that's expected, not a bug.)
+## SEO in place
 
-## SEO that's already in place
-
-- Unique `<title>` + meta description per page; Open Graph + Twitter cards (social preview uses a
-  real project photo).
-- Canonical URLs on every page; `sitemap.xml` + `robots.txt`.
-- Structured data: `GeneralContractor` (home, with geo, areaServed, Facebook), `Service` +
-  `BreadcrumbList` (service pages), `LocalBusiness` + `ItemList` + `BreadcrumbList` (town pages),
-  and `FAQPage` (rich‑result eligible) on every service & town page.
+- Unique `<title>` + meta description per page; Open Graph + Twitter cards.
+- Canonical URLs on every page; `sitemap.xml` + `robots.txt`; custom `404.html` (noindex).
+- Home page content is in the HTML response (pre-rendered), not only built by JavaScript.
+- Structured data: `GeneralContractor` (home: geo, areaServed, Facebook/Houzz/BBB `sameAs`),
+  `Service` + `BreadcrumbList` (service pages), `LocalBusiness` + `ItemList` + `BreadcrumbList`
+  (town pages), and `FAQPage` on every service & town page.
+- 301s for every known old-site URL (above), verified on every build.
 
 ## Updating content
 
-- **Photos:** drop new optimized JPGs into `assets/` and reference them. Keep images web‑sized
-  (≤1600px, JP</-/q≈82); the current set was compressed from ~20 MB down to ~3 MB total.
-- **Services / towns:** each is a self‑contained HTML file — copy one as a template for new ones,
+- **Photos:** drop new optimized JPGs into `assets/` and reference them. Keep images web-sized
+  (≤1600px, JPEG q≈82); the current set was compressed from ~20 MB down to ~3 MB total.
+- **Services / towns:** each is a self-contained HTML file — copy one as a template for new ones,
   then add it to `sitemap.xml` and the relevant footer/nav lists.
-- **Owner photo / gallery:** the About photo and any `image-slot` placeholders accept a drag‑and‑
+- **Renaming or removing a page:** add a 301 in `vercel.json` from the old path to the closest
+  page; the build's route check will tell you if you missed one.
+- **Owner photo / gallery:** the About photo and any `image-slot` placeholders accept a drag-and-
   dropped image in the editor; for the live site, just replace the referenced file in `assets/`.
 
 ## Notes
 
-- The React pages (home) load React + Babel from a CDN for convenience. For maximum performance
-  you can pre‑compile, but it is not required to run.
 - The 3D hero and before/after sliders are progressive enhancements — content stays fully visible
   if scripts are blocked.

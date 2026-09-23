@@ -127,4 +127,9 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+// The deployed index.html arrives with the page already rendered into #root
+// (scripts/build.mjs), so attach to that markup instead of replacing it. The
+// source index.html has an empty #root and renders from scratch as before.
+const rootEl = document.getElementById('root');
+if (rootEl.hasChildNodes()) ReactDOM.hydrateRoot(rootEl, <App />);
+else ReactDOM.createRoot(rootEl).render(<App />);

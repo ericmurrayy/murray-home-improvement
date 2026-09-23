@@ -1,7 +1,71 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": false,
-  "trailingSlash": false,
+  "redirects": [
+    { "source": "/homepage{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/sample-page{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/page/:n(\\d+){/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/index.php", "destination": "/", "statusCode": 301 },
+    { "source": "/links.html", "destination": "/", "statusCode": 301 },
+
+    { "source": "/about-us{/}?", "destination": "/about.html", "statusCode": 301 },
+    { "source": "/author:rest(/.*)?", "destination": "/about.html", "statusCode": 301 },
+
+    { "source": "/services/single-service{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/services/page/:n(\\d+){/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/services{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/services.html", "destination": "/", "statusCode": 301 },
+
+    { "source": "/contact{/}?", "destination": "/free-estimate.html", "statusCode": 301 },
+    { "source": "/contact.html", "destination": "/free-estimate.html", "statusCode": 301 },
+
+    { "source": "/testimonials.html", "destination": "/reviews.html", "statusCode": 301 },
+    { "source": "/references.html", "destination": "/reviews.html", "statusCode": 301 },
+    { "source": "/references09.doc", "destination": "/reviews.html", "statusCode": 301 },
+
+    { "source": "/portfolio/:slug(bath-remodel-with-heated-floor|double-bath-remodel):rest(/.*)?", "destination": "/services/bathroom-remodeling.html", "statusCode": 301 },
+    { "source": "/portfolio/:slug(custom-kitchen-remodel|dark-cabinet-granite-countertop-kitchen-remodel|kitchen-remodel-before-and-after):rest(/.*)?", "destination": "/services/kitchen-remodeling.html", "statusCode": 301 },
+    { "source": "/portfolio/second-floor-addition:rest(/.*)?", "destination": "/services/second-story-additions.html", "statusCode": 301 },
+    { "source": "/portfolio/addition-with-excavation-and-foundation:rest(/.*)?", "destination": "/services/home-additions.html", "statusCode": 301 },
+    { "source": "/portfolio/budget-pressure-treated-deck:rest(/.*)?", "destination": "/services/decks-porches.html", "statusCode": 301 },
+    { "source": "/portfolio/finished-basement:rest(/.*)?", "destination": "/services/basement-finishing.html", "statusCode": 301 },
+    { "source": "/portfolio/therma-tru-entrance-doors:rest(/.*)?", "destination": "/services/windows-doors.html", "statusCode": 301 },
+    { "source": "/portfolio:rest(/.*)?", "destination": "/gallery.html", "statusCode": 301 },
+    { "source": "/our-work:rest(/.*)?", "destination": "/gallery.html", "statusCode": 301 },
+
+    { "source": "/project-type/bath:rest(/.*)?", "destination": "/services/bathroom-remodeling.html", "statusCode": 301 },
+    { "source": "/project-type/kitchen:rest(/.*)?", "destination": "/services/kitchen-remodeling.html", "statusCode": 301 },
+    { "source": "/project-type/additions:rest(/.*)?", "destination": "/services/home-additions.html", "statusCode": 301 },
+    { "source": "/project-type/basement:rest(/.*)?", "destination": "/services/basement-finishing.html", "statusCode": 301 },
+    { "source": "/project-type/decks:rest(/.*)?", "destination": "/services/decks-porches.html", "statusCode": 301 },
+    { "source": "/project-type:rest(/.*)?", "destination": "/gallery.html", "statusCode": 301 },
+
+    { "source": "/:slug(kearney-kitchen|kitchen-remodel-thumb){/}?", "destination": "/services/kitchen-remodeling.html", "statusCode": 301 },
+    { "source": "/:slug(deck-remodel|budget-pressure-treated-deck-2){/}?", "destination": "/services/decks-porches.html", "statusCode": 301 },
+    { "source": "/exterior-remodel-thumb{/}?", "destination": "/services/siding-exterior-remodeling.html", "statusCode": 301 },
+    { "source": "/finished-basement-2{/}?", "destination": "/services/basement-finishing.html", "statusCode": 301 },
+    { "source": "/:slug(logo_final|logo_[1-7]-1-png|murray-logo-01|favicon|favicon-01|cropped-favicon-png){/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/:slug(img[-_]\\d+(?:-\\d+)?|bridge-build-town-of-chelmsford-2|cover-pic-3-png|expertise-1-jpg|sevices_1-1-png|services_[23]-1-png|pexels-photo-\\d+|home-office-569153_1280|women-1209678_1280|office-3295556_1280){/}?", "destination": "/gallery.html", "statusCode": 301 },
+    { "source": "/wp-content/uploads:rest(/.*)?", "destination": "/gallery.html", "statusCode": 301 },
+
+    { "source": "/gallery:rest(/.*)?", "destination": "/gallery.html", "statusCode": 301 },
+    { "source": "/:g2(g2_[^/]*)", "destination": "/gallery.html", "statusCode": 301 },
+
+    { "source": "/:y(\\d{4})/:m(\\d{2})/:d(\\d{2})/welcome-to-our-new-website:rest(/.*)?", "destination": "/", "statusCode": 301 },
+    { "source": "/:y(\\d{4}):rest(/.*)?", "destination": "/guides/index.html", "statusCode": 301 },
+    { "source": "/news:rest(/.*)?", "destination": "/guides/index.html", "statusCode": 301 },
+    { "source": "/blog:rest(/.*)?", "destination": "/guides/index.html", "statusCode": 301 },
+    { "source": "/category:rest(/.*)?", "destination": "/guides/index.html", "statusCode": 301 },
+    { "source": "/guides{/}?", "destination": "/guides/index.html", "statusCode": 301 },
+    { "source": "/towns{/}?", "destination": "/areas.html", "statusCode": 301 },
+
+    { "source": "/feed{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/comments/feed{/}?", "destination": "/", "statusCode": 301 },
+    { "source": "/:file(sitemap-\\d+\\.xml|image-sitemap-\\d+\\.xml|sitemap_index\\.xml|wp-sitemap\\.xml)", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/favicon.ico", "destination": "/assets/favicon.png", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -14,6 +78,11 @@
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": { "suf": ".vercel.app" } }],
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     }
   ]
 }

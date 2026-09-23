@@ -1,0 +1,14 @@
+{
+  "name": "murray-home-improvement",
+  "private": true,
+  "description": "Static marketing site for Murray Home Improvement. `npm run build` writes the deployable site to dist/.",
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/check-routes.mjs"
+  },
+  "dependencies": {
+    "@babel/standalone": "7.29.0",
+    "@vercel/routing-utils": "6.6.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

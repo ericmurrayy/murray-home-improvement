@@ -3,8 +3,9 @@
 Thumbs.db
 *.log
 
-# Dependencies (none required — this is a static site)
+# Build-time dependencies (npm install) and output (npm run build)
 node_modules/
+dist/
 
 # Vercel
 .vercel
