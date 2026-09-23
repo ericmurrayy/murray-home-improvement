@@ -1,8 +1,7 @@
 /* App.jsx — composes the page and wires Tweaks → CSS variables */
 const { useState, useEffect } = React;
 
-/* Keeps a crash in one section (e.g. the WebGL hero on a browser with no
-   GL context) from unmounting the whole page. Renders `fallback` instead. */
+/* Keeps a crash in one section from unmounting the whole page. */
 class ErrorBoundary extends React.Component {
   constructor(props) { super(props); this.state = { failed: false }; }
   static getDerivedStateFromError() { return { failed: true }; }
@@ -11,15 +10,12 @@ class ErrorBoundary extends React.Component {
 }
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#007bff",
-  "theme": "dark",
-  "display": "grotesk",
-  "animate": true,
-  "align": "left"
+  "accent": "#0b64d6",
+  "theme": "light",
+  "display": "bricolage"
 }/*EDITMODE-END*/;
 
-const ACCENTS = ['#007bff', '#c8623a', '#4f8a5b', '#e0a43b'];
-const BG_BY_THEME = { dark: '#090b0e', light: '#eceeec' };
+const ACCENTS = ['#0b64d6', '#c8623a', '#3f7d5a', '#b8862b'];
 
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
@@ -41,19 +37,7 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // reveal on scroll
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
-  // Honor a #hash on load. The page is a client-side React app, so when a
-  // link like index.html#contact arrives, the target section doesn't exist
-  // yet and the browser's native jump is a no-op. After mount, scroll to it.
+  // Honor a #hash on load: sections that render late make the native jump a no-op.
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.replace('#', '')).trim();
     if (!id) return;
@@ -61,7 +45,7 @@ function App() {
     const tryScroll = () => {
       const el = document.getElementById(id);
       if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
-      if (tries++ < 40) setTimeout(tryScroll, 100); // wait for sections to render
+      if (tries++ < 40) setTimeout(tryScroll, 100);
     };
     setTimeout(tryScroll, 60);
   }, []);
@@ -70,39 +54,37 @@ function App() {
     <React.Fragment>
       <Header scrolled={scrolled} />
       <main>
-        <ErrorBoundary fallback={<HeroStatic align={t.align} />}>
-          <Hero accent={t.accent} bg={BG_BY_THEME[t.theme] || BG_BY_THEME.dark} animate={t.animate} align={t.align} />
-        </ErrorBoundary>
-        <Strip />
+        <ErrorBoundary><Hero /></ErrorBoundary>
+        <TrustBar />
         <Services />
         <Contact />
         <Work />
         <section className="section transformation" id="transformation">
           <div className="wrap">
             <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
-              <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Before / After</span>
+              <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Before / after</span>
               <h2 className="section-title">See the transformation</h2>
               <p className="section-lead" style={{ textAlign: 'center', maxWidth: '48ch' }}>
-                Drag the slider to reveal the difference. Same homes — reborn with new siding, windows, and trim.
+                Drag the slider to reveal the difference. Same homes, reborn with new siding, windows and trim.
               </p>
             </div>
             <div className="ba-grid reveal">
               <figure>
                 <before-after before="assets/ba-front-before.jpg" after="assets/ba-front-after.jpg" before-label="Before" after-label="After"></before-after>
-                <figcaption>Full exterior remodel — front elevation</figcaption>
+                <figcaption>Full exterior remodel, front elevation</figcaption>
               </figure>
               <figure>
                 <before-after before="assets/ba-back-before.jpg" after="assets/ba-back-after.jpg" before-label="Before" after-label="After"></before-after>
-                <figcaption>Siding, deck &amp; trim — rear elevation</figcaption>
+                <figcaption>Siding, deck &amp; trim, rear elevation</figcaption>
               </figure>
             </div>
           </div>
         </section>
-        <BrandBand />
         <About />
-        <WhyProcess />
-        <ServiceAreas />
         <Testimonials />
+        <WhyProcess />
+        <BrandBand />
+        <ServiceAreas />
       </main>
       <Footer />
 
@@ -110,18 +92,12 @@ function App() {
         <TweakSection label="Brand" />
         <TweakColor label="Accent" value={t.accent} options={ACCENTS}
           onChange={(v) => setTweak('accent', v)} />
-        <TweakRadio label="Theme" value={t.theme} options={['dark', 'light']}
+        <TweakRadio label="Theme" value={t.theme} options={['light', 'dark']}
           onChange={(v) => setTweak('theme', v)} />
 
         <TweakSection label="Typography" />
-        <TweakRadio label="Display font" value={t.display} options={['grotesk', 'archivo', 'roboto']}
+        <TweakRadio label="Display font" value={t.display} options={['bricolage', 'grotesk', 'archivo']}
           onChange={(v) => setTweak('display', v)} />
-
-        <TweakSection label="Hero" />
-        <TweakToggle label="Animate 3D grid" value={t.animate}
-          onChange={(v) => setTweak('animate', v)} />
-        <TweakRadio label="Headline align" value={t.align} options={['left', 'center']}
-          onChange={(v) => setTweak('align', v)} />
       </TweaksPanel>
     </React.Fragment>
   );

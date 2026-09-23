@@ -25,109 +25,163 @@
           "src": "2019/03/IMG-4979.jpg",
           "stage": "before",
           "caption": "The dining area, with oak trim and a tile floor",
-          "legacy": "/img-4979"
+          "legacy": "/img-4979",
+          "file": "01-the-dining-area-with-oak-trim-and",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4980-e1553546894256.jpg",
           "stage": "before",
           "caption": "The laundry and half bath",
-          "legacy": "/img-4980"
+          "legacy": "/img-4980",
+          "file": "02-the-laundry-and-half-bath",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-5374-e1553546878468.jpg",
           "stage": "progress",
           "caption": "Demolition: the old tile floor comes up",
-          "legacy": "/img-5374"
+          "legacy": "/img-5374",
+          "file": "03-demolition-the-old-tile-floor-comes-up",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-5473-1.jpg",
           "stage": "progress",
           "caption": "Outside: a new bay window going in",
-          "legacy": "/img-5473-2"
+          "legacy": "/img-5473-2",
+          "file": "04-outside-a-new-bay-window-going-in",
+          "w": 1600,
+          "h": 999
         },
         {
           "src": "2019/03/IMG-5474.jpg",
           "stage": "progress",
           "caption": "The bay window in and the wall wrapped, ready for siding",
-          "legacy": "/img-5474"
+          "legacy": "/img-5474",
+          "file": "05-the-bay-window-in-and-the-wall",
+          "w": 1600,
+          "h": 841
         },
         {
           "src": "2019/03/IMG-5491.jpg",
           "stage": "progress",
           "caption": "Inside: new windows in and the island base set",
-          "legacy": "/img-5491"
+          "legacy": "/img-5491",
+          "file": "06-inside-new-windows-in-and-the-island",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-5555.jpg",
           "stage": "progress",
           "caption": "Building the island",
-          "legacy": "/img-5555"
+          "legacy": "/img-5555",
+          "file": "07-building-the-island",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-5556-e1553547988143.jpg",
           "stage": "progress",
           "caption": "Wood-look tile floor down, cabinets going in",
-          "legacy": "/img-5556"
+          "legacy": "/img-5556",
+          "file": "08-wood-look-tile-floor-down-cabinets-going",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-5574.jpg",
           "stage": "progress",
           "caption": "Cabinets in, countertop templates on",
-          "legacy": "/img-5574"
+          "legacy": "/img-5574",
+          "file": "09-cabinets-in-countertop-templates-on",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-5585.jpg",
           "stage": "after",
           "caption": "The island, with seating on the dining side",
-          "legacy": "/img-5585"
+          "legacy": "/img-5585",
+          "file": "10-the-island-with-seating-on-the-dining",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-5586.jpg",
           "stage": "after",
           "caption": "Stainless refrigerator and double wall oven",
-          "legacy": "/img-5586"
+          "legacy": "/img-5586",
+          "file": "11-stainless-refrigerator-and-double-wall-oven",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-5587-e1553547972490.jpg",
           "stage": "after",
           "caption": "The laundry and half bath, redone",
-          "legacy": "/img-5587"
+          "legacy": "/img-5587",
+          "file": "12-the-laundry-and-half-bath-redone",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-5588-e1553547959264.jpg",
           "stage": "after",
           "caption": "The half bath, with new closet doors",
-          "legacy": "/img-5588"
+          "legacy": "/img-5588",
+          "file": "13-the-half-bath-with-new-closet-doors",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-5589.jpg",
           "stage": "after",
           "caption": "Wood-look tile flooring",
-          "legacy": "/img-5589"
+          "legacy": "/img-5589",
+          "file": "14-wood-look-tile-flooring",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-55951.jpg",
           "stage": "after",
           "caption": "Gas cooktop, chimney hood and textured tile backsplash",
-          "legacy": "/img-55951"
+          "legacy": "/img-55951",
+          "file": "15-gas-cooktop-chimney-hood-and-textured-tile",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-55961.jpg",
           "stage": "after",
           "caption": "Outside: the finished bay window",
-          "legacy": "/img-55961"
+          "legacy": "/img-55961",
+          "file": "16-outside-the-finished-bay-window",
+          "w": 1600,
+          "h": 1121
         },
         {
           "src": "2019/03/IMG-6127.jpg",
           "stage": "after",
           "caption": "The eat-in kitchen, finished",
-          "legacy": "/img-6127"
+          "legacy": "/img-6127",
+          "file": "17-the-eat-in-kitchen-finished",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-62261.jpg",
           "stage": "after",
           "caption": "The kitchen and dining area",
-          "legacy": "/img-62261"
+          "legacy": "/img-62261",
+          "file": "18-the-kitchen-and-dining-area",
+          "w": 1600,
+          "h": 1200
         }
       ]
     },
@@ -152,43 +206,64 @@
           "src": "2019/03/IMG-2624-e1553543767781.jpg",
           "stage": "after",
           "caption": "White shaker cabinets, the island and pendant lights",
-          "legacy": "/img-2624"
+          "legacy": "/img-2624",
+          "file": "01-white-shaker-cabinets-the-island-and-pendant",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-2626-e1553543754397.jpg",
           "stage": "after",
           "caption": "Sink under the window, with a green subway-tile backsplash",
-          "legacy": "/img-2626"
+          "legacy": "/img-2626",
+          "file": "02-sink-under-the-window-with-a-green",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-26271-e1553543737983.jpg",
           "stage": "after",
           "caption": "Gas range under a stainless chimney hood",
-          "legacy": "/img-26271"
+          "legacy": "/img-26271",
+          "file": "03-gas-range-under-a-stainless-chimney-hood",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-2628.jpg",
           "stage": "after",
           "caption": "The island, with drawers on the working side",
-          "legacy": "/img-2628"
+          "legacy": "/img-2628",
+          "file": "04-the-island-with-drawers-on-the-working",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-26901-e1553543702321.jpg",
           "stage": "after",
           "caption": "A microwave drawer built into the island",
-          "legacy": "/img-26901"
+          "legacy": "/img-26901",
+          "file": "05-a-microwave-drawer-built-into-the-island",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-26911.jpg",
           "stage": "after",
           "caption": "Coffee station with glass-front upper cabinets",
-          "legacy": "/img-26911"
+          "legacy": "/img-26911",
+          "file": "06-coffee-station-with-glass-front-upper-cabinets",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-2692.jpg",
           "stage": "after",
           "caption": "A full wall of pantry cabinets",
-          "legacy": "/img-2692"
+          "legacy": "/img-2692",
+          "file": "07-a-full-wall-of-pantry-cabinets",
+          "w": 1600,
+          "h": 1200
         }
       ]
     },
@@ -212,37 +287,55 @@
           "src": "2019/03/IMG-4351.jpg",
           "stage": "after",
           "caption": "Dark cabinets, granite counters and a large island",
-          "legacy": "/img-4351"
+          "legacy": "/img-4351",
+          "file": "01-dark-cabinets-granite-counters-and-a-large",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4352-e1553547084343.jpg",
           "stage": "after",
           "caption": "A single-bowl sink set in the granite, under the window",
-          "legacy": "/img-4352"
+          "legacy": "/img-4352",
+          "file": "02-a-single-bowl-sink-set-in-the",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-4355-e1553547064360.jpg",
           "stage": "after",
           "caption": "Granite countertop detail",
-          "legacy": "/img-4355"
+          "legacy": "/img-4355",
+          "file": "03-granite-countertop-detail",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-4376-e1553547050790.jpg",
           "stage": "after",
           "caption": "GE Profile stainless gas range",
-          "legacy": "/img-4376"
+          "legacy": "/img-4376",
+          "file": "04-ge-profile-stainless-gas-range",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-4379.jpg",
           "stage": "after",
           "caption": "The range and granite, up close",
-          "legacy": "/img-4379"
+          "legacy": "/img-4379",
+          "file": "05-the-range-and-granite-up-close",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4896-e1553546908399.jpg",
           "stage": "after",
           "caption": "The dining area off the new kitchen",
-          "legacy": "/img-4896"
+          "legacy": "/img-4896",
+          "file": "06-the-dining-area-off-the-new-kitchen",
+          "w": 1200,
+          "h": 1600
         }
       ]
     },
@@ -267,37 +360,55 @@
           "src": "2019/04/IMG-4906-e1554491398556.jpg",
           "stage": "progress",
           "caption": "Radiant floor-heating mat laid out before the tile",
-          "legacy": "/img-4906"
+          "legacy": "/img-4906",
+          "file": "01-radiant-floor-heating-mat-laid-out-before",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-4907-e1554491361455.jpg",
           "stage": "progress",
           "caption": "Self-leveling underlayment poured over the heating mat",
-          "legacy": "/img-4907"
+          "legacy": "/img-4907",
+          "file": "02-self-leveling-underlayment-poured-over-the-heating",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-5001-e1554491342506.jpg",
           "stage": "after",
           "caption": "Tiled tub surround with a recessed niche and corner shelves",
-          "legacy": "/img-5001"
+          "legacy": "/img-5001",
+          "file": "03-tiled-tub-surround-with-a-recessed-niche",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-5003-e1554491318321.jpg",
           "stage": "after",
           "caption": "Grab bar and niche at the tub",
-          "legacy": "/img-5003"
+          "legacy": "/img-5003",
+          "file": "04-grab-bar-and-niche-at-the-tub",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-5006-e1554491300934.jpg",
           "stage": "after",
           "caption": "Pedestal sink, toilet and tile wainscot",
-          "legacy": "/img-5006"
+          "legacy": "/img-5006",
+          "file": "05-pedestal-sink-toilet-and-tile-wainscot",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-5008.jpg",
           "stage": "after",
           "caption": "Tile wainscot, window and linen closet",
-          "legacy": "/img-5008"
+          "legacy": "/img-5008",
+          "file": "06-tile-wainscot-window-and-linen-closet",
+          "w": 1600,
+          "h": 1200
         }
       ]
     },
@@ -322,37 +433,55 @@
           "src": "2019/04/IMG-4003-e1554492287333.jpg",
           "stage": "after",
           "caption": "Double vanity with two mirrors and light bars",
-          "legacy": "/portfolio/double-bath-remodel/img-4003"
+          "legacy": "/portfolio/double-bath-remodel/img-4003",
+          "file": "01-double-vanity-with-two-mirrors-and-light",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-40091.jpg",
           "stage": "after",
           "caption": "Recessed niche in hexagon mosaic tile",
-          "legacy": "/portfolio/double-bath-remodel/img-40091"
+          "legacy": "/portfolio/double-bath-remodel/img-40091",
+          "file": "02-recessed-niche-in-hexagon-mosaic-tile",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/04/IMG-4015-e1554492330822.jpg",
           "stage": "after",
           "caption": "Shower with a rain head and hand shower",
-          "legacy": "/portfolio/double-bath-remodel/img-4015"
+          "legacy": "/portfolio/double-bath-remodel/img-4015",
+          "file": "03-shower-with-a-rain-head-and-hand",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-4020-e1554492347344.jpg",
           "stage": "after",
           "caption": "Tub with a tiled surround and niche",
-          "legacy": "/portfolio/double-bath-remodel/img-4020"
+          "legacy": "/portfolio/double-bath-remodel/img-4020",
+          "file": "04-tub-with-a-tiled-surround-and-niche",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-4022-e1554492372269.jpg",
           "stage": "after",
           "caption": "Wood-look tile floor, seen from the doorway",
-          "legacy": "/portfolio/double-bath-remodel/img-4022"
+          "legacy": "/portfolio/double-bath-remodel/img-4022",
+          "file": "05-wood-look-tile-floor-seen-from-the",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/04/IMG-4023.jpg",
           "stage": "after",
           "caption": "Two undermount sinks in the new vanity top",
-          "legacy": "/portfolio/double-bath-remodel/img-4023"
+          "legacy": "/portfolio/double-bath-remodel/img-4023",
+          "file": "06-two-undermount-sinks-in-the-new-vanity",
+          "w": 1600,
+          "h": 1200
         }
       ]
     },
@@ -522,55 +651,82 @@
           "src": "2019/03/IMG-7246.jpg",
           "stage": "progress",
           "caption": "New siding going on over the house wrap",
-          "legacy": "/img-7246"
+          "legacy": "/img-7246",
+          "file": "01-new-siding-going-on-over-the-house",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-7248.jpg",
           "stage": "progress",
           "caption": "Excavation: the mini excavator and the Murray truck on site",
-          "legacy": "/img-7248"
+          "legacy": "/img-7248",
+          "file": "02-excavation-the-mini-excavator-and-the-murray",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-7282.jpg",
           "stage": "progress",
           "caption": "Foundation pour: concrete truck and pump at the curb",
-          "legacy": "/img-7282"
+          "legacy": "/img-7282",
+          "file": "03-foundation-pour-concrete-truck-and-pump-at",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-7283.jpg",
           "stage": "progress",
           "caption": "More concrete work while the siding goes on",
-          "legacy": "/img-7283"
+          "legacy": "/img-7283",
+          "file": "04-more-concrete-work-while-the-siding-goes",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-7290.jpg",
           "stage": "progress",
           "caption": "The new foundation walls, damp-proofed",
-          "legacy": "/img-7290"
+          "legacy": "/img-7290",
+          "file": "05-the-new-foundation-walls-damp-proofed",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-7298.jpg",
           "stage": "progress",
           "caption": "Foundation walls poured along the house",
-          "legacy": "/img-7298"
+          "legacy": "/img-7298",
+          "file": "06-foundation-walls-poured-along-the-house",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_7318.jpg",
           "stage": "after",
           "caption": "The finished exterior",
-          "legacy": "/img_7318"
+          "legacy": "/img_7318",
+          "file": "07-the-finished-exterior",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_7319-e1553540837517.jpg",
           "stage": "after",
           "caption": "The new front portico and entry",
-          "legacy": "/img_7319"
+          "legacy": "/img_7319",
+          "file": "08-the-new-front-portico-and-entry",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-7320-e1553547891455.jpg",
           "stage": "after",
           "caption": "Covered side entry with a Therma-Tru door",
-          "legacy": "/img-7320"
+          "legacy": "/img-7320",
+          "file": "09-covered-side-entry-with-a-therma-tru",
+          "w": 1200,
+          "h": 1600
         }
       ]
     },
@@ -593,19 +749,28 @@
           "src": "2019/03/IMG-3489.jpg",
           "stage": "after",
           "caption": "The basement family room",
-          "legacy": "/img-3489"
+          "legacy": "/img-3489",
+          "file": "01-the-basement-family-room",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-3490.jpg",
           "stage": "after",
           "caption": "New stair, built-in shelves and TV wall",
-          "legacy": "/img-3490"
+          "legacy": "/img-3490",
+          "file": "02-new-stair-built-in-shelves-and-tv",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-3592.jpg",
           "stage": "after",
           "caption": "A bedroom and office space",
-          "legacy": "/img-3592"
+          "legacy": "/img-3592",
+          "file": "03-a-bedroom-and-office-space",
+          "w": 1600,
+          "h": 780
         }
       ]
     },
@@ -629,31 +794,46 @@
           "src": "2019/03/IMG_4691.jpg",
           "stage": "before",
           "caption": "Rotted rim and sill framing, exposed under the slider",
-          "legacy": "/img_4691"
+          "legacy": "/img_4691",
+          "file": "01-rotted-rim-and-sill-framing-exposed-under",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_4692.jpg",
           "stage": "progress",
           "caption": "The rot repaired with new framing",
-          "legacy": "/img_4692"
+          "legacy": "/img_4692",
+          "file": "02-the-rot-repaired-with-new-framing",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_4719.jpg",
           "stage": "after",
           "caption": "New pressure-treated deck and stairs",
-          "legacy": "/img_4719"
+          "legacy": "/img_4719",
+          "file": "03-new-pressure-treated-deck-and-stairs",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_4720.jpg",
           "stage": "after",
           "caption": "The deck on braced posts",
-          "legacy": "/img_4720"
+          "legacy": "/img_4720",
+          "file": "04-the-deck-on-braced-posts",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG_4721.jpg",
           "stage": "after",
           "caption": "Side view of the new deck",
-          "legacy": "/img_4721"
+          "legacy": "/img_4721",
+          "file": "05-side-view-of-the-new-deck",
+          "w": 1600,
+          "h": 1200
         }
       ]
     },
@@ -772,43 +952,64 @@
           "src": "2019/03/IMG-3630.jpg",
           "stage": "progress",
           "caption": "Building the arched bridge, with the Murray truck on site",
-          "legacy": "/img-3630"
+          "legacy": "/img-3630",
+          "file": "01-building-the-arched-bridge-with-the-murray",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4040.jpg",
           "stage": "progress",
           "caption": "The arched bridge set over the brook",
-          "legacy": "/img-4040"
+          "legacy": "/img-4040",
+          "file": "02-the-arched-bridge-set-over-the-brook",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4041.jpg",
           "stage": "progress",
           "caption": "Setting the bridge deck on the trail",
-          "legacy": "/img-4041"
+          "legacy": "/img-4041",
+          "file": "03-setting-the-bridge-deck-on-the-trail",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4202-e1553546227260.jpg",
           "stage": "after",
           "caption": "Looking down the trail across the bridge",
-          "legacy": "/img-4202"
+          "legacy": "/img-4202",
+          "file": "04-looking-down-the-trail-across-the-bridge",
+          "w": 1200,
+          "h": 1600
         },
         {
           "src": "2019/03/IMG-4203.jpg",
           "stage": "after",
           "caption": "The arched bridge, with stone at the banks",
-          "legacy": "/img-4203"
+          "legacy": "/img-4203",
+          "file": "05-the-arched-bridge-with-stone-at-the",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4204.jpg",
           "stage": "after",
           "caption": "The footbridge over the brook",
-          "legacy": "/img-4204"
+          "legacy": "/img-4204",
+          "file": "06-the-footbridge-over-the-brook",
+          "w": 1600,
+          "h": 1200
         },
         {
           "src": "2019/03/IMG-4331.jpg",
           "stage": "after",
           "caption": "The bridge in place on the trail",
-          "legacy": "/img-4331"
+          "legacy": "/img-4331",
+          "file": "07-the-bridge-in-place-on-the-trail",
+          "w": 1600,
+          "h": 1200
         }
       ]
     }

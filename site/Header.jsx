@@ -1,12 +1,14 @@
-/* Header.jsx — fixed top nav with logo + mobile menu */
+/* Header.jsx — fixed top nav with logo, Google rating chip, phone and mobile sheet menu */
+window.GOOGLE_REVIEWS_URL = 'https://share.google/wlvLzfmJFUliE3SHb';
+
 function Header({ scrolled }) {
   const [open, setOpen] = React.useState(false);
   const links = [
     { label: 'Services', href: '#services' },
-    { label: 'Our Work', href: 'gallery.html' },
-    { label: 'Service Areas', href: '#areas' },
+    { label: 'Our work', href: 'gallery.html' },
+    { label: 'Service areas', href: '#areas' },
     { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Reviews', href: '#reviews' },
   ];
   React.useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -18,16 +20,19 @@ function Header({ scrolled }) {
         <a className="brand" href="#top" aria-label="Murray Home Improvement" onClick={() => setOpen(false)}>
           <img className="brand-logo-img" src="assets/logo-horizontal.png" alt="Murray Home Improvement" />
         </a>
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           {links.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
         </nav>
         <div className="header-cta">
+          <a className="header-rating" href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" aria-label="Rated 4.0 on Google from 4 reviews">
+            <i className="fa fa-star" aria-hidden="true"></i><b>4.0</b> on Google
+          </a>
           <a className="header-phone" href="tel:19784799406">
-            <span className="lab">Call for a free quote</span>
+            <span className="lab">Call or text Eric</span>
             (978)&nbsp;479-9406
           </a>
           <a className="btn btn-primary" href="#contact">
-            Free Quote <i className="fa fa-arrow-right ico" aria-hidden="true"></i>
+            Free quote <i className="fa fa-arrow-right ico" aria-hidden="true"></i>
           </a>
         </div>
         <button className="menu-toggle" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(o => !o)}>

@@ -1,36 +1,36 @@
-/* More.jsx — About (owner-operated story) + Testimonials (real FB recommendations) */
+/* More.jsx — Meet Eric, brand band (truck), reviews, service-area map */
 
 function About() {
-  const creds = ['Licensed & Insured', '30+ Years', 'Chelmsford, MA'];
+  const creds = [['fa-shield', 'Licensed & insured'], ['fa-calendar', '30+ years'], ['fa-map-marker', 'Chelmsford, MA']];
   return (
     <section className="section about" id="about">
       <div className="wrap">
         <div className="about-grid">
           <div className="about-media reveal">
-            <img src="assets/eric-family.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his family" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '54% 50%', display: 'block' }} />
+            <img src="assets/eric-family.jpg" alt="Eric Murray, owner of Murray Home Improvement, with his family" loading="lazy" decoding="async" width="960" height="640" style={{ objectPosition: '54% 40%' }} />
             <div className="about-badge">
               <b>30<span className="accent">+</span></b>
-              <span>Years building<br />in Chelmsford</span>
+              <span>years building<br />in Chelmsford</span>
             </div>
           </div>
           <div className="about-body reveal">
-            <span className="eyebrow">The owner</span>
-            <h2 className="section-title">Three decades,<br />one set of hands</h2>
-            <p>Murray Home Improvement is owner-operated &mdash; when you hire us, you work directly
+            <span className="eyebrow">Meet the owner</span>
+            <h2 className="section-title">Three decades, one set of hands</h2>
+            <p>Murray Home Improvement is owner-operated. When you hire us, you work directly
               with Eric Murray from the first estimate to the final walk-through. No call
-              centers, no rotating crews, no guesswork. Just one experienced craftsman who
+              centers, no rotating crews, no guesswork. One experienced craftsman who
               answers the phone and stands behind every detail.</p>
-            <p>We specialize in residential remodeling and additions &mdash; second levels, kitchens,
-              bathrooms, basements, decks, exteriors, and fully custom builds. We&rsquo;ll work
-              closely with experienced kitchen and home designers to plan every detail, then
-              build around you and your family&rsquo;s needs. <b>If you&rsquo;re looking for a
-              professional you can trust and invite into your home, look no further.</b></p>
+            <p>We specialize in residential remodeling and additions: second levels, kitchens,
+              bathrooms, basements, decks, exteriors and fully custom builds. We plan every
+              detail with experienced kitchen and home designers, then build around you and
+              your family. <b>If you want a professional you can trust in your home, you have
+              found him.</b></p>
             <div className="about-foot">
               <div className="signature">Eric Murray</div>
-              <span className="sig-role">Owner &amp; General Contractor</span>
+              <span className="sig-role">Owner &amp; general contractor</span>
             </div>
             <div className="cred-row">
-              {creds.map(c => <span className="cred" key={c}>{c}</span>)}
+              {creds.map(([ico, c]) => <span className="cred" key={c}><i className={'fa ' + ico} aria-hidden="true"></i>{c}</span>)}
             </div>
             <p className="reg-line">MA&nbsp;CSL&nbsp;#077319 · HIC&nbsp;#174394 · USDOT&nbsp;2353155</p>
           </div>
@@ -44,16 +44,16 @@ function BrandBand() {
   const regs = ['USDOT 2353155', 'HIC #174394', 'MA CSL #077319'];
   return (
     <section className="brandband" aria-label="Murray Home Improvement">
-      <img src="assets/murray-truck.jpg" alt="The Murray Home Improvement truck" loading="lazy" />
+      <img src="assets/murray-truck.jpg" alt="The Murray Home Improvement truck" loading="lazy" decoding="async" />
       <div className="brandband-veil"></div>
       <div className="wrap">
         <div className="brandband-inner reveal">
           <span className="eyebrow">Your remodeling specialist</span>
-          <h2 className="section-title">Frame to<br />finish carpentry</h2>
-          <p>Licensed, insured, and on the road every day in Chelmsford and the towns next door — fully credentialed
+          <h2 className="section-title">Frame to finish carpentry</h2>
+          <p>Licensed, insured, and on the road every day in Chelmsford and the towns next door. Fully credentialed,
             so you can hire with confidence.</p>
           <div className="reg-chips">
-            {regs.map(r => <span key={r}>{r}</span>)}
+            {regs.map(r => <span key={r}><i className="fa fa-check" aria-hidden="true" style={{ color: 'var(--accent)' }}></i>{r}</span>)}
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ function BrandBand() {
 function Testimonials() {
   const reviews = [
     { name: 'Larissa LaFauci Weeks', date: 'April 8, 2019',
-      quote: 'Several people referred me to Murray Home Improvement and I couldn\u2019t be more satisfied! It was a great experience and I would hire them for any home improvement needs! I really appreciate word of mouth recommendations and want others to know how great this company is!' },
+      quote: 'Several people referred me to Murray Home Improvement and I couldn’t be more satisfied! It was a great experience and I would hire them for any home improvement needs! I really appreciate word of mouth recommendations and want others to know how great this company is!' },
     { name: 'Bryan Boyle', date: 'February 26, 2019',
       quote: 'Great customer service, quality work.' },
   ];
@@ -74,11 +74,11 @@ function Testimonials() {
       <div className="wrap">
         <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
           <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Reviews</span>
-          <h2 className="section-title">Recommended<br />by homeowners</h2>
+          <h2 className="section-title">Recommended by neighbors</h2>
           <p className="section-lead" style={{ textAlign: 'center', maxWidth: '46ch' }}>
-            Word of mouth is how most of our projects start. Here&rsquo;s what neighbors say.
+            Word of mouth is how most of our projects start. Here&rsquo;s what homeowners say.
           </p>
-          <a className="g-rating" href="https://share.google/wlvLzfmJFUliE3SHb" target="_blank" rel="noopener" aria-label="4.0 stars on Google, 4 reviews">
+          <a className="g-rating" href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" aria-label="4.0 stars on Google, 4 reviews">
             <span className="stars"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-o"></i></span>
             <span><b>4.0</b> on Google &middot; 4 reviews</span>
           </a>
@@ -86,7 +86,7 @@ function Testimonials() {
         <div className="reviews-grid reveal">
           {reviews.map(r => (
             <figure className="review" key={r.name}>
-              <div className="review-badge"><i className="fa fa-star" aria-hidden="true"></i> Recommends</div>
+              <div className="review-badge"><i className="fa fa-thumbs-up" aria-hidden="true"></i> Recommends</div>
               <blockquote>{r.quote}</blockquote>
               <figcaption>
                 <span className="review-avatar">{initials(r.name)}</span>
@@ -97,6 +97,11 @@ function Testimonials() {
               </figcaption>
             </figure>
           ))}
+        </div>
+        <div className="reveal" style={{ textAlign: 'center', marginTop: '32px' }}>
+          <a className="btn btn-ghost" href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener">
+            <i className="fa fa-google ico" aria-hidden="true"></i> Worked with us? Leave a Google review
+          </a>
         </div>
       </div>
     </section>
@@ -116,24 +121,24 @@ function ServiceAreas() {
     <section className="section" id="areas">
       <div className="wrap">
         <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
-          <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Service Areas</span>
-          <h2 className="section-title">Chelmsford &amp;<br />the towns next door</h2>
+          <span className="eyebrow no-rule" style={{ alignSelf: 'center' }}>Service area</span>
+          <h2 className="section-title">Chelmsford and the towns next door</h2>
           <p className="section-lead" style={{ textAlign: 'center', maxWidth: '50ch' }}>
-            Based in Chelmsford, MA — we keep our work close to home: Chelmsford and the five towns that border it.
+            Based in Chelmsford, MA, we keep our work close to home: Chelmsford and the five towns that border it.
           </p>
         </div>
         <div className="map-wrap reveal">
           <div id="service-map" data-base=""></div>
           <div className="map-badge">
             <img src="assets/logo-horizontal.png" alt="Murray Home Improvement" />
-            <span className="map-badge-txt"><b>Service Area</b><span>Chelmsford, MA</span></span>
+            <span className="map-badge-txt"><b>Service area</b><span>Chelmsford, MA</span></span>
           </div>
         </div>
         <p className="map-note"><i className="fa fa-info-circle ico" aria-hidden="true"></i> Chelmsford and its five neighboring towns, minutes from our home base. Tap any pin to explore that town.</p>
         <div className="chip-links reveal" style={{ justifyContent: 'center', marginTop: '28px' }}>
           {towns.map(t => <a key={t[1]} href={t[1]}>{t[0]}</a>)}
         </div>
-        <div className="reveal" style={{ textAlign: 'center', marginTop: '32px' }}>
+        <div className="reveal" style={{ textAlign: 'center', marginTop: '28px' }}>
           <a className="btn btn-ghost btn-lg" href="areas.html">View all service areas <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
         </div>
       </div>

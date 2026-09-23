@@ -1,6 +1,6 @@
 ---
 name: murray-home-improvement-design
-description: Use this skill to generate well-branded interfaces and assets for Murray Home Improvement (a licensed, insured, owner-operated residential remodeling & building general contractor in Chelmsford, MA), either for production or throwaway prototypes/mocks. Contains essential design guidelines, colors, type, fonts, assets, a Three.js hero engine, and homepage components for prototyping.
+description: Use this skill to generate well-branded interfaces and assets for Murray Home Improvement (a licensed, insured, owner-operated residential remodeling & building general contractor in Chelmsford, MA), either for production or throwaway prototypes/mocks. Contains essential design guidelines, colors, type, fonts, assets, the site design system (light "warm craftsman modern"), and homepage components for prototyping.
 user-invocable: true
 ---
 
@@ -12,8 +12,8 @@ Key files:
 - `assets/` — logo, favicon, real project photography, self-hosted Font Awesome 4.7.
 - `preview/` — specimen cards for the Design System tab.
 - `Murray Home Improvement.html` + `site/` — a modern, dark "architectural editorial" homepage
-  concept: Murray blue as the single accent, a Three.js undulating cube-grid hero
-  (`site/cubefield.js`), React components, and an in-page Tweaks panel.
+  design ("warm craftsman modern", light and photo-first): Murray blue as the single
+  accent, a real-project photo hero, React components, and an in-page Tweaks panel.
 
 There are two valid brand expressions, both documented:
 1. **Classic** — bright blue (#007bff) on white, Roboto + Roboto Slab (matches the live site).

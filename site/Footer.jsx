@@ -1,4 +1,4 @@
-/* Footer.jsx */
+/* Footer.jsx — navy footer band */
 function Footer() {
   return (
     <footer className="site-footer">
@@ -6,22 +6,22 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a className="brand" href="#top" aria-label="Murray Home Improvement">
-              <img className="footer-logo-badge" src="assets/logo-dark.png" alt="Murray Home Improvement" />
+              <img className="footer-logo-badge" src="assets/logo-dark.png" alt="Murray Home Improvement" width="124" height="124" loading="lazy" />
             </a>
             <p>Licensed, insured, owner-operated residential remodeling &amp; building.
-              Your remodeling specialist &mdash; frame to finish carpentry, in Chelmsford
+              Your remodeling specialist, frame to finish carpentry, in Chelmsford
               and the towns around it for 30+ years.</p>
           </div>
           <div className="foot-col">
             <h5>Services</h5>
-            <a href="services/kitchen-remodeling.html">Kitchen Remodeling</a>
-            <a href="services/bathroom-remodeling.html">Bathroom Remodeling</a>
-            <a href="services/home-additions.html">Home Additions</a>
-            <a href="services/decks-porches.html">Decks &amp; Porches</a>
-            <a href="services/siding-exterior-remodeling.html">Siding &amp; Exteriors</a>
+            <a href="services/kitchen-remodeling.html">Kitchen remodeling</a>
+            <a href="services/bathroom-remodeling.html">Bathroom remodeling</a>
+            <a href="services/home-additions.html">Home additions</a>
+            <a href="services/decks-porches.html">Decks &amp; porches</a>
+            <a href="services/siding-exterior-remodeling.html">Siding &amp; exteriors</a>
           </div>
           <div className="foot-col">
-            <h5>Service Areas</h5>
+            <h5>Service areas</h5>
             <a href="towns/lowell.html">Lowell</a>
             <a href="towns/billerica.html">Billerica</a>
             <a href="towns/westford.html">Westford</a>
@@ -34,8 +34,8 @@ function Footer() {
             <a href="about.html">About Eric</a>
             <a href="reviews.html">Reviews</a>
             <a href="financing.html">Financing</a>
-            <a href="warranty.html">Our Guarantee</a>
-            <a href="guides/index.html">Remodeling Guides</a>
+            <a href="warranty.html">Our guarantee</a>
+            <a href="guides/index.html">Remodeling guides</a>
           </div>
           <div className="foot-col">
             <h5>Get in touch</h5>
@@ -50,7 +50,8 @@ function Footer() {
           <small suppressHydrationWarning>© {new Date().getFullYear()} Murray Home Improvement &middot; MA CSL #077319 &middot; HIC #174394 &middot; USDOT 2353155</small>
           <div className="socials">
             <a href="https://www.facebook.com/MurrayHomeImprovement" target="_blank" rel="noopener" aria-label="Facebook"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="privacy.html" className="foot-legal">Privacy Policy</a>
+            <a href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" aria-label="Google reviews"><i className="fa fa-google" aria-hidden="true"></i></a>
+            <a href="privacy.html" className="foot-legal">Privacy policy</a>
           </div>
         </div>
       </div>

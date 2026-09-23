@@ -1,12 +1,22 @@
-/* Sections.jsx — marquee strip, services, work gallery, why-choose, process */
+/* Sections.jsx — trust bar, services, work gallery, why-choose + process */
 
-function Strip() {
-  const items = ['Kitchens', 'Bathrooms', 'Additions', 'Second Levels', 'Basements', 'Decks', 'Roofing', 'Exteriors', 'Custom Builds'];
-  const row = items.concat(items);
+const PROJ = 'assets/projects/';
+
+function TrustBar() {
+  const items = [
+    ['fa-certificate', 'MA CSL #077319'],
+    ['fa-file-text-o', 'HIC #174394'],
+    ['fa-shield', 'Licensed & insured'],
+    ['fa-user', 'Owner on every job'],
+    ['fa-star', '4.0 on Google'],
+    ['fa-home', 'Chelmsford + 5 towns'],
+  ];
   return (
-    <div className="strip" aria-hidden="true">
-      <div className="strip-track">
-        {row.map((it, i) => <span key={i}>{it}</span>)}
+    <div className="trust-bar" aria-label="Credentials">
+      <div className="wrap">
+        {items.map(([ico, t]) => (
+          <span className="trust-item" key={t}><i className={'fa ' + ico} aria-hidden="true"></i>{t}</span>
+        ))}
       </div>
     </div>
   );
@@ -14,41 +24,50 @@ function Strip() {
 
 function Services() {
   const svc = [
-    { n: '01', t: 'Kitchens', img: 'assets/kitchen-remodel.jpg', href: 'services/kitchen-remodeling.html',
-      d: 'Breathe new life into a tired kitchen — custom cabinetry, stone counters, and layouts that work the way you cook.' },
-    { n: '02', t: 'Bathrooms', img: 'assets/bath-remodel.jpg', href: 'services/bathroom-remodeling.html',
-      d: 'Full bathroom remodels with heated floors, double vanities, and tile work finished to the millimeter.' },
-    { n: '03', t: 'Additions', img: 'assets/proj-addition-5-finished.jpg', href: 'services/home-additions.html',
-      d: 'Second levels, basements, decks, and exterior renovations — ground-up additions built around your family.' },
+    { n: '01', t: 'Kitchens', href: 'services/kitchen-remodeling.html',
+      pic: PROJ + 'dark-cabinet-granite-countertop-kitchen-remodel/01-dark-cabinets-granite-counters-and-a-large', w: 1600, h: 1200,
+      alt: 'Remodeled kitchen with dark cabinets, granite counters and a large island',
+      d: 'Custom cabinetry, stone counters and a layout that works the way you actually cook.' },
+    { n: '02', t: 'Bathrooms', href: 'services/bathroom-remodeling.html',
+      pic: PROJ + 'double-bath-remodel/06-two-undermount-sinks-in-the-new-vanity', w: 1600, h: 1200,
+      alt: 'Remodeled bathroom with a double vanity, two undermount sinks and new fixtures',
+      d: 'Heated floors, double vanities and tile work finished to the millimeter.' },
+    { n: '03', t: 'Additions', href: 'services/home-additions.html',
+      img: 'assets/proj-addition-5-finished.jpg', w: 1440, h: 1080,
+      alt: 'A finished two-story addition with new siding, windows and garage doors',
+      d: 'Second levels, bump-outs and basements, from the foundation to the last piece of trim.' },
   ];
   const more = [
-    { ico: 'fa-building', t: 'Second-Story Additions', href: 'services/second-story-additions.html', d: 'Go up, not out — full second levels & dormers.' },
-    { ico: 'fa-th-large', t: 'Basement Finishing', href: 'services/basement-finishing.html', d: 'Dry, warm, bright living space below grade.' },
-    { ico: 'fa-tree', t: 'Decks & Porches', href: 'services/decks-porches.html', d: 'Outdoor living built for New England seasons.' },
-    { ico: 'fa-building-o', t: 'Siding & Exteriors', href: 'services/siding-exterior-remodeling.html', d: 'Fresh siding & trim that transforms curb appeal.' },
+    { ico: 'fa-building', t: 'Second-story additions', href: 'services/second-story-additions.html', d: 'Go up, not out: full second levels and dormers.' },
+    { ico: 'fa-th-large', t: 'Basement finishing', href: 'services/basement-finishing.html', d: 'Dry, warm, bright living space below grade.' },
+    { ico: 'fa-tree', t: 'Decks & porches', href: 'services/decks-porches.html', d: 'Outdoor living built for New England seasons.' },
+    { ico: 'fa-building-o', t: 'Siding & exteriors', href: 'services/siding-exterior-remodeling.html', d: 'Fresh siding and trim that transform curb appeal.' },
     { ico: 'fa-home', t: 'Roofing', href: 'services/roofing.html', d: 'Architectural shingle roofs, flashed right.' },
-    { ico: 'fa-columns', t: 'Windows & Doors', href: 'services/windows-doors.html', d: 'Tighter, brighter, quieter, more efficient.' },
-    { ico: 'fa-wrench', t: 'Custom Carpentry', href: 'services/custom-carpentry.html', d: 'Frame-to-finish built-ins, trim & more.' },
+    { ico: 'fa-columns', t: 'Windows & doors', href: 'services/windows-doors.html', d: 'Tighter, brighter, quieter, more efficient.' },
+    { ico: 'fa-wrench', t: 'Custom carpentry', href: 'services/custom-carpentry.html', d: 'Built-ins, trim, bridges and one-of-a-kind builds.' },
   ];
   return (
     <section className="section" id="services">
       <div className="wrap">
         <div className="section-head reveal" style={{ alignItems: 'center', textAlign: 'center' }}>
-          <span className="eyebrow">What we do</span>
-          <h2 className="section-title">Everything we build</h2>
-          <p className="section-lead" style={{ textAlign: 'center', maxWidth: '60ch' }}>From a single room to a whole new level — our most-requested work, plus every
+          <span className="eyebrow">What we build</span>
+          <h2 className="section-title">Everything from a new bath to a new floor</h2>
+          <p className="section-lead" style={{ textAlign: 'center', maxWidth: '58ch' }}>Our most-requested work, plus every
             other service we offer in Chelmsford and the towns next door.</p>
         </div>
         <div className="services-grid">
           {svc.map(s => (
             <article className="svc reveal" key={s.n}>
-              <div className="svc-img"><img src={s.img} alt={s.t} loading="lazy" /></div>
-              <div className="svc-veil"></div>
+              <a className="svc-img" href={s.href} tabIndex="-1" aria-hidden="true">
+                {s.pic
+                  ? <Pic p={s.pic} w={s.w} h={s.h} alt="" sizes="(max-width: 980px) 100vw, 33vw" />
+                  : <img src={s.img} width={s.w} height={s.h} alt="" loading="lazy" decoding="async" />}
+              </a>
               <div className="svc-body">
                 <div className="svc-num">{s.n}</div>
-                <h3>{s.t}</h3>
+                <h3><a href={s.href}>{s.t}</a></h3>
                 <p>{s.d}</p>
-                <a className="svc-link" href={s.href}>Explore service <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
+                <a className="svc-link" href={s.href}>Explore {s.t.toLowerCase()} <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
               </div>
             </article>
           ))}
@@ -72,26 +91,34 @@ function Services() {
 
 function Work() {
   const tiles = [
-    { c: 'w-a', img: 'assets/exterior-remodel.jpg', cap: 'Full exterior remodel' },
-    { c: 'w-b', img: 'assets/hero-bg.jpg', cap: 'Open-concept kitchen' },
-    { c: 'w-c', img: 'assets/proj-addition-2-framing.jpg', cap: 'Second-story framing' },
-    { c: 'w-d', img: 'assets/proj-addition-3-sheathing.jpg', cap: 'Addition in progress' },
+    { c: 'w-a', pic: PROJ + 'dark-cabinet-granite-countertop-kitchen-remodel/01-dark-cabinets-granite-counters-and-a-large', w: 1600, h: 1200, cap: 'Kitchen remodel', ico: 'fa-cutlery' },
+    { c: 'w-b', img: 'assets/ba-front-after.jpg', w: 1079, h: 900, cap: 'Full exterior remodel', ico: 'fa-home' },
+    { c: 'w-e', pic: PROJ + 'custom-kitchen-remodel/01-white-shaker-cabinets-the-island-and-pendant', w: 1200, h: 1600, cap: 'White shaker kitchen', ico: 'fa-cutlery' },
+    { c: 'w-f', pic: PROJ + 'double-bath-remodel/01-double-vanity-with-two-mirrors-and-light', w: 1200, h: 1600, cap: 'Double-vanity bath', ico: 'fa-bath' },
+    { c: 'w-g', pic: PROJ + 'therma-tru-entrance-doors/07-craftsman-style-stained-door-with-sidelights', w: 1305, h: 1600, cap: 'Craftsman entry door', ico: 'fa-columns' },
+    { c: 'w-c', pic: PROJ + 'finished-basement/01-the-basement-family-room', w: 1600, h: 1200, cap: 'Finished basement', ico: 'fa-th-large' },
+    { c: 'w-d', pic: PROJ + 'bridge-build-town-of-chelmsford/06-the-footbridge-over-the-brook', w: 1600, h: 1200, cap: 'Footbridge for the Town of Chelmsford', ico: 'fa-wrench' },
   ];
+  const sizesFor = c => (c === 'w-a' || c === 'w-d') ? '(max-width: 760px) 100vw, 58vw' : '(max-width: 760px) 50vw, 40vw';
   return (
     <section className="section work" id="work">
       <div className="wrap">
         <div className="section-head reveal" style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
             <span className="eyebrow">Our work</span>
-            <h2 className="section-title">Built in and<br />around Chelmsford</h2>
+            <h2 className="section-title">Real projects, real homes,<br />in and around Chelmsford</h2>
           </div>
-          <a className="btn btn-ghost" href="gallery.html">View full gallery <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
+          <a className="btn btn-ghost" href="gallery.html">View the full gallery <i className="fa fa-arrow-right ico" aria-hidden="true"></i></a>
         </div>
         <div className="work-grid reveal">
           {tiles.map((t, i) => (
             <figure className={t.c} key={i}>
-              <img src={t.img} alt={t.cap} loading="lazy" />
-              <figcaption>{t.cap}</figcaption>
+              <a href="gallery.html" aria-label={t.cap + ' — view in the gallery'}>
+                {t.pic
+                  ? <Pic p={t.pic} w={t.w} h={t.h} alt={t.cap} sizes={sizesFor(t.c)} />
+                  : <img src={t.img} width={t.w} height={t.h} alt={t.cap} loading="lazy" decoding="async" />}
+              </a>
+              <figcaption><i className={'fa ' + t.ico} aria-hidden="true"></i>{t.cap}</figcaption>
             </figure>
           ))}
         </div>
@@ -102,16 +129,16 @@ function Work() {
 
 function WhyProcess() {
   const feats = [
-    { ico: 'fa-user', t: 'Owner-Operated', d: 'You work directly with Eric Murray on every project — no subcontracted guesswork.' },
-    { ico: 'fa-shield', t: 'Licensed & Insured', d: 'A fully licensed and insured Massachusetts general contractor.' },
-    { ico: 'fa-diamond', t: 'Quality Materials', d: 'Only the finest materials and brands, for results that last.' },
-    { ico: 'fa-pencil', t: 'Free Estimates', d: 'A fair, itemized estimate with a clear breakdown of costs and materials.' },
+    { ico: 'fa-user', t: 'Owner-operated', d: 'You work directly with Eric Murray on every project. No call centers, no rotating crews.' },
+    { ico: 'fa-shield', t: 'Licensed & insured', d: 'A fully licensed and insured Massachusetts general contractor: MA CSL #077319, HIC #174394.' },
+    { ico: 'fa-diamond', t: 'Quality materials', d: 'Only materials and brands that last, installed the way the manufacturer intended.' },
+    { ico: 'fa-pencil', t: 'Free, itemized estimates', d: 'A fair estimate with a clear breakdown of costs and materials, before any work starts.' },
   ];
   const steps = [
-    { n: '01', t: 'Consult', d: 'We visit your home, listen to your goals, and provide a free estimate.' },
-    { n: '02', t: 'Design', d: 'We plan every detail with experienced kitchen and home designers.' },
-    { n: '03', t: 'Build', d: 'Craftsmanship on-site and on schedule, with the owner involved throughout.' },
-    { n: '04', t: 'Reveal', d: 'We hand back a home that fits your life — and is built to last.' },
+    { n: '1', t: 'Consult', d: 'We visit your home, listen to your goals and give you a free estimate.' },
+    { n: '2', t: 'Design', d: 'We plan every detail with experienced kitchen and home designers.' },
+    { n: '3', t: 'Build', d: 'Craftsmanship on site and on schedule, with Eric there throughout.' },
+    { n: '4', t: 'Reveal', d: 'You get back a home that fits your life and is built to last.' },
   ];
   return (
     <section className="section" id="why">
@@ -120,7 +147,7 @@ function WhyProcess() {
           <div className="reveal">
             <div className="section-head" style={{ marginBottom: '8px' }}>
               <span className="eyebrow">Why Murray</span>
-              <h2 className="section-title">A contractor<br />you can trust at home</h2>
+              <h2 className="section-title">A contractor you can trust in your home</h2>
             </div>
             <div className="feat-list">
               {feats.map(f => (
@@ -137,7 +164,7 @@ function WhyProcess() {
           <div className="reveal">
             <div className="section-head" style={{ marginBottom: '8px' }}>
               <span className="eyebrow">How we work</span>
-              <h2 className="section-title" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)' }}>From idea<br />to handover</h2>
+              <h2 className="section-title" style={{ fontSize: 'clamp(1.6rem,3vw,2.4rem)' }}>From first call to final walk-through</h2>
             </div>
             <div className="process">
               {steps.map(s => (
@@ -157,4 +184,4 @@ function WhyProcess() {
   );
 }
 
-Object.assign(window, { Strip, Services, Work, WhyProcess });
+Object.assign(window, { TrustBar, Services, Work, WhyProcess });
