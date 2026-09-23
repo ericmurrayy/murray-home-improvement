@@ -124,6 +124,15 @@
   </div>
 </footer>
   <script src="site/menu.js"></script>
+  <script>
+  // Prefill from the cost estimator (?type=…&details=…). Plain enhancement; the form works without it.
+  (function () {
+    var q = new URLSearchParams(location.search), type = q.get('type'), details = q.get('details');
+    var sel = document.getElementById('ef-type'), msg = document.getElementById('ef-msg');
+    if (type && sel) { for (var i = 0; i < sel.options.length; i++) if (sel.options[i].text === type) { sel.selectedIndex = i; break; } }
+    if (details && msg && !msg.value) msg.value = details;
+  })();
+  </script>
 <div class="cta-bar" role="navigation" aria-label="Quick contact"><a href="tel:19784799406"><i class="fa fa-phone" aria-hidden="true"></i> Call</a><a href="sms:19784799406"><i class="fa fa-comment" aria-hidden="true"></i> Text</a><a class="primary" href="#estimate-form"><i class="fa fa-pencil" aria-hidden="true"></i> Free Quote</a></div>
 </body>
 </html>

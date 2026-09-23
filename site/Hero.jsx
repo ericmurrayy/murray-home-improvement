@@ -41,6 +41,7 @@ function Hero() {
                 Get a free quote <i className="fa fa-arrow-right ico" aria-hidden="true"></i>
               </a>
               <a className="btn btn-ghost btn-lg" href="#work">See our work</a>
+              <a className="hero-tlink" href="cost-estimator.html"><i className="fa fa-calculator" aria-hidden="true"></i> What does it cost?</a>
             </div>
             <div className="proof-row">
               <a className="proof" href={window.GOOGLE_REVIEWS_URL} target="_blank" rel="noopener" aria-label="Rated 4.0 on Google from 4 reviews">

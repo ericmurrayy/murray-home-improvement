@@ -36,6 +36,8 @@ function Footer() {
             <a href="financing.html">Financing</a>
             <a href="warranty.html">Our guarantee</a>
             <a href="guides/index.html">Remodeling guides</a>
+            <a href="cost-estimator.html">Cost estimator</a>
+            <a href="projects/index.html">Projects</a>
           </div>
           <div className="foot-col">
             <h5>Get in touch</h5>
